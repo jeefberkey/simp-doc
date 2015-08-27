@@ -111,27 +111,26 @@ attempting to use the scripts below within Jenkins:
           echo "alias root='sudo sudosh'" >> /etc/bashrc
 
 
-    **Note**
+    .. note::
+      The followilng modifications were made to ISO the before using it to
+      create a VM:
 
-    The followilng modifications were made to ISO the before using it to
-    create a VM:
+      Change the bootprotocol to dhcp
+          ::
 
-    Change the bootprotocol to dhcp
-        ::
-
-            sed -i 's/network --bootproto=static --ip=192.168.0.111 --netmask=255.255.255.0 --gateway=192.168.1.1 --nodns --hostname=puppet.change.me/network --bootproto=dhcp/g' ks/dvd/include/common_ks_base
-
-
-    Prevent the system from forcing a root password change
-        ::
-
-            sed -i 's/change -d 0 root;//g' ks/dvd/*.cfg
+              sed -i 's/network --bootproto=static --ip=192.168.0.111 --netmask=255.255.255.0 --gateway=192.168.1.1 --nodns --hostname=puppet.change.me/network --bootproto=dhcp/g' ks/dvd/include/common_ks_base
 
 
-    Use simp-big by default instead of just simp
-        ::
+      Prevent the system from forcing a root password change
+          ::
 
-            sed -i 's/default simp$/default simp-big/g' isolinux/isolinux.cfg
+              sed -i 's/change -d 0 root;//g' ks/dvd/*.cfg
+
+
+      Use simp-big by default instead of just simp
+          ::
+
+              sed -i 's/default simp$/default simp-big/g' isolinux/isolinux.cfg
 
 
 Create a VM
@@ -379,7 +378,7 @@ Password Parameter
 
 
 Test Your Configuration
----------------------==
+-----------------------
 
 .. code-block:: bash
 
@@ -405,7 +404,7 @@ Test Your Configuration
 
 
 Test a Specific Module
----------------------=
+----------------------
 
 String Parameters
 

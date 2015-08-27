@@ -25,8 +25,7 @@ The SIMP Utility does not assist users through the entire configuration
 process; however, it does make the initial configuration easier and more
 repeatable.
 
-    **Important**
-
+.. important::
     Correct time across all systems is important to the proper
     functioning of SIMP and Puppet in general.
 
@@ -39,30 +38,21 @@ Using the configuration script, the following items are configured:
 **NOTE** this needs updated for the new puppetserver settings
 which includes Puppet Environments
 
--  Grub password in */boot/grub/grub.conf*
-
+-  Grub password in ``/boot/grub/grub.conf``
 -  Basic network setup
-
--  Autosigning in */etc/puppet/autosign.conf*
-
--  Fileserving in */etc/puppet/fileserver.conf*
-
--  Puppet server and Certificate Authority (CA) information in
-   */etc/puppet/puppet.conf*
-
+-  Autosigning in ``*/etc/puppet/autosign.conf``
+-  Fileserving in ``*/etc/puppet/fileserver.conf``
+-  Puppet server and Certificate Authority (CA) information in ``/etc/puppet/puppet.conf``
 .. only:: not simp_4
-
   -  */etc/puppet/environments/simp/hieradata/simp\_def.yaml*
-.. only:: simp_4
 
+.. only:: simp_4
   -  */etc/puppet/hieradata/simp\_def.yaml*
 
 -  Server certificates for the puppet server itself (Fake CA)
-
 -  Base YUM repositories
 
-    **Warning**
-
+..  warning::
     Keep in mind as the installation process begins that Puppet does not
     work well with capital letters in host names. Therefore, they should
     not be used.
@@ -74,12 +64,9 @@ SIMP Default Passwords and Settings
 Below is a table containing the default passwords found on a basic SIMP
 server.
 
-    **Important**
-
+.. important::
     All default passwords should be changed during the initial
     configuration proceess.
-
-
 
 Table: SIMP Default Passwords
 
@@ -89,133 +76,62 @@ will be helpful in illustrating how configuration files are set up. Your
 values will obviously differ, depending on your installation
 environment.
 
-.. list-table::
-   :widths: 13 35
-   :header-rows: 1
+========= ========
+Utility   Password
+========= ========
+Grub      Initi@lGruubCredential$
+Root User Plea$e Ch@nge Th1s Immediately!
+Simp User CorrectHorseBatteryStaple
+========= ========
 
-   * - Utility
-     - Password
-   * - Grub
-     - Initi@lGruubCredential$
-   * - Root User
-     - Plea$e Ch@nge Th1s Immediately!
-   * - Simp User
-     - CorrectHorseBatteryStaple
-   * - Variable name
-     - Value
-   * - Domain name
-     - simp.net
-   * - Fully qualified name
-     - puppet.simp.net
-   * - IP address
-     - 192.168.1.10
-   * - Gateway
-     - 192.168.1.1
-   * - DNS server
-     - 192.168.1.10
-   * - DNS search entry
-     - simp.net
-   * - Kickstart server
-     - 192.168.1.10
-   * - Yum server
-     - 192.168.1.10
-   * - LDAP URI
-     - ldap://puppet.simp.net
-   * - LDAP Base DN
-     - [dc=simp,dc=net]
-   * - LDAP Root DN
-     - [cn=LDAPAdmin,ou=People,dc=simp,dc=net]
-   * - LDAP Bind DN
-     - [cn=hostAuth,ou=Hosts,dc=simp,dc=net]
-   * - LDAP Sync DN
-     - [cn=LDAPSync,ou=People,dc=simp,dc=net]
+==================== =====
+Variable name        Value
+==================== =====
+Domain name          simp.net
+Fully qualified name puppet.simp.net
+IP address           192.168.1.10
+Gateway              192.168.1.1
+DNS server           192.168.1.10
+DNS search entry     simp.net
+Kickstart server     192.168.1.10
+Yum server           192.168.1.10
+LDAP URI             ldap://puppet.simp.net
+LDAP Base DN         [dc=simp,dc=net]
+LDAP Root DN         [cn=LDAPAdmin,ou=People,dc=simp,dc=net]
+LDAP Bind DN         [cn=hostAuth,ou=Hosts,dc=simp,dc=net]
+LDAP Sync DN         [cn=LDAPSync,ou=People,dc=simp,dc=net]
+==================== =====
 
 Table: Sample values for SIMP install
-
 
 Preparing the SIMP Server Environment
 -------------------------------------
 
-The following table outlines the steps to prepare a system for SIMP
-installation.
-
-
-Table: SIMP Pre-Install Procedures
+1. Boot the system and ensure the SIMP ISO is selected.
+2. Press **Enter** to run the standard SIMP install, or choose from the customized options list.
+3. When the installation is complete, the system will restart automatically.
+4. Log on as ``root`` and type the default password shown in **Table 2.1.**
+5. Type the default password again when prompted for the (current) UNIX password.
+6. Type a new password when prompted for the New Password. Retype the password when prompted.
 
 Installing the SIMP Server
 --------------------------
 
-The following table outlines the steps to install a SIMP server.
-
-.. list-table::
-   :widths: 8 97
-   :header-rows: 1
-
-   * - Step
-     - Process/Action
-   * - 1.
-     - Boot the system and ensure the SIMP ISO is selected.
-   * - 2.
-     - Press **Enter** to run the standard SIMP install, or choose from the customized options list.
-   * - 3.
-     - When the installation is complete, the system will restart automatically.
-   * - 4.
-     - Log on as *root* and type the default password shown in **Table 2.1.**
-   * - 5.
-     - Type the default password again when prompted for the (current) UNIX password.
-   * -
-     - Type a new password when prompted for the New Password. Retype the password when prompted.
-   * - Step
-     - Process/Action
-   * - 1.
-     - Log on as *simp* and **su -** to gain root access.
-   * - 2.
-     - Type **simp config**
-   * -
-     - Type **simp config -a ***<Config File>***** to load a previously generated configuration instead of generating the configuration from the script. This is the option to run for systems that will be rebuilt often.
-   * -
-     - For a list of additional commands, type **simp help**. Type **simp help ***<Command>***** for more information on a specific command.
-   * - 3.
-     - Configure the system as prompted.
-   * - 4.
-     - Type **simp bootstrap**
-   * -
-     - **NOTE**: If progress bars are of equal length and the bootstrap finishes quickly, a problem has occurred. This is most likely due to an error in SIMP configuration. Refer to the previous step and make sure that all configuration options are correct.
-   * - 5.
-     - Type **reboot**
-
-Table: SIMP Install Procedure
+1. Log on as ``simp`` and run ``su -`` to gain root access.
+2. Type ``simp config``
+  a. Type ``simp config -a <Config File>`` to load a previously generated configuration instead of generating the configuration from the script. This is the option to run for systems that will be rebuilt often.
+  b. For a list of additional commands, type **simp help**. Type **simp help ***<Command>***** for more information on a specific command.
+3. Configure the system as prompted.
+4. Type ``simp bootstrap``
+  .. note:: If progress bars are of equal length and the bootstrap finishes quickly, a problem has occurred. This is most likely due to an error in SIMP configuration. Refer to the previous step and make sure that all configuration options are correct.
+5. Type ``reboot``
 
 Performing Post-installation Setup on the SIMP Server
 -----------------------------------------------------
 
-The following table outlines the SIMP post-installation procedures.
-
-.. list-table::
-   :widths: 8 166
-   :header-rows: 1
-
-   * - Step
-     - Process/Action
-   * - 1.
-     - Log on as *root*
-   * - 2.
-     - Run puppet for the first time. Errors will appear for DHCP. These can be safely ingored at this stage. Type:
-   * -
-     - ``puppet agent -t``
-   * - 3.
-     - Copy CentOS RHEL\_MAJOR\_MINOR\_VERSION ISO(s) to the server and unpack using the unpack\_dvd utility. This creates a new tree under /var/www/yum/CentOS. Execute:
-   * -
-     - ``unpack\_dvd CentOS-RHEL\_MAJOR\_MINOR\_VERSION-\ *####*-x86\_64-Everything.iso``
-   * - 4.
-     - Update your system using yum. The updates applied will be dependent on what ISO you initially used. Execute:
-   * -
-     - ``yum clean all; yum makecache``
-   * - 5.
-     - Run puppet. Ignore the same DHCP errors.
-   * -
-     - ``puppet agent -t``
-   * - 6.
-     - Type ``reboot``
-
-Table: SIMP Post-Installation Procedure
+1. Log on as ``root``
+2. Run puppet for the first time. Errors will appear for DHCP. These can be safely ingored at this stage. Type: ``puppet agent -t``
+3. Copy CentOS RHEL\_MAJOR\_MINOR\_VERSION ISO(s) to the server and unpack using the unpack\_dvd utility. This creates a new tree under ``/var/www/yum/CentOS``. Execute: ``unpack\_dvd CentOS-RHEL\_MAJOR\_MINOR\_VERSION-\ *####*-x86\_64-Everything.iso``
+4. Update your system using yum. The updates applied will be dependent on what ISO you initially used. Execute: ``yum clean all; yum makecache``
+5. Run puppet. Ignore the same DHCP errors: ``puppet agent -t``
+6. Type ``reboot``
