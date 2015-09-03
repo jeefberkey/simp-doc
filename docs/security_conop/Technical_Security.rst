@@ -16,7 +16,7 @@ User Identification and Authentication
 Identification and authentication of system and service users can occur
 at the system level or globally in the SIMP architecture. While local
 accounts and groups can be created manually, the SIMP team suggests
-adding users via the */etc/puppet/localusers* file or by using the
+adding users via the ``/etc/puppet/localusers`` file or by using the
 native Puppet user and group types. System users can authenticate their
 access using Secure Shell (SSH) keys or passwords. For more centralized
 control, identify and authenticate users by using the Lightweight
@@ -123,7 +123,7 @@ management have several default settings including:
 
 -  Auditing of administrative actions to capture local account creation
    and modifications to LDAP accounts is done via the
-   ``/var/log/slapd\_audit.log`` file for ldap accounts and
+   ``/var/log/slapd_audit.log`` file for ldap accounts and
    ``/var/log/audit.log`` for local accounts. [AC-2(4)]
 
 -  Shell session timeouts after 15 minutes of inactivity. [AC-2(5)] This
@@ -220,7 +220,7 @@ in LDAP for full operating System support. [AC-5]
 Least Privilege
 ---------------
 
-SIMP does not allow *root* to directly SSH into a system. The *root*
+SIMP does not allow ``root`` to directly SSH into a system. The ``root``
 user must be at a console (or at a virtual instance of the physical
 console) to log on. Otherwise, users must log on as themselves and
 perform privileged commands using ``sudo`` or ``sudosh``. [AC-6]
@@ -424,9 +424,9 @@ The SIMP development team reviews every release of the major security
 guides for updated auditable events suggestions. Each of those
 suggestions is reviewed and applied if deemed applicable. [AU-2(3)]
 Privileged commands are audited as part of the SIMP auditing
-configuration. This is accomplished by monitoring *sudo* commands with
-auditd. Keystrokes for administrators that use **sudosh** are also
-logged. Each session can be replayed using **sudosh-replay**. [AU-2(4)]
+configuration. This is accomplished by monitoring ``sudo`` commands with
+auditd. Keystrokes for administrators that use ``sudosh`` are also
+logged. Each session can be replayed using ``sudosh-replay``. [AU-2(4)]
 
 Content of Audit Records
 ------------------------
@@ -491,10 +491,10 @@ Protection of Audit Information
 
 The primary means of protecting the audit logs is through the use of
 file permissions. Audit records are stored in the ``/var/log`` directory
-and can only be accessed by *root*. Audit logs are rotated off daily if
+and can only be accessed by ``root``. Audit logs are rotated off daily if
 the implementation has not developed a way of offloading the logs to
 another location where they can be backed up. Lastly, if the
-*rsyslog::stock::log\_server* module is implemented, logs are
+``rsyslog::stock::log_server`` module is implemented, logs are
 transmitted to the log server over a TLS protected link.
 
 Time Synchronization

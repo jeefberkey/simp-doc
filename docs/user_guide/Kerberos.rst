@@ -19,9 +19,8 @@ administrator password and initialize the database.
 
 The following sections provide instruction on how to get started with
 Kerberos 5. For more detailed information, review the official Red Hat
-`documentation <docs_>`_.
+`Link documentation <https://access.redhat.com/knowledge/docs/en-US/Red\_Hat\_Enterprise\_Linux/6/html/Managing\_Smart\_Cards/Configuring\_a\_Kerberos\_5\_Server.html>`_.
 
-.. _docs: https://access.redhat.com/knowledge/docs/en-US/Red\_Hat\_Enterprise\_Linux/6/html/Managing\_Smart\_Cards/Configuring\_a\_Kerberos\_5\_Server.html
 
 Creating Principals
 -------------------
@@ -47,10 +46,10 @@ Code for Creating an Admin Principal Kerberos
 
 .. code-block:: ruby
 
-            krb5_acl{ "${::domain}_admin":
-              principal       => "*/admin@${::domain}",
-              operation_mask  => '*'
-            }
+  krb5_acl{ "${::domain}_admin":
+    principal       => "*/admin@${::domain}",
+    operation_mask  => '*'
+  }
 
 
 The table below lists the steps to create an admin principal that is
