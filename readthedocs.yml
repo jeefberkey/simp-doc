@@ -1,0 +1,7 @@
+---
+name: simp
+base: docs/
+type: sphinx
+language: en
+python:
+  setup_install: true
