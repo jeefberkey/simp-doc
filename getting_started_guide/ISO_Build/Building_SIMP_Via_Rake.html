@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.4.4. Building SIMP via Rake &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="3.4. Building a SIMP ISO" href="../Building_A_SIMP_ISO.html"/>
+        <link rel="next" title="3.5. SIMP Server ISO Installation Guide" href="../ISO_Install/index.html"/>
+        <link rel="prev" title="3.4.3. Building SIMP From Source" href="Building_SIMP_From_Source.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">3. Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">3.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dynamic/Known_OS_Compatibility.html">3.2. Known OS Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installing_SIMP_From_A_Repository.html">3.3. Installing SIMP From A Repository</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Building_A_SIMP_ISO.html">3.4. Building a SIMP ISO</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Environment_Preparation.html">3.4.1. Environment Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Building_SIMP_From_Tarball.html">3.4.2. Building SIMP From Tarball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Building_SIMP_From_Source.html">3.4.3. Building SIMP From Source</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">3.4.4. Building SIMP via Rake</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started">3.4.4.1. Getting Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-either-docker-or-virtualbox">3.4.4.2. Install Either Docker or VirtualBox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-the-appropriate-el-iso">3.4.4.3. Download the Appropriate EL ISO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#required-environment-variables">3.4.4.4. Required Environment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-using-docker">3.4.4.5. Build Using Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-using-virtualbox">3.4.4.6. Build Using VirtualBox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">3.4.4.7. Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ISO_Install/index.html">3.5. SIMP Server ISO Installation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation_Miscellaney.html">3.6. Installation Miscellany</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">3. SIMP Getting Started Guide</a> &raquo;</li>
+      
+          <li><a href="../Building_A_SIMP_ISO.html">3.4. Building a SIMP ISO</a> &raquo;</li>
+      
+    <li>3.4.4. Building SIMP via Rake</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/getting_started_guide/ISO_Build/Building_SIMP_Via_Rake.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-simp-via-rake">
+<span id="gsg-building-simp-via-rake"></span><h1>3.4.4. Building SIMP via Rake<a class="headerlink" href="#building-simp-via-rake" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://github.com/simp/simp-core">simp-core</a> acceptance tests provide a method for building the SIMP ISOs
+directly from online resources and is the method that the SIMP team uses to
+ensure clean ISO builds.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method is <strong>slow</strong> but requires the least amount of modification to
+your build system.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method will only work on <code class="docutils literal"><span class="pre">simp-core</span></code> repositories that respond to
+<code class="docutils literal"><span class="pre">rake</span> <span class="pre">build:auto</span></code>.</p>
+</div>
+<div class="section" id="getting-started">
+<h2>3.4.4.1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please have your environment prepared as specified by
+<a class="reference internal" href="Environment_Preparation.html#gsg-environment-preparation"><span>Environment Preparation</span></a> before continuing.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You do <strong>not</strong> need <code class="docutils literal"><span class="pre">mock</span></code> on your system if you are using this method.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">You <strong>must</strong> have Internet accessibility for this method to work!</p>
+</div>
+</div>
+<div class="section" id="install-either-docker-or-virtualbox">
+<h2>3.4.4.2. Install Either Docker or VirtualBox<a class="headerlink" href="#install-either-docker-or-virtualbox" title="Permalink to this headline">¶</a></h2>
+<p>This build method relies on <a class="reference internal" href="../../glossary.html#term-beaker"><span class="xref std std-term">Beaker</span></a> from Puppet, Inc. and can use either
+<a class="reference internal" href="../../glossary.html#term-docker"><span class="xref std std-term">Docker</span></a> or <a class="reference internal" href="../../glossary.html#term-virtualbox"><span class="xref std std-term">VirtualBox</span></a> as the build back-end. The Docker method
+is faster but the VirtualBox method is far easier to debug if issues arise.</p>
+<p>You must have a working <a class="reference internal" href="../../glossary.html#term-vagrant"><span class="xref std std-term">Vagrant</span></a> installation to use this method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure that you use the Vagrant installation directly from the
+<a class="reference external" href="https://www.vagrantup.com/downloads.html">Vagrant Homepage</a>.</p>
+</div>
+</div>
+<div class="section" id="download-the-appropriate-el-iso">
+<h2>3.4.4.3. Download the Appropriate EL ISO<a class="headerlink" href="#download-the-appropriate-el-iso" title="Permalink to this headline">¶</a></h2>
+<p>You will need to download the correct <a class="reference internal" href="../../glossary.html#term-el"><span class="xref std std-term">EL</span></a> ISO for the version of SIMP
+that you are trying to build. If you have doubts, check the
+<code class="docutils literal"><span class="pre">build/release_mappings.yaml</span></code> file.</p>
+<p>The ISOs should be downloaded into the <code class="docutils literal"><span class="pre">spec/fixtures/ISO</span></code> directory (that
+you create).</p>
+</div>
+<div class="section" id="required-environment-variables">
+<h2>3.4.4.4. Required Environment Variables<a class="headerlink" href="#required-environment-variables" title="Permalink to this headline">¶</a></h2>
+<p>If you simply run the <a class="reference internal" href="../../glossary.html#term-rake"><span class="xref std std-term">rake</span></a> commands, the system will attempt to build
+<strong>all</strong> versions of SIMP that are coded into the tests.</p>
+<p>If you want to build a specific version of SIMP, you must use the following
+environment variables.</p>
+<dl class="docutils">
+<dt>SIMP_BEAKER_build_version</dt>
+<dd>The git branch or tag that you want to build</dd>
+<dt>SIMP_BEAKER_build_map</dt>
+<dd>The <code class="docutils literal"><span class="pre">release_mapper.yaml</span></code> key that you want to use.
+Defaults to <code class="docutils literal"><span class="pre">SIMP_BEAKER_build_version</span></code> if not specified.</dd>
+</dl>
+</div>
+<div class="section" id="build-using-docker">
+<h2>3.4.4.5. Build Using Docker<a class="headerlink" href="#build-using-docker" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../../glossary.html#term-docker"><span class="xref std std-term">Docker</span></a> method is the faster of the two methods but can make
+debugging quite difficult if something goes wrong.</p>
+<p>To build the suite via Docker run the following command:</p>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>$ rake beaker:suites[default]
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-using-virtualbox">
+<h2>3.4.4.6. Build Using VirtualBox<a class="headerlink" href="#build-using-virtualbox" title="Permalink to this headline">¶</a></h2>
+<p>If you wish to build using <a class="reference internal" href="../../glossary.html#term-virtualbox"><span class="xref std std-term">VirtualBox</span></a> simply run the following command:</p>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>$ rake beaker:suites[iso_vbox]
+</pre></div>
+</div>
+</div>
+<div class="section" id="results">
+<h2>3.4.4.7. Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<p>The ISOs from the <a class="reference internal" href="../../glossary.html#term-rake"><span class="xref std std-term">rake</span></a> commands will be placed under a
+<code class="docutils literal"><span class="pre">SIMP_ISO/rake_generated/&lt;branch&gt;/&lt;timestamp&gt;</span></code> directory structure.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ISO_Install/index.html" class="btn btn-neutral float-right" title="3.5. SIMP Server ISO Installation Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Building_SIMP_From_Source.html" class="btn btn-neutral" title="3.4.3. Building SIMP From Source" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

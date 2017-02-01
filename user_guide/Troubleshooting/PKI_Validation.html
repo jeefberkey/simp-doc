@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.6.3. Checking Your SIMP PKI Communication &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="4.6. Troubleshooting Common Issues" href="../Troubleshooting.html"/>
+        <link rel="next" title="4.6.4. Puppet Certificate Issues" href="Puppet_Certificate_Issues.html"/>
+        <link rel="prev" title="4.6.2. Why Can’t I Login?!" href="Why_Cant_I_Login.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../User_Management.html">4.4. User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="My_Services_Are_Dying.html">4.6.1. My Services Are Dying!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Why_Cant_I_Login.html">4.6.2. Why Can&#8217;t I Login?!</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">4.6.3. Checking Your SIMP PKI Communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Puppet_Certificate_Issues.html">4.6.4. Puppet Certificate Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+          <li><a href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a> &raquo;</li>
+      
+    <li>4.6.3. Checking Your SIMP PKI Communication</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/user_guide/Troubleshooting/PKI_Validation.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="checking-your-simp-pki-communication">
+<span id="pki-validation"></span><h1>4.6.3. Checking Your SIMP PKI Communication<a class="headerlink" href="#checking-your-simp-pki-communication" title="Permalink to this headline">¶</a></h1>
+<p>SIMP comes with a fully functional <a class="reference internal" href="../../glossary.html#term-public-key-infrastructure"><span class="xref std std-term">Public Key Infrastructure</span></a> in the
+guise of an aptly named Fake CA.</p>
+<p>The Fake CA can be very useful for getting your environment running prior to
+obtaining proper certificates from an official CA.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Fake CA is <strong>not</strong> hardware backed by default and should not be used for
+sensitive cryptographic operations unless there is no other alternative</p>
+</div>
+<p>Each Puppet environment contains its own Fake CA and, therefore, you must know
+which environment is serving the systems that are having issues prior to
+proceeding.</p>
+<p>For this section, we will assume that it is the &#8216;simp&#8217; environment located at
+the active environment path.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Just as with Puppet certificates, the time on your system must be correct and
+your DNS must be fully functional. Check that these are correct before
+proceeding.</p>
+</div>
+<p>For the remainder of this section, we will assume that the <a class="reference internal" href="../../glossary.html#term-fqdn"><span class="xref std std-term">FQDN</span></a> of the
+system with issues is &#8216;system.my.domain&#8217; and the LDAP server to which it is
+attempting to connect is &#8216;ldap.my.domain&#8217;.</p>
+<p>Navigate to the environment <em>keydist</em> directory and validate the system
+certificates.</p>
+<p>When validating certificates, you want to make sure that there are no errors
+regarding your certificate or <a class="reference internal" href="../../glossary.html#term-ca"><span class="xref std std-term">CA</span></a>. Ideally, the command will simply
+return the string &#8216;OK&#8217;.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /var/simp/environments/<span class="sb">`</span>puppet config print environment<span class="sb">`</span>/site_files/pki_files/files/keydist
+
+<span class="c1"># Validate the client system</span>
+$ openssl verify -CApath cacerts system.my.domain
+
+<span class="c1"># Validate the LDAP system</span>
+$ openssl verify -CApath cacerts ldap.my.domain
+</pre></div>
+</div>
+<p>If there are any issues, you may need to follow the steps in <a class="reference internal" href="../Client_Management.html#certificates"><span>Apply Certificates</span></a> to generate
+new certificates for one or more of your hosts.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Puppet_Certificate_Issues.html" class="btn btn-neutral float-right" title="4.6.4. Puppet Certificate Issues" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Why_Cant_I_Login.html" class="btn btn-neutral" title="4.6.2. Why Can’t I Login?!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

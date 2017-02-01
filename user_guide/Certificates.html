@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Apply Certificates &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html">
+        
+
+        
+          
+          <img src="../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Apply Certificates</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/user_guide/Certificates.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="apply-certificates">
+<h1>Apply Certificates<a class="headerlink" href="#apply-certificates" title="Permalink to this headline">¶</a></h1>
+<p>All clients in a SIMP system must have <a class="reference internal" href="../glossary.html#term-public-key-infrastructure"><span class="xref std std-term">Public Key Infrastructure</span></a> (PKI)
+keypairs generated for the server.  These keys reside in the
+<code class="docutils literal"><span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code> directory  on the
+SIMP server and are served to the clients over the puppet protocol.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These keypairs are <strong>not</strong> the keys that the Puppet server uses for its
+operation. Do not get the two confused.</p>
+</div>
+<p>This section provides guidance on installing official certificates or, as
+an interim measure, generating certificates from the Fake (self-signing)
+Certificate Authority provided by SIMP.</p>
+<div class="section" id="installing-official-certificates">
+<h2>Installing Official Certificates<a class="headerlink" href="#installing-official-certificates" title="Permalink to this headline">¶</a></h2>
+<p>Below are the steps to install official certificates for a SIMP client on
+the SIMP server:</p>
+<ol class="arabic simple">
+<li>Copy the certificates received from a proper <a class="reference internal" href="../glossary.html#term-ca"><span class="xref std std-term">CA</span></a> to the SIMP server.</li>
+<li>Add the keys for the node to <code class="docutils literal"><span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code>.</li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p class="first">Type <code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist/***&lt;Client</span> <span class="pre">System</span> <span class="pre">FQDN&gt;***</span></code></p>
+</li>
+<li><p class="first">Type</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mv ***&lt;Certificate Directory&gt;***/***&lt;FQDN&gt;***.<span class="o">[</span>pem<span class="p">|</span>pub<span class="o">]</span> <span class="se">\</span>
+/var/simp/environments/simp/site_files/pki_files/files/keydist/***&lt;FQDN&gt;***
+</pre></div>
+</div>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">root.puppet</span> <span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code></p>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">u=rwX,g=rX,o-rwx</span> <span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code></p>
+</li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Create and populate the <code class="docutils literal"><span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist/cacerts</span></code>
+directory.</li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>Type <code class="docutils literal"><span class="pre">cd</span> <span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code></li>
+<li>Type <code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">cacerts</span></code> and copy the root CA public certificates into cacerts in Privacy
+Enhanced Mail (PEM) format (one per file).</li>
+<li>Type <code class="docutils literal"><span class="pre">cd</span> <span class="pre">cacerts</span></code></li>
+<li>Type <code class="docutils literal"><span class="pre">for</span> <span class="pre">file</span> <span class="pre">in</span> <span class="pre">*.pem;</span> <span class="pre">do</span> <span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">$file</span> <span class="pre">`openssl</span> <span class="pre">x509</span> <span class="pre">-in</span> <span class="pre">$file</span> <span class="pre">-hash</span> <span class="pre">-noout`.0;</span> <span class="pre">done</span></code></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="generating-certificates-from-the-fake-ca">
+<h2>Generating Certificates from the Fake CA<a class="headerlink" href="#generating-certificates-from-the-fake-ca" title="Permalink to this headline">¶</a></h2>
+<p>If server certificates have not or could not be obtained at the time of client
+installation, SIMP provides a way to create them for the system, so that it
+will work until proper certificates are provided.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This option should not be used for any operational system that can use proper
+enterprise PKI certificates.</p>
+</div>
+<p>Below are the steps to generate the certificates using the SIMP-provided, Fake CA.</p>
+<ol class="arabic simple">
+<li>Type <code class="docutils literal"><span class="pre">cd</span> <span class="pre">/etc/puppetlabs/code/environments/simp/FakeCA</span></code></li>
+<li>Type <code class="docutils literal"><span class="pre">vi</span> <span class="pre">togen</span></code></li>
+<li>Remove old entries from the file and add the <a class="reference internal" href="../glossary.html#term-fully-qualified-domain-name"><span class="xref std std-term">Fully Qualified Domain Name</span></a>
+(FQDN) of the systems (one per line) for which certificates will be created.</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>To use alternate DNS names for the same system, separate the names with
+commas and without spaces.</p>
+<p class="last">For example, <code class="docutils literal"><span class="pre">.name,alt.name1,alt.name2.</span></code></p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Type <code class="docutils literal"><span class="pre">wc</span> <span class="pre">cacertkey</span></code></li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Ensure that the <code class="docutils literal"><span class="pre">cacertkey</span></code> file is not empty. If it is, enter text into
+the file; then save and close the file.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Type <code class="docutils literal"><span class="pre">./gencerts_nopass.sh</span> <span class="pre">auto</span></code></li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To avoid using the default Fake CA values, remove the <code class="docutils literal"><span class="pre">auto</span></code> statement
+from the <code class="docutils literal"><span class="pre">./gencerts_nopass.sh</span></code> command.</p>
+</div>
+</div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If the <code class="docutils literal"><span class="pre">clean.sh</span></code> command is run after the certificates have been
+generated, you will not be able to generate new host certificates under the
+old CA. To troubleshoot certificate problems, see the
+<a class="reference internal" href="Client_Management.html#cm-troubleshoot-cert-issues"><span>Troubleshooting Certificate Issues</span></a> section.</p>
+</div>
+<p>If issues arise while generating keys, type <code class="docutils literal"><span class="pre">cd</span> <span class="pre">/etc/puppetlabs/code/environments/simp/FakeCA</span></code>
+to navigate to the <code class="docutils literal"><span class="pre">/etc/puppetlabs/code/environments/simp/FakeCA</span></code> directory, then type
+<code class="docutils literal"><span class="pre">./clean.sh</span></code> to start over.</p>
+<p>After running the <code class="docutils literal"><span class="pre">clean.sh</span></code> script, type <code class="docutils literal"><span class="pre">./gencerts_nopass.sh</span></code> to
+run the script again using the previous procedure table.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

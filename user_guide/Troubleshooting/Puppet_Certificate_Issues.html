@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.6.4. Puppet Certificate Issues &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="4.6. Troubleshooting Common Issues" href="../Troubleshooting.html"/>
+        <link rel="next" title="4.7. SIMP HOWTO Guides" href="../HOWTO.html"/>
+        <link rel="prev" title="4.6.3. Checking Your SIMP PKI Communication" href="PKI_Validation.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../User_Management.html">4.4. User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="My_Services_Are_Dying.html">4.6.1. My Services Are Dying!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Why_Cant_I_Login.html">4.6.2. Why Can&#8217;t I Login?!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PKI_Validation.html">4.6.3. Checking Your SIMP PKI Communication</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">4.6.4. Puppet Certificate Issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#puppet-client-certificate-issues">4.6.4.1. Puppet Client Certificate Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#puppet-server-certificate-issues">4.6.4.2. Puppet Server Certificate Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+          <li><a href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a> &raquo;</li>
+      
+    <li>4.6.4. Puppet Certificate Issues</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/user_guide/Troubleshooting/Puppet_Certificate_Issues.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="puppet-certificate-issues">
+<h1>4.6.4. Puppet Certificate Issues<a class="headerlink" href="#puppet-certificate-issues" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="puppet-client-certificate-issues">
+<h2>4.6.4.1. Puppet Client Certificate Issues<a class="headerlink" href="#puppet-client-certificate-issues" title="Permalink to this headline">¶</a></h2>
+<p>Most of the time, clients will have certificate issues due to the system clock
+not being properly set. Before taking any other measures, make sure that your
+system clock is correct on both the master and the clients!</p>
+<p>If you need to fix client certificate issues outside of time, first make sure that you don&#8217;t have a certificate already in place on your Puppet server.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ puppet cert list --all
+</pre></div>
+</div>
+<p>If you <strong>do</strong> have a certificate in place, and need to register a client with the same name, remove that client&#8217;s certificate from the system.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ puppet cert clean &lt;fqdn.of.the.client&gt;
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you delete the Puppet server&#8217;s certificate, you will need to re-deploy
+Puppet certificates to <strong>all</strong> of your nodes!</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><strong>NEVER RUN ``puppet cert clean &#8211;all``</strong></p>
+</div>
+<div class="section" id="puppet-client-re-registration">
+<h3>4.6.4.1.1. Puppet Client Re-Registration<a class="headerlink" href="#puppet-client-re-registration" title="Permalink to this headline">¶</a></h3>
+<p>If, for some reason, you need to re-register your client with a new server,
+simply run the following on your client once the server is ready.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ rm -rf <span class="sb">`</span>puppet config print ssldir<span class="sb">`</span>
+$ puppet agent -t
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="puppet-server-certificate-issues">
+<h2>4.6.4.2. Puppet Server Certificate Issues<a class="headerlink" href="#puppet-server-certificate-issues" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This is destructive to your Puppet communications. This should only be used
+if you have no other options.</p>
+</div>
+<p>If the Puppet server has certificate issues, regenerate the server CAs. To do
+this, remove the contents of the <em>ssl</em> folder and regenerate those <code class="docutils literal"><span class="pre">.pem</span></code>
+files.</p>
+<p>The following table lists the steps to regenerate the server CAs:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ service puppetserver stop
+$ rm -rf /etc/puppetlabs/puppet/ssl
+$ puppet cert list --all
+$ puppet cert --generate ***&lt;fqdn&gt;***
+$ service puppetserver start
+$ puppet agent --test
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../HOWTO.html" class="btn btn-neutral float-right" title="4.7. SIMP HOWTO Guides" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PKI_Validation.html" class="btn btn-neutral" title="4.6.3. Checking Your SIMP PKI Communication" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

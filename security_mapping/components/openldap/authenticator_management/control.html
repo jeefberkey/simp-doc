@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.1.10.3. Authenticator Management &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="7.1.10. OpenLDAP" href="../openldap.html"/>
+        <link rel="next" title="7.1.10.4. Content of Audit Records" href="../content_of_audit_records/control.html"/>
+        <link rel="prev" title="7.1.10.2. Audit Storage Capacity" href="../audit_storage_capacity/control.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../../../index.html">
+        
+
+        
+          
+          <img src="../../../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">7. Security Control Mapping</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../Components.html">7.1. SIMP Components</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../simplib/simplib.html">7.1.1. SIMPLib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../simp/simp.html">7.1.2. SIMP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../aide/aide.html">7.1.3. AIDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../apache/apache.html">7.1.4. Apache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auditd/auditd.html">7.1.5. Auditd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../clamav/clamav.html">7.1.6. ClamAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../compliance/compliance.html">7.1.7. Compliance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../iptables/iptables.html">7.1.8. IPTables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../named/named.html">7.1.9. Named/Bind</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../openldap.html">7.1.10. OpenLDAP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../access_enforcement/control.html">7.1.10.1. Access Enforcement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../audit_storage_capacity/control.html">7.1.10.2. Audit Storage Capacity</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">7.1.10.3. Authenticator Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../content_of_audit_records/control.html">7.1.10.4. Content of Audit Records</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../device_identification_and_authentication/control.html">7.1.10.5. Device Identification and Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identification_and_authentication_organizational_users/control.html">7.1.10.6. Identification and Authentication (Organizational Users)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../information_flow_enforcement/control.html">7.1.10.7. Information Flow Enforcement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../least_privilege/control.html">7.1.10.8. Least Privilege</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transfer_to_alternate_storage/control.html">7.1.10.9. Transfer to Alternate Storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transmission_confidentiality_and_integrity/control.html">7.1.10.10. Transmission Confidentiality and Integrity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pam/pam.html">7.1.11. PAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pupmod/pupmod.html">7.1.12. Pupmod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rsync/rsync.html">7.1.13. Rsync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ssh/ssh.html">7.1.14. SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../stunnel/stunnel.html">7.1.15. Stunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sudo/sudo.html">7.1.16. Sudo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sudosh/sudosh.html">7.1.17. Sudosh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tcpwrappers/tcpwrappers.html">7.1.18. TCP Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Controls.html">7.2. Security Control Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../index.html#indices-and-tables">7.3. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">7. SIMP Security Control Mapping</a> &raquo;</li>
+      
+          <li><a href="../../../Components.html">7.1. SIMP Components</a> &raquo;</li>
+      
+          <li><a href="../openldap.html">7.1.10. OpenLDAP</a> &raquo;</li>
+      
+    <li>7.1.10.3. Authenticator Management</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/security_mapping/components/openldap/authenticator_management/control.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="authenticator-management">
+<h1>7.1.10.3. Authenticator Management<a class="headerlink" href="#authenticator-management" title="Permalink to this headline">¶</a></h1>
+<p>Authenticator strength is enforced using slapo-ppolicy overlay for LDAP. The
+ppolicy overlay is then configured to use PAM cracklib to enforce complexity.</p>
+<p>For the default password complexity rules see the
+<a class="reference internal" href="../../../../help/FAQ/Password_Complexity.html#faq-password-complexity"><span>What is the Password Complexity for SIMP?</span></a> FAQ.</p>
+<p>The integration point between the remote LDAP server and PAM is the pam_ldap pam
+module. SIMP configures pam_ldap to point to the SIMP LDAP server and
+communicates using TLS.</p>
+<p>References: <a class="reference internal" href="../../../controls/nist80053rev4/800-53-controls.html#ia-5-1-a"><span>IA-5 (1)(a)</span></a>, <a class="reference internal" href="../../../controls/nist80053rev4/800-53-controls.html#ia-5-1-e"><span>IA-5 (1)(e)</span></a></p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../content_of_audit_records/control.html" class="btn btn-neutral float-right" title="7.1.10.4. Content of Audit Records" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../audit_storage_capacity/control.html" class="btn btn-neutral" title="7.1.10.2. Audit Storage Capacity" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

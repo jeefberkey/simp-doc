@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.7.1.2. Elasticsearch, Logstash, and Grafana &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../../index.html"/>
+        <link rel="up" title="4.7.1. HOWTO Setup Central Log Collection" href="../Central_Log_Collection.html"/>
+        <link rel="next" title="4.7.2. HOWTO Change Puppet Masters" href="../Changing_Puppet_Masters.html"/>
+        <link rel="prev" title="4.7.1.1. Centralized Rsyslog" href="Rsyslog.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../../index.html">
+        
+
+        
+          
+          <img src="../../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../User_Management.html">4.4. User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Troubleshooting.html">4.6. Troubleshooting Common Issues</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../HOWTO.html">4.7. SIMP HOWTO Guides</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../Central_Log_Collection.html">4.7.1. Setup Central Log Collection</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Rsyslog.html">4.7.1.1. Centralized Rsyslog</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">4.7.1.2. Elasticsearch, Logstash, and Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Changing_Puppet_Masters.html">4.7.2. Change Puppet Masters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Disable_dhcpd.html">4.7.3. Disable dhcpd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Disable_named.html">4.7.4. Disable named</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Discard_Mail_to_Root.html">4.7.5. Discard Mail to Root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Exclude_Repositories.html">4.7.6. Exclude YUM Repositories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../NFS.html">4.7.7. Configure NFS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../IPTables_NAT_Rules.html">4.7.8. Configure IPTables NAT Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Kerberos.html">4.7.9. Enable Kerberos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Managing_Workstation_Infrastructures.html">4.7.10. Manage Workstation Infrastructures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Network_Build.html">4.7.11. Kickstart the Initial Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Puppetmaster_Backup.html">4.7.12. Backup the Puppet Master</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Puppet_Server_NAT.html">4.7.13. Configure a Puppet Server Behind a NAT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Redundant_LDAP.html">4.7.14. Enable Redundent LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SFTP_Restricted_Accounts.html">4.7.15. Enable SFTP Restricted Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SSH_Keys.html">4.7.16. Setup SSH Authorized Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Upgrade_SIMP.html">4.7.17. Upgrade SIMP (Coming Soon!)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Manage_TPM.html">4.7.18. Manage TPM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+          <li><a href="../../HOWTO.html">4.7. SIMP HOWTO Guides</a> &raquo;</li>
+      
+          <li><a href="../Central_Log_Collection.html">4.7.1. HOWTO Setup Central Log Collection</a> &raquo;</li>
+      
+    <li>4.7.1.2. Elasticsearch, Logstash, and Grafana</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/user_guide/HOWTO/Central_Log_Collection/Logstash.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elasticsearch-logstash-and-grafana">
+<span id="id1"></span><h1>4.7.1.2. Elasticsearch, Logstash, and Grafana<a class="headerlink" href="#elasticsearch-logstash-and-grafana" title="Permalink to this headline">¶</a></h1>
+<p>This chapter provides instruction for getting a basic configuration of
+<a class="reference internal" href="../../../glossary.html#term-logstash"><span class="xref std std-term">Logstash</span></a> working in a SIMP environment.</p>
+<p>If these instructions don&#8217;t work for you, please take a look at the README in
+the <a class="reference external" href="https://github.com/simp/pupmod-simp-simp_logstash">SIMP Logstash module</a>, particularly the acceptance tests in the
+<code class="docutils literal"><span class="pre">spec/acceptance</span></code> directory.</p>
+<div class="section" id="obtaining-the-required-packages">
+<h2>4.7.1.2.1. Obtaining the Required Packages<a class="headerlink" href="#obtaining-the-required-packages" title="Permalink to this headline">¶</a></h2>
+<p>As an optional component in the SIMP infrastructure, the <a class="reference internal" href="../../../glossary.html#term-elg"><span class="xref std std-term">ELG</span></a> packages
+are not included in the SIMP distribution.</p>
+<p>You will need to proceed to the vendor sites to obtain the require RPMs and
+<strong>put them in an accessible</strong> <a class="reference internal" href="../../../glossary.html#term-yum"><span class="xref std std-term">YUM</span></a> <strong>repository</strong>. The SIMP modules were
+designed with the assumption that you would be using a repository for all of
+your installations.</p>
+<p>The following versions have been tested against the SIMP ELG Stack:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> : <strong>2.3</strong></li>
+<li><a class="reference external" href="https://www.elastic.co/products/logstash">Logstash</a> : <strong>2.3</strong></li>
+<li><a class="reference external" href="http://grafana.org/">Grafana</a> : <strong>3.1</strong></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="logstash">
+<h2>4.7.1.2.2. Logstash<a class="headerlink" href="#logstash" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.elastic.co/products/logstash">Logstash</a> is an Open Source tool that provides a means for SIMP
+implementations to have logs and events collected, filtered, and forwarded
+to another host. SIMP comes with three separate but related modules. The
+modules are:</p>
+<ul class="simple">
+<li><strong>Logstash:</strong> Installs the RPMs and configuration needed for log inputs,
+filters, and outputs.</li>
+<li><strong>Grafana:</strong> Installs the RPMs and configuration needed for the Grafana web
+interface.</li>
+<li><strong>Elasticsearch:</strong> Installs the RPMs and configuration needed for
+Elasticsearch.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>The Logstash class is incompatible with the SIMP <code class="docutils literal"><span class="pre">rsyslog::stock::server</span></code>
+class!</p>
+<p class="last">You cannot enable both of them on the same sever.</p>
+</div>
+</div>
+<div class="section" id="logstash-architecture">
+<h2>4.7.1.2.3. Logstash Architecture<a class="headerlink" href="#logstash-architecture" title="Permalink to this headline">¶</a></h2>
+<p>The Logstash architecture is quite straightforward. It takes inputs from
+various sources, optionally applies filters, and outputs the results to a
+specified target. It&#8217;s likely that you can already forward logs to Logstash and
+output them in a useful format as part of your existing architecture.</p>
+<p>Logstash filters can manipulate logs after ingest and before output.  Examples
+of existing filters include fixing logs to split/combine lines, adding fields,
+normalizing time stamps, and adding GeoIP fields. Depending on the type of log
+manipulation that is desired, there is likely a filter and
+<a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/index.html">Logstash documentation</a> that already exists.</p>
+</div>
+<div class="section" id="simp-logstash-architecture">
+<h2>4.7.1.2.4. SIMP Logstash Architecture<a class="headerlink" href="#simp-logstash-architecture" title="Permalink to this headline">¶</a></h2>
+<p>Combining the SIMP <a class="reference internal" href="../../../glossary.html#term-logstash"><span class="xref std std-term">Logstash</span></a>, <a class="reference internal" href="../../../glossary.html#term-elasticsearch"><span class="xref std std-term">Elasticsearch</span></a>, and <a class="reference internal" href="../../../glossary.html#term-grafana"><span class="xref std std-term">Grafana</span></a>
+modules provides a functioning log collection, reduction, and search
+capability. Unless scale dictates otherwise, these three modules can easily be
+applied to a single host.</p>
+<p>The intent of providing Logstash in SIMP is to replace the default
+<a class="reference internal" href="Rsyslog.html#rsyslog"><span>Centralized Rsyslog</span></a> server with a capability that is easier to search and analyze
+over time. Once your Logstash server is set up, you simply need to direct your
+hosts to forward logs to your Logstash server. In a default SIMP configuration,
+this can be done by setting the <code class="docutils literal"><span class="pre">$log_server</span></code> variable in <a class="reference internal" href="../../../glossary.html#term-hiera"><span class="xref std std-term">Hiera</span></a>.</p>
+<p>It is up to each implementation to define and apply filters that meet their
+local requirements. While multiple output targets may be defined, SIMP only
+defines the Elasticsearch output by default. Please see the Elasticsearch
+Puppet module for details on how to define additional output targets.</p>
+<p>The following diagram depicts the standard SIMP data flow through the Logstash
+system.</p>
+<a class="reference internal image-reference" href="../../../_images/Logstash.png"><img alt="Logstash Data Flow" class="align-center" src="../../../_images/Logstash.png" style="width: 413.7px; height: 770.7px;" /></a>
+</div>
+<div class="section" id="simp-logstash-deployment">
+<h2>4.7.1.2.5. SIMP Logstash Deployment<a class="headerlink" href="#simp-logstash-deployment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="logstash-simp-and-security">
+<h3>4.7.1.2.5.1. Logstash, SIMP, and Security<a class="headerlink" href="#logstash-simp-and-security" title="Permalink to this headline">¶</a></h3>
+<p>The provided SIMP modules for Logstash, Elasticsearch, and Grafana have been
+built with connection security in mind. Overriding these settings could
+adversely affect the security of the logging infrastructure. The following list
+describes the security features in place with the default SIMP module settings:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>The native (Java) Elasticsearch connections are not encrypted!</p>
+<p class="last">This will be remedied in the future as sufficient methods are found.
+Presently, you can look at the <a class="reference external" href="https://github.com/simp/pupmod-simp-libreswan">SIMP IPSec</a> implementation to encrypt
+communication between your Elasticsearch nodes.</p>
+</div>
+<ul class="simple">
+<li><strong>User Name and Password Protection for Grafana:</strong> The Grafana web can be
+exposed to a defined list of hosts. If you are connecting to Grafana from
+anything other than the localhost, a user name and password is required for
+authentication. Both <a class="reference internal" href="../../../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> and local database users are supported.  By
+default, only an admin account is created.  SIMP will automatically generate
+that password.</li>
+</ul>
+<ul class="simple">
+<li><strong>Syslog over Stunnel:</strong> The default behavior in SIMP is to encrypt syslog
+traffic using native :term`TLS` in rsyslog.  The logstash syslog
+configuration is setup to listen on a stunnel port, which then forwards to
+the local logstash syslog listener.  Unencrypted traffic is also supported
+for network devices.</li>
+<li><strong>Limiting Web Actions:</strong> The Grafana module restricts what HTTP commands a
+user can perform on the Elasticsearch data store. Full <strong>POST</strong> action must
+be given to the Logstash nodes and some nodes may require <strong>DELETE</strong>
+capabilities. Logstash hosts should be tightly controlled so that
+administrative users cannot modify data inside of Elasticsearch with
+carefully crafted commands. This is one reason that we use syslog on the
+local hosts.</li>
+</ul>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>The Puppet modules for Logstash, Grafana, and Elasticsearch contain dozens
+of variables that may be manipulated.</p>
+<p class="last">You should read each product&#8217;s documentation and ensure you understand any
+setting that is changed from the default SIMP values. Changes can affect
+both security and functionality of the system.</p>
+</div>
+</div>
+</div>
+<div class="section" id="logstash-setup">
+<h2>4.7.1.2.6. Logstash Setup<a class="headerlink" href="#logstash-setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="logstash-system-requirements">
+<h3>4.7.1.2.6.1. Logstash System Requirements<a class="headerlink" href="#logstash-system-requirements" title="Permalink to this headline">¶</a></h3>
+<p>The storage requirements for Logstash and Elasticsearch vary depending on how
+long you plan on keeping logs. When using Elasticsearch, the logs are formatted
+for Elasticsearch and stored in <code class="docutils literal"><span class="pre">/var/elasticsearch</span></code>. You can also configure
+how many days of data you wish to keep in Elasticsearch
+<code class="docutils literal"><span class="pre">(keep_days</span> <span class="pre">=&gt;</span> <span class="pre">'99')</span></code>. Therefore, you should ensure you have enough space on
+<code class="docutils literal"><span class="pre">/var</span></code> to keep your defined number of days worth of logs.</p>
+<p>As you grow your Elasticsearch cluster to handle increasing log loads, you will
+want to ensure that your <code class="docutils literal"><span class="pre">keep_days</span></code> is set to handle your entire cluster
+appropriately.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You should have at least 4G of memory available on any Elasticsearch node.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">It is not advised to install the ELG stack on your Puppet management
+infrastructure as both tend to use large amounts of system resources.</p>
+</div>
+</div>
+<div class="section" id="recommended-simp-logstash-setup">
+<h3>4.7.1.2.6.2. Recommended SIMP Logstash Setup<a class="headerlink" href="#recommended-simp-logstash-setup" title="Permalink to this headline">¶</a></h3>
+<p>The following example can be applied to a single host with a large <code class="docutils literal"><span class="pre">/var</span></code>
+volume and 4GB of memory.</p>
+<p>You can extend and replicate this setup on as many systems as necessary to
+provide ingest and dashboard redundancy. Alternatively, you can split Grafana
+and Logstash to allow greater resource dedication.</p>
+<p>We do recommend that you have an Elasticsearch node on the Logstash system to
+reduce the likelihood that Logstash will hang when trying to find a
+non-existent storage node.</p>
+<p>Optimization of your Elasticsearch infrastructure depends on many factors and
+should be handled once you decide how far your system is going to expand.
+Please be aware that scaling is highly dependent on how your actually use your
+cluster in production.</p>
+<p>We would recommend a search on <a class="reference external" href="http://lmgtfy.com/?q=elasticsearch+scaling">Elasticsearch Scaling</a> prior to setting up
+your initial cluster.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="c1"># Add these settings to your Logstash node</span>
+
+<span class="c1">## Set up Logstash ##</span>
+
+<span class="c1"># This is required due to a bug in the &#39;elastic&#39; logstash module</span>
+<span class="l l-Scalar l-Scalar-Plain">logstash::logstash_user</span> <span class="p p-Indicator">:</span> <span class="s">&#39;logstash&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">logstash::logstash_group</span> <span class="p p-Indicator">:</span> <span class="s">&#39;logstash&#39;</span>
+
+<span class="c1"># Listen on unencrypted UDP for legacy network devices</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_logstash::input::syslog::listen_plain_udp</span>
+
+<span class="c1"># Send all output to the local Elasticsearch instance</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_logstash::outputs</span> <span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;elasticsearch&#39;</span>
+
+<span class="c1"># Keep 30 days of logs</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_logstash::clean::keep_days</span><span class="p p-Indicator">:</span> <span class="s">&#39;30&#39;</span>
+
+<span class="c1">## Set up Elasticsearch ##</span>
+
+<span class="c1"># Make this unique per cluster!</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_elasticsearch::cluster_name</span> <span class="p p-Indicator">:</span> <span class="s">&#39;some_unique_cluster_name&#39;</span>
+
+<span class="c1"># We&#39;re assuming that you only have one interface here. If you don&#39;t, set</span>
+<span class="c1"># this to the appropriate value for your system</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_elasticsearch::bind_host</span> <span class="p p-Indicator">:</span> <span class="s">&quot;%{::ipaddress}&quot;</span>
+
+<span class="c1"># This needs to be a list of *all* of the Elasticsearch nodes in the cluster.</span>
+<span class="c1"># This is done to restrict communications to only trusted nodes</span>
+<span class="c1">#</span>
+<span class="c1"># Any node not entered here will not be connected to and will not be allowed</span>
+<span class="c1"># to communicate with this host.</span>
+<span class="c1">#</span>
+<span class="c1"># SIMP does not support multicast connectivity for security reasons.</span>
+
+<span class="c1"># You need to add your grafana hosts to the apache ACL</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_elasticsearch::http_method_acl</span> <span class="p p-Indicator">:</span>
+  <span class="s">&#39;limits&#39;</span> <span class="p p-Indicator">:</span>
+    <span class="s">&#39;hosts&#39;</span> <span class="p p-Indicator">:</span>
+      <span class="s">&#39;grafana.%{::domain}&#39;</span> <span class="p p-Indicator">:</span> <span class="s">&#39;defaults&#39;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_elasticsearch::unicast_hosts</span> <span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;%{::fqdn}:9300&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;es1.%{::domain}:9300&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;es2.%{::domain}:9300&quot;</span>
+
+<span class="c1">## Classes that you need to include for this setup</span>
+
+<span class="l l-Scalar l-Scalar-Plain">classes</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;simp_elasticsearch&#39;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;simp_logstash&#39;</span>
+  <span class="c1"># Include this if you wish to auto-purge your Elasticsearch records</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;simp_logstash::clean&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deploying-additional-elasticsearch-nodes">
+<h3>4.7.1.2.6.3. Deploying Additional Elasticsearch Nodes<a class="headerlink" href="#deploying-additional-elasticsearch-nodes" title="Permalink to this headline">¶</a></h3>
+<p>In the case of the Elasticsearch node setup below, it may be better to use a
+group match to pull your <a class="reference internal" href="../../../glossary.html#term-hiera"><span class="xref std std-term">Hiera</span></a> settings. To do this, you should add the
+following to your <code class="docutils literal"><span class="pre">site.pp</span></code> file for your environment.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vg">$trusted</span><span class="o">[</span><span class="s1">&#39;certname&#39;</span><span class="o">]</span> <span class="o">=~</span> <span class="sr">/es\d+\.your\.domain/</span> <span class="p">{</span>
+  <span class="vg">$hostgroup</span> <span class="o">=</span> <span class="s1">&#39;elasticsearch&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then, ensure that a file called &#8216;elasticsearch.yaml&#8217; is present in the
+<code class="docutils literal"><span class="pre">/etc/puppetlabs/code/environments/simp/hieradata/hostgroups/</span></code> directory and contains the following
+content.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="c1"># All nodes running elasticsearch in your cluster should use</span>
+<span class="c1"># these settings.</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_elasticsearch::cluster_name</span><span class="p p-Indicator">:</span> <span class="s">&#39;some_unique_cluster_name&#39;</span>
+
+<span class="c1"># The replicas can be no more than the total number of Elasticsearch nodes</span>
+<span class="c1"># that you have in your cluster.</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_elasticsearch::replicas</span><span class="p p-Indicator">:</span> <span class="s">&#39;2&#39;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_elasticsearch::unicast_hosts</span> <span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;%{::fqdn}:9300&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;es1.%{::domain}:9300&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;es2.%{::domain}:9300&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">classes</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;simp_elasticsearch&#39;</span>
+</pre></div>
+</div>
+<p>Make sure you point your clients to the Logstash server by setting the
+<code class="docutils literal"><span class="pre">log_server</span></code> variable to the <code class="docutils literal"><span class="pre">fqdn</span></code> of the Logstash server in
+<a class="reference internal" href="../../../glossary.html#term-hiera"><span class="xref std std-term">Hiera</span></a>.  You will also need to set <code class="docutils literal"><span class="pre">rsyslog::enable_tls_logging:</span> <span class="pre">true</span></code>
+to ensure logs are sent to Logstash stunnel listener.</p>
+</div>
+<div class="section" id="deploying-grafana">
+<h3>4.7.1.2.6.4. Deploying Grafana<a class="headerlink" href="#deploying-grafana" title="Permalink to this headline">¶</a></h3>
+<p>Now that you have a functional logging setup, you&#8217;ll probably want to deploy a
+GUI to provide the ability to generate user dashboards as well as dynamic log
+analysis.</p>
+<p>The SIMP team chose to support the Open Source <a class="reference external" href="http://grafana.org/">Grafana</a> project due to its
+builtin authentication and access control support.  While the Grafana is great
+at visualizing data, it can be challenging to explore your logs.  You could
+easily point <a class="reference external" href="https://www.elastic.co/products/kibana">Kibana</a> or another tool of your choosing at your
+<a class="reference external" href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> cluster. You could also install Kibana alongside Grafana.
+Since Kibana does not offer (free and open source) access control, you can
+configure Kibana to listen to local host only and tightly control who can SSH
+to your Kibana node.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">By default, the Grafana administrative password is randomly set using
+<a class="reference external" href="https://github.com/simp/pupmod-simp-simplib/blob/master/lib/puppet/parser/functions/passgen.rb">simplib passgen()</a>. You can use the <a class="reference internal" href="../../SIMP_Administration.html#simp-passgen"><span>simp passgen</span></a> command to obtain
+the password for your environment.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The <code class="docutils literal"><span class="pre">rubygem-toml</span></code> package must be present on your puppet compile servers
+for the Grafana puppet module to function properly.</p>
+<p>On your puppet master, you can install the toml gem by executing
+<code class="docutils literal"><span class="pre">puppetserver</span> <span class="pre">gem</span> <span class="pre">install</span> <span class="pre">toml</span></code>.</p>
+<p class="last">If you do not install this via Kickstart, you will need two runs of Puppet
+to complete the Grafana installation since the TOML Ruby Gem will not be
+able to be installed prior to Puppet loading.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Do <strong>not</strong> point Grafana directly at your Elasticsearch node unless you have
+a single-node deployment.</p>
+<p class="last">Grafana has the ability to put <strong>extreme</strong> loads on your Elasticsearch
+infrastructure with poorly formed queries and should be connected to a node
+that is not used for ingest. This also helps prevent any vulnerabilities
+in Grafana from providing direct access to your Elasticsearch
+infrastructure.</p>
+</div>
+<p>Targeting your Grafana host or hostgroup, apply the following <a class="reference internal" href="../../../glossary.html#term-hiera"><span class="xref std std-term">Hiera</span></a>
+settings.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="c1"># Array of networks that are allowed to access your Grafana dashboard. Uses</span>
+<span class="c1"># the standard SIMP &#39;client_nets&#39; semantics.</span>
+<span class="c1">#</span>
+<span class="c1"># In this case, we&#39;re allowing everyone in and trusting that Grafana will do</span>
+<span class="c1"># its job properly.</span>
+
+<span class="l l-Scalar l-Scalar-Plain">simp_grafana::client_nets</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;ALL&#39;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">classes</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;simp_grafana&#39;</span>
+</pre></div>
+</div>
+<p>After your Puppet run, you should be able to connect to port <code class="docutils literal"><span class="pre">8443</span></code> on your
+Grafana host and authenticate with the administrative user.</p>
+<div class="section" id="grafana-ldap-integration">
+<h4>4.7.1.2.6.4.1. Grafana LDAP Integration<a class="headerlink" href="#grafana-ldap-integration" title="Permalink to this headline">¶</a></h4>
+<p>SIMP uses Grafana roles and maps them to <a class="reference internal" href="../../../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> groups to provide access
+control.</p>
+<p>When you apply the SIMP Grafana class, Grafana will be configured for LDAP
+authentication (if you are using SIMP LDAP).  The table below describes the
+Grafana roles.</p>
+<table border="1" class="docutils" id="id3">
+<caption><span class="caption-text">Grafana Roles</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="15%" />
+<col width="30%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Grafana Role</th>
+<th class="head">SIMP LDAP Role</th>
+<th class="head">Permissions</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Viewer</td>
+<td>simp_grafana_viewers</td>
+<td>Can only view dashboards, not save / create them.</td>
+</tr>
+<tr class="row-odd"><td>Read Only Editors</td>
+<td>simp_grafana_editors_ro</td>
+<td>Can edit graphs and queries but not save dashboards.</td>
+</tr>
+<tr class="row-even"><td>Editor</td>
+<td>simp_grafana_editors</td>
+<td>Can view, update and create dashboards.</td>
+</tr>
+<tr class="row-odd"><td>Admin</td>
+<td>simp_grafana_admins</td>
+<td>Everything an Editor can plus edit and add data sources and organization
+users.</td>
+</tr>
+</tbody>
+</table>
+<p>All that remains is to create the LDAP groups and assign users to those groups.
+An example of creating the viewers group would be:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="ss">dn</span><span class="p">:</span> <span class="n">cn</span><span class="o">=</span><span class="n">simp_grafana_viewers</span><span class="p">,</span><span class="n">ou</span><span class="o">=</span><span class="no">Group</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">your</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">domain</span>
+<span class="ss">objectClass</span><span class="p">:</span> <span class="n">posixGroup</span>
+<span class="ss">objectClass</span><span class="p">:</span> <span class="n">top</span>
+<span class="ss">cn</span><span class="p">:</span> <span class="n">simp_grafana_viewers</span>
+<span class="ss">gidNumber</span><span class="p">:</span> <span class="o">&lt;</span><span class="no">Unique</span> <span class="no">GID</span> <span class="n">number</span><span class="o">&gt;</span>
+<span class="ss">description</span><span class="p">:</span> <span class="s2">&quot;Grafana Viewers&quot;</span>
+</pre></div>
+</div>
+<p>You would then add users to that group using:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="ss">dn</span><span class="p">:</span> <span class="n">cn</span><span class="o">=</span><span class="n">simp_grafana_viewers</span><span class="p">,</span><span class="n">ou</span><span class="o">=</span><span class="no">Group</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">your</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">domain</span>
+<span class="ss">changetype</span><span class="p">:</span> <span class="n">modify</span>
+<span class="ss">add</span><span class="p">:</span> <span class="n">memberUid</span>
+<span class="ss">memberUid</span><span class="p">:</span> <span class="o">&lt;</span><span class="no">UID1</span><span class="o">&gt;</span>
+<span class="ss">memberUid</span><span class="p">:</span> <span class="o">&lt;</span><span class="no">UID2</span><span class="o">&gt;</span>
+<span class="o">...</span>
+<span class="ss">memberUid</span><span class="p">:</span> <span class="o">&lt;</span><span class="no">UIDX</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>More information on managing LDAP users can be found in the
+<a class="reference internal" href="../../User_Management.html#user-management"><span>User Management</span></a> section.  Refer to the <code class="docutils literal"><span class="pre">simp_grafana</span></code> module for
+additional information on using the puppet module to manage Grafana LDAP
+configuration.</p>
+</div>
+<div class="section" id="grafana-dashboards">
+<h4>4.7.1.2.6.4.2. Grafana Dashboards<a class="headerlink" href="#grafana-dashboards" title="Permalink to this headline">¶</a></h4>
+<p>SIMP can optionally install default Grafana dashboards.  To install the
+dashboards, use hiera to apply <code class="docutils literal"><span class="pre">simp_grafana::simp_dashboards:</span> <span class="pre">true</span></code> to your
+grafana node.  They will be installed in <code class="docutils literal"><span class="pre">/var/lib/grafana/dashboards</span></code>.  The
+dashboards are read-only.  If you want to modify them, save each one with a
+different name.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Changing_Puppet_Masters.html" class="btn btn-neutral float-right" title="4.7.2. HOWTO Change Puppet Masters" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Rsyslog.html" class="btn btn-neutral" title="4.7.1.1. Centralized Rsyslog" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

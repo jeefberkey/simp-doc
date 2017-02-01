@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.4.3. Managing SSSD LOCAL Domain And Users &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="4.4. User Management" href="../User_Management.html"/>
+        <link rel="next" title="4.5. Hiera Overview" href="../Hiera_Overview.html"/>
+        <link rel="prev" title="4.4.2. Managing Local/Service Users" href="Local_Users.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../User_Management.html">4.4. User Management</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="LDAP.html">4.4.1. Managing Users with Lightweight Directory Access Protocol (LDAP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Local_Users.html">4.4.2. Managing Local/Service Users</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">4.4.3. Managing SSSD LOCAL Domain And Users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sssd-local-domain">4.4.3.1. SSSD LOCAL Domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-an-sssd-local-user">4.4.3.2. Adding an SSSD Local User</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#giving-the-user-access">4.4.3.3. Giving The User Access</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+          <li><a href="../User_Management.html">4.4. User Management</a> &raquo;</li>
+      
+    <li>4.4.3. Managing SSSD LOCAL Domain And Users</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/user_guide/User_Management/SSSD.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="managing-sssd-local-domain-and-users">
+<span id="sssd-local-user-management"></span><h1>4.4.3. Managing SSSD LOCAL Domain And Users<a class="headerlink" href="#managing-sssd-local-domain-and-users" title="Permalink to this headline">¶</a></h1>
+<p>Though the SIMP team <strong>highly recommends</strong> using <a class="reference internal" href="LDAP.html#managing-ldap-users"><span>LDAP</span></a>
+to centrally manage your users, you may wish to create users within the SSSD
+LOCAL provider domain.  Note that you can run LOCAL and LDAP domains
+concurrently!</p>
+<p>This section walks you through doing this in a way that is compatible with
+SIMP.</p>
+<p>The following examples assume that you are using the <code class="docutils literal"><span class="pre">site</span></code> module to set up
+your users. The examples may easily be extrapolated into defined types if you
+wish but are presented as classes for simplicity.</p>
+<div class="section" id="sssd-local-domain">
+<h2>4.4.3.1. SSSD LOCAL Domain<a class="headerlink" href="#sssd-local-domain" title="Permalink to this headline">¶</a></h2>
+<p>Set up a LOCAL domain in SSSD. If one already exists in /etc/sssd/sssd.conf,
+you can optionally skip this step.  If the LOCAL domain is not managed with
+SIMP, you may experience difficulties.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">site</span><span class="o">::</span><span class="n">sssd_local</span> <span class="p">{</span>
+
+  <span class="n">sssd</span><span class="o">::</span><span class="n">provider</span><span class="o">::</span><span class="n">local</span> <span class="p">{</span> <span class="s1">&#39;LOCAL&#39;</span><span class="p">:</span> <span class="p">}</span>
+
+  <span class="n">sssd</span><span class="o">::</span><span class="n">domain</span> <span class="p">{</span> <span class="s1">&#39;LOCAL&#39;</span><span class="p">:</span>
+    <span class="n">description</span>   <span class="o">=&gt;</span> <span class="s1">&#39;Default Local Domain&#39;</span><span class="p">,</span>
+    <span class="n">id_provider</span>   <span class="o">=&gt;</span> <span class="s1">&#39;local&#39;</span><span class="p">,</span>
+    <span class="n">auth_provider</span> <span class="o">=&gt;</span> <span class="s1">&#39;local&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In <a class="reference internal" href="../../glossary.html#term-hiera"><span class="xref std std-term">Hiera</span></a>, you will need to add the LOCAL sssd domain to
+<code class="docutils literal"><span class="pre">sssd::domains</span></code> if it does not already exist.  If you wish to include the
+LOCAL domain in all of <code class="docutils literal"><span class="pre">$::client_nets</span></code>, simply modify the existing
+<code class="docutils literal"><span class="pre">sssd::domains</span></code> variable in simp_def.yaml. Include <code class="docutils literal"><span class="pre">site::sssd_local</span></code> in
+<code class="docutils literal"><span class="pre">default.yaml</span></code>, and set <code class="docutils literal"><span class="pre">local</span></code> as the domain <code class="docutils literal"><span class="pre">id_provider</span></code>.</p>
+<p>In <code class="docutils literal"><span class="pre">simp_def.yaml</span></code>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">sssd::domains</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;LOCAL&#39;</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">&lt;existing domains, ex. LDAP&gt;</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal"><span class="pre">default.yaml</span></code>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">sssd::domain::id_provider</span><span class="p p-Indicator">:</span> <span class="s">&#39;local&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">classes</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;site::sssd_local&#39;</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">puppet</span></code>. A LOCAL domain should be created and referenced in
+<code class="docutils literal"><span class="pre">/etc/sssd/sssd.conf</span></code>.  The sssd service should be running.</p>
+</div>
+<div class="section" id="adding-an-sssd-local-user">
+<h2>4.4.3.2. Adding an SSSD Local User<a class="headerlink" href="#adding-an-sssd-local-user" title="Permalink to this headline">¶</a></h2>
+<p>Create a local user, using <code class="docutils literal"><span class="pre">sss_useradd</span></code>.  See the <code class="docutils literal"><span class="pre">sss_useradd</span></code> man page
+for more options.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>sss_useradd &lt;user&gt; -h &lt;/path/to/home/dir&gt; -u &lt;uid&gt; -m -k /etc/skell
+</pre></div>
+</div>
+<p>To update an EL6 system, perform the following step</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>vipw
+&lt;user&gt;:x:&lt;uid&gt;:&lt;gid&gt;::&lt;/path/to/home/dir&gt;:/bin/bash
+</pre></div>
+</div>
+<p>Next, set the user&#8217;s password.  As root, run:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>passwd &lt;user&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="giving-the-user-access">
+<h2>4.4.3.3. Giving The User Access<a class="headerlink" href="#giving-the-user-access" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">pam</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">manage</span> <span class="p">{</span> <span class="s1">&#39;&lt;user&gt; access&#39;</span><span class="p">:</span>
+  <span class="n">permission</span> <span class="o">=&gt;</span> <span class="s1">&#39;+&#39;</span><span class="p">,</span>
+  <span class="n">users</span>      <span class="o">=&gt;</span> <span class="s1">&#39;&lt;user&gt;&#39;</span><span class="p">,</span>
+  <span class="n">origins</span>    <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;ALL&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="n">order</span>      <span class="o">=&gt;</span> <span class="s1">&#39;1000&#39;</span>
+<span class="p">}</span>
+
+<span class="n">sudo</span><span class="o">::</span><span class="n">user_specification</span> <span class="p">{</span> <span class="s1">&#39;&lt;user&gt; privs&#39;</span><span class="p">:</span>
+  <span class="n">user_list</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;&lt;user&gt;&quot;</span><span class="o">]</span><span class="p">,</span>
+  <span class="n">host_list</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="vg">$:</span><span class="ss">:fqdn</span><span class="o">]</span><span class="p">,</span>
+  <span class="n">runas</span>     <span class="o">=&gt;</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+  <span class="n">cmnd</span>      <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;/bin/cat /var/log/app.log&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="n">passwd</span>    <span class="o">=&gt;</span> <span class="kp">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You&#8217;re done! You should be able to <code class="docutils literal"><span class="pre">id</span> <span class="pre">&lt;user&gt;</span></code>, <code class="docutils literal"><span class="pre">su</span> <span class="pre">-</span> <span class="pre">&lt;user&gt;</span></code>, and run
+commands allowed by sudo rules.</p>
+<p>Test authentication by ssh-ing as the <code class="docutils literal"><span class="pre">user</span></code> onto the host machine, with the
+password specified after user creation.  If you want to set up an ssh key,
+you may want to follow the relevant <a class="reference external" href="https://help.github.com/articles/generating-ssh-keys">GitHub documentation</a>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Hiera_Overview.html" class="btn btn-neutral float-right" title="4.5. Hiera Overview" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Local_Users.html" class="btn btn-neutral" title="4.4.2. Managing Local/Service Users" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

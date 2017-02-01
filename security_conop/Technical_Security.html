@@ -1,0 +1,891 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.2. Technical Security &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../index.html"/>
+        <link rel="up" title="6. SIMP Security Concepts" href="index.html"/>
+        <link rel="next" title="6.3. Operational Security" href="Operational_Security.html"/>
+        <link rel="prev" title="6.1. Introduction" href="Introduction.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html">
+        
+
+        
+          
+          <img src="../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Security Concept of Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html">6.1. Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">6.2. Technical Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#identification-and-authentication">6.2.1. Identification and Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-identification-and-authentication">6.2.2. User Identification and Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#device-identification-and-authentication">6.2.3. Device Identification and Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#identifier-management">6.2.4. Identifier Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authenticator-management">6.2.5. Authenticator Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#access-control">6.2.6. Access Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#account-management">6.2.7. Account Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#access-enforcement">6.2.8. Access Enforcement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#information-flow-enforcement">6.2.9. Information Flow Enforcement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#default-server-ports">6.2.9.1. Default Server Ports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#default-client-ports">6.2.9.2. Default Client Ports</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#separation-of-duties">6.2.10. Separation of Duties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#least-privilege">6.2.11. Least Privilege</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#session-controls">6.2.12. Session Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#permitted-actions-without-identification-and-authentication">6.2.13. Permitted Actions Without Identification and Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security-attributes">6.2.14. Security Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remote-access">6.2.15. Remote Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systems-and-communications-protection">6.2.16. Systems and Communications Protection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-and-administration-application-separation-application-partitioning">6.2.17. User and Administration Application Separation (Application Partitioning)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shared-resources">6.2.18. Shared Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#denial-of-service-protection">6.2.19. Denial of Service Protection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boundary-protection">6.2.20. Boundary Protection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transmission-security">6.2.21. Transmission Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-user-mode">6.2.22. Single User Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pki-and-cryptography">6.2.23. PKI and Cryptography</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mobile-code">6.2.24. Mobile Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protection-of-information-at-rest">6.2.25. Protection of Information at Rest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audit-and-accountability">6.2.26. Audit and Accountability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#auditable-events">6.2.27. Auditable Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#content-of-audit-records">6.2.28. Content of Audit Records</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audit-storage">6.2.29. Audit Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audit-reduction-and-response">6.2.30. Audit Reduction and Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protection-of-audit-information">6.2.31. Protection of Audit Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-synchronization">6.2.32. Time Synchronization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Operational_Security.html">6.3. Operational Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Management.html">6.4. Information System Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">6. SIMP Security Concepts</a> &raquo;</li>
+      
+    <li>6.2. Technical Security</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/security_conop/Technical_Security.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="technical-security">
+<h1>6.2. Technical Security<a class="headerlink" href="#technical-security" title="Permalink to this headline">¶</a></h1>
+<p>This chapter contains SIMP security concepts that are related to the technical
+security controls described in <a class="reference internal" href="../glossary.html#term-nist-800-53"><span class="xref std std-term">NIST 800-53</span></a>.</p>
+<div class="section" id="identification-and-authentication">
+<h2>6.2.1. Identification and Authentication<a class="headerlink" href="#identification-and-authentication" title="Permalink to this headline">¶</a></h2>
+<p>This section addresses the identification and authentication of users and
+devices.</p>
+</div>
+<div class="section" id="user-identification-and-authentication">
+<h2>6.2.2. User Identification and Authentication<a class="headerlink" href="#user-identification-and-authentication" title="Permalink to this headline">¶</a></h2>
+<p>Identification and authentication of system and service users can occur at
+either the <a class="reference internal" href="../glossary.html#term-operating-system"><span class="xref std std-term">Operating System</span></a> level or globally in the SIMP architecture.
+While local accounts and groups can be created manually, the SIMP team suggests
+adding users using the native Puppet user and group types. System users can
+authenticate their access using Secure Shell (SSH) keys or passwords. For more
+centralized control, identify and authenticate users by using the Lightweight
+Directory Access Protocol (<a class="reference internal" href="../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a>).
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id690"><span>IA-2</span></a>]</p>
+<p>The SIMP team recommends using <a class="reference internal" href="../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> as the primary source for user
+management and provides a functional default OpenLDAP configuration for this
+purpose. <a class="reference internal" href="../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> and Pluggable Authentication Modules (<a class="reference internal" href="../glossary.html#term-pam"><span class="xref std std-term">PAM</span></a>) work
+together closely and, with the default SIMP configuration, the PAM settings are
+enforced on top of the LDAP settings for two layers of control. Due to this
+partnership, items such as account lockouts may need to be reset on both the
+local system and the LDAP server. If the suggested settings in the
+SIMP-provided default LDAP Directory Interchange Formats (<a class="reference internal" href="../glossary.html#term-ldif"><span class="xref std std-term">LDIF</span></a>) are not
+used, implementations must ensure that security is maintained through manual
+procedures. Use of group accounts for users is strongly discouraged. System
+services may need to have accounts, but all of these should be managed by
+Puppet using the user and group native types.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ia-2-5"><span>IA-2 (5)</span></a>].</p>
+</div>
+<div class="section" id="device-identification-and-authentication">
+<h2>6.2.3. Device Identification and Authentication<a class="headerlink" href="#device-identification-and-authentication" title="Permalink to this headline">¶</a></h2>
+<p>Devices are identified by a Media Access Control (<a class="reference internal" href="../glossary.html#term-mac"><span class="xref std std-term">MAC</span></a>) address prior to
+receiving an <a class="reference internal" href="../glossary.html#term-ip"><span class="xref std std-term">IP</span></a> address via the Dynamic Host Configuration Protocol
+(<a class="reference internal" href="../glossary.html#term-dhcp"><span class="xref std std-term">DHCP</span></a>). In the default SIMP architecture, <a class="reference internal" href="../glossary.html#term-ip"><span class="xref std std-term">IP</span></a> addresses are
+fixed mappings to their associated <a class="reference internal" href="../glossary.html#term-mac"><span class="xref std std-term">MAC</span></a> address (i.e., not assigned
+dynamically).  There is no authentication for the binding of <a class="reference internal" href="../glossary.html#term-mac"><span class="xref std std-term">MAC</span></a>
+addresses to <a class="reference internal" href="../glossary.html#term-ip"><span class="xref std std-term">IP</span></a> addresses due to the nature of the <a class="reference internal" href="../glossary.html#term-dhcp"><span class="xref std std-term">DHCP</span></a>
+protocol.</p>
+<p>Device authentication occurs through the mapping of the MAC to the IP through
+the internally controlled DHCP and the mapping of the IP to the host name
+through the internally controlled Domain Name System (DNS) service for each
+individual Puppet client. After kickstart, each client system generates an
+internal cryptographic identifier and communicates that information with the
+Puppet server to be approved by an administrator at a later time. All further
+communication between the Puppet server and the clients over the Puppet
+protocol is encrypted subsequently and authenticated with this identifier.
+Automatic approval can be set up in tightly controlled environments; however,
+this option is not suggested for open environments.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id705"><span>IA-3</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ia-3-3"><span>IA-3 (3)</span></a>]</p>
+</div>
+<div class="section" id="identifier-management">
+<h2>6.2.4. Identifier Management<a class="headerlink" href="#identifier-management" title="Permalink to this headline">¶</a></h2>
+<p>Managing user identifiers (also known as user names) involves administrative
+procedures that are unique for each implementation.  Disabling unused local
+accounts is the only control that SIMP can enforce technologically. In this
+case, if an account has an expired password that has not been changed 35 days
+after expiration, the account will be disabled. If a user does not have a
+password (e.g., he or she only authenticates with SSH keys), then there is no
+inherent technological mechanism for enforcement due to the nature of the
+software.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ia-4e"><span>IA-4e.</span></a>]</p>
+</div>
+<div class="section" id="authenticator-management">
+<h2>6.2.5. Authenticator Management<a class="headerlink" href="#authenticator-management" title="Permalink to this headline">¶</a></h2>
+<p>Authenticators for users are passwords and/or <a class="reference internal" href="../glossary.html#term-ssh"><span class="xref std std-term">SSH</span></a> keys; the management
+of each is implementation specific. SSH keys do not expire; therefore,
+implementations must provide a procedure for removing invalid keys. Removing
+public keys from LDAP is one practical solution.</p>
+<p>When using passwords, local and LDAP passwords provided for users should be set
+to change at first login. This is the default in the SIMP-provided LDIFs. Once
+a user attempts to change a password, the settings in PAM and LDAP enforce
+complexity requirements.</p>
+<p>For the default password complexity rules see the
+<a class="reference internal" href="../help/FAQ/Password_Complexity.html#faq-password-complexity"><span>What is the Password Complexity for SIMP?</span></a> FAQ.</p>
+<p>[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id727"><span>IA-5</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ia-5-1"><span>IA-5 (1)</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ia-5-4"><span>IA-5 (4)</span></a>]</p>
+<p>Password aging and history is enforced through a combination of <a class="reference internal" href="../glossary.html#term-pam"><span class="xref std std-term">PAM</span></a> and
+<a class="reference internal" href="../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a>. By default, the previous <strong>24</strong> passwords cannot be reused.</p>
+<p>[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ia-5-1-e"><span>IA-5 (1)(e)</span></a>]</p>
+<p>There are a number of default passwords in SIMP that are required for
+installation. Each implementation requires the user to change the default
+passwords and protect the new passwords. In addition, there are embedded
+passwords within the SIMP system that are used due to a lack of
+software-supported alternatives.</p>
+<p>Please see the <a class="reference internal" href="../user_guide/index.html#simp-user-guide"><span>SIMP User Guide</span></a> for additional information.</p>
+</div>
+<div class="section" id="access-control">
+<h2>6.2.6. Access Control<a class="headerlink" href="#access-control" title="Permalink to this headline">¶</a></h2>
+<p>This section describes the various levels of access control, including account
+management, access enforcement, information flow enforcement, separation of
+duties, least privilege, session controls, permitted actions without
+identification and authentication, security attributes, and remote access.</p>
+</div>
+<div class="section" id="account-management">
+<h2>6.2.7. Account Management<a class="headerlink" href="#account-management" title="Permalink to this headline">¶</a></h2>
+<p>Account management procedures should be created and maintained for each
+implementation of SIMP. The procedures should include the information listed in
+<a class="reference internal" href="../glossary.html#term-nist-800-53"><span class="xref std std-term">NIST 800-53</span></a> control <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id9"><span>AC-2</span></a>. SIMP has the mechanisms in place to
+enforce most account management policies. The mechanisms for account management
+have several default settings including:</p>
+<ul class="simple">
+<li>Central account management using OpenLDAP. [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ac-2-1"><span>AC-2 (1)</span></a>]</li>
+<li>Password expiration.<ul>
+<li>Local accounts expire 35 days after password expiration. [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ac-2-3"><span>AC-2 (3)</span></a>]</li>
+<li><a class="reference internal" href="../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> accounts do not expire automatically due to inactivity;
+implementations should audit LDAP accounts regularly.</li>
+</ul>
+</li>
+<li>Auditing of administrative actions to capture local account creation and
+modifications to <a class="reference internal" href="../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> accounts is done via the
+<code class="docutils literal"><span class="pre">/var/log/slapd_audit.log</span></code> file and <code class="docutils literal"><span class="pre">/var/log/audit/audit.log</span></code> for local
+accounts. [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ac-2-4"><span>AC-2 (4)</span></a>]</li>
+<li>Shell sessions timeout after <strong>15 minutes</strong> of inactivity. [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ac-2-5"><span>AC-2 (5)</span></a>]<ul>
+<li>This can be circumvented by running a command that opens an endless pipe
+such as <code class="docutils literal"><span class="pre">/bin/cat</span></code>. However, this command cannot be enforced more
+heavily due to the high likelihood of breaking system applications. If the
+optional gnome module is used, the GNOME screen saver will lock the screen
+after <strong>15 minutes</strong> of inactivity.</li>
+</ul>
+</li>
+<li>Assignment of users into groups locally or centrally via LDAP. [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ac-2-7"><span>AC-2 (7)</span></a>]<ul>
+<li>By default, SIMP will have an administrators groups that has the ability
+to run <code class="docutils literal"><span class="pre">sudosh</span></code>. Implementations should further define administrators or
+user groups and limit them with the Puppet <code class="docutils literal"><span class="pre">sudo</span></code> class.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="access-enforcement">
+<h2>6.2.8. Access Enforcement<a class="headerlink" href="#access-enforcement" title="Permalink to this headline">¶</a></h2>
+<p>SIMP uses the implementation of Discretionary Access Control (<a class="reference internal" href="../glossary.html#term-dac"><span class="xref std std-term">DAC</span></a>) that
+is native to Linux. Specific file permissions have been assigned based on
+published security guidance for Red Hat, CentOS, and UNIX.</p>
+<p>Default permissions on files created by users are enforced with user file
+access mask settings (using the <code class="docutils literal"><span class="pre">umask</span></code> command) that allow only the owner to
+read and write to the file. Implementations may further extend the access
+control in UNIX by restricting access to application files or using the file
+Access Control List (<a class="reference internal" href="../glossary.html#term-acl"><span class="xref std std-term">ACL</span></a>) commands <code class="docutils literal"><span class="pre">getfacl</span></code> and <code class="docutils literal"><span class="pre">setacl</span></code>. Users of
+SIMP should not change file permissions on operating system files as it may
+decrease the overall security of the system. If a group needs access to a
+particular file or directory, use the <code class="docutils literal"><span class="pre">setfacl</span></code> command to allow the
+necessary access without lessening the permissions on the system.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id46"><span>AC-3</span></a>]</p>
+</div>
+<div class="section" id="information-flow-enforcement">
+<span id="flow-enforcement"></span><h2>6.2.9. Information Flow Enforcement<a class="headerlink" href="#information-flow-enforcement" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../glossary.html#term-iptables"><span class="xref std std-term">IPTables</span></a> on each SIMP system is controlled by the IPTables Puppet
+module. When developing a new module, the IPTables rules needed for an
+application should be included with the module by calling the appropriate
+methods from the IPTables module. The end result should be a running IPTables
+rule set that includes the default SIMP rules and any rules needed for
+applications. The default communications allowed are included in
+<a class="reference internal" href="#default-server-ports"><span>Default Server Ports</span></a> and <a class="reference internal" href="#default-client-ports"><span>Default Client Ports</span></a>.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id73"><span>AC-4</span></a>]</p>
+<div class="section" id="default-server-ports">
+<span id="id1"></span><h3>6.2.9.1. Default Server Ports<a class="headerlink" href="#default-server-ports" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="5%" />
+<col width="6%" />
+<col width="5%" />
+<col width="4%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Application</th>
+<th class="head">Direction</th>
+<th class="head">Protocol</th>
+<th class="head">Transport</th>
+<th class="head">Ports</th>
+<th class="head">Comment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Puppet</td>
+<td>Localhost</td>
+<td>HTTP</td>
+<td>TCP</td>
+<td>8140</td>
+<td>The port upon which the Puppet master listens for client connections via Apache</td>
+</tr>
+<tr class="row-odd"><td>Puppet CA</td>
+<td>In</td>
+<td>HTTPS</td>
+<td>TCP</td>
+<td>8141</td>
+<td>This is used to ensure that Apache can verify all certificates from external systems properly prior to allowing access to Puppet.</td>
+</tr>
+<tr class="row-even"><td>Apache/YUM</td>
+<td>In</td>
+<td>HTTP</td>
+<td>TCP</td>
+<td>443</td>
+<td>This is used for YUM and is encrypted using https.</td>
+</tr>
+<tr class="row-odd"><td>DHCPD</td>
+<td>In</td>
+<td>DHCP/BOOTP</td>
+<td>TCP/UDP</td>
+<td>546,547</td>
+<td>DHCP pooling is disabled by default and should only be used if the implementation requires the use of this protocol.</td>
+</tr>
+<tr class="row-even"><td>TFTP</td>
+<td>In</td>
+<td>TFTP</td>
+<td>TCP/UDP</td>
+<td>69</td>
+<td>This is used for kickstart. It could also be used to update network devices. TFTP does not support encryption.</td>
+</tr>
+<tr class="row-odd"><td>rsyslog</td>
+<td>Out</td>
+<td>syslog</td>
+<td>TCP/UDP</td>
+<td>6514</td>
+<td>This is encrypted when communicating with a SIMP syslog server (not installed by default).</td>
+</tr>
+<tr class="row-even"><td>named</td>
+<td>In/Out</td>
+<td>DNS</td>
+<td>TCP/UDP</td>
+<td>53</td>
+<td>Inbound connections happen to the locally managed hosts. Outbound connections happen to other domains per the normal operations of DNS.</td>
+</tr>
+<tr class="row-odd"><td>NTPD</td>
+<td>Out</td>
+<td>NTP</td>
+<td>TCP/UDP</td>
+<td>123</td>
+<td>Only connects to an external time source by default.</td>
+</tr>
+<tr class="row-even"><td>SSHD</td>
+<td>In</td>
+<td>SSH</td>
+<td>TCP</td>
+<td>22</td>
+<td>SSH is always allowed from any source IP by default.</td>
+</tr>
+<tr class="row-odd"><td>stunnel</td>
+<td>In</td>
+<td>TLS</td>
+<td>TCP</td>
+<td>8730</td>
+<td>Stunnel is a protected connection for rsyncing configuration files to Puppet clients.</td>
+</tr>
+<tr class="row-even"><td>rsync</td>
+<td>Localhost</td>
+<td>RSYNC</td>
+<td>TCP</td>
+<td>873</td>
+<td>This accepts connections to the localhost and forwards through Stunnel.</td>
+</tr>
+<tr class="row-odd"><td>LDAP</td>
+<td>In</td>
+<td>LDAP</td>
+<td>TCP</td>
+<td>389</td>
+<td>Connections are protected by bi-directional, authenticated encryption.</td>
+</tr>
+<tr class="row-even"><td>LDAPS</td>
+<td>In</td>
+<td>LDAPS</td>
+<td>TCP</td>
+<td>636</td>
+<td>Used for LDAP over SSL.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="default-client-ports">
+<span id="id2"></span><h3>6.2.9.2. Default Client Ports<a class="headerlink" href="#default-client-ports" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="8%" />
+<col width="9%" />
+<col width="8%" />
+<col width="6%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Application</th>
+<th class="head">Direction</th>
+<th class="head">Protocol</th>
+<th class="head">Transport</th>
+<th class="head">Ports</th>
+<th class="head">Comment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Puppet</td>
+<td>Out</td>
+<td>HTTPS</td>
+<td>TCP</td>
+<td>8140</td>
+<td>Communications to the Puppet server.</td>
+</tr>
+<tr class="row-odd"><td>rsyslog</td>
+<td>Out</td>
+<td>syslog</td>
+<td>TCP/UDP</td>
+<td>6514</td>
+<td>This is encrypted when communicating with a SIMP syslog server.</td>
+</tr>
+<tr class="row-even"><td>DNS Client</td>
+<td>Out</td>
+<td>DNS</td>
+<td>TCP/UDP</td>
+<td>53</td>
+<td>Normal name resolution.</td>
+</tr>
+<tr class="row-odd"><td>NTPD</td>
+<td>Out</td>
+<td>NTP</td>
+<td>TCP/UDP</td>
+<td>123</td>
+<td>Only connects to an external time source by default.</td>
+</tr>
+<tr class="row-even"><td>SSHD</td>
+<td>In</td>
+<td>SSH</td>
+<td>TCP</td>
+<td>22</td>
+<td>SSH is allowed from any source IP by default.</td>
+</tr>
+<tr class="row-odd"><td>LDAP</td>
+<td>Out</td>
+<td>LDAP</td>
+<td>TCP</td>
+<td>389</td>
+<td>Connections are protected by bi-directional authenticated encryption.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="separation-of-duties">
+<h2>6.2.10. Separation of Duties<a class="headerlink" href="#separation-of-duties" title="Permalink to this headline">¶</a></h2>
+<p>SIMP enforces separation of duties using account groups. Groups are created
+with each implementation to separate roles or duties properly.  The SIMP team
+recommends that this management be done using the <strong>posixGroup</strong> object in
+<a class="reference internal" href="../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> for full <a class="reference internal" href="../glossary.html#term-os"><span class="xref std std-term">OS</span></a> support.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id97"><span>AC-5</span></a>]</p>
+</div>
+<div class="section" id="least-privilege">
+<h2>6.2.11. Least Privilege<a class="headerlink" href="#least-privilege" title="Permalink to this headline">¶</a></h2>
+<p>SIMP does not allow <code class="docutils literal"><span class="pre">root</span></code> to directly <a class="reference internal" href="../glossary.html#term-ssh"><span class="xref std std-term">SSH</span></a> into a system. Direct
+access to the <code class="docutils literal"><span class="pre">root</span></code> user must occur via a console (or at a virtual instance
+of the physical console) to log on. Otherwise, users must log on as themselves
+and perform privileged commands using <code class="docutils literal"><span class="pre">sudo</span></code> or <code class="docutils literal"><span class="pre">sudosh</span></code>.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id102"><span>AC-6</span></a>]</p>
+<p><a class="reference internal" href="../glossary.html#term-nist-800-53"><span class="xref std std-term">NIST 800-53</span></a> least privilege security controls give people access to
+objects only as needed. SIMP provides only the needed software, services, and
+ports to allow the system to be functional and scalable.  The system then
+relies on a given implementation to perform proper account management and user
+role assignments.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id102"><span>AC-6</span></a>]</p>
+</div>
+<div class="section" id="session-controls">
+<h2>6.2.12. Session Controls<a class="headerlink" href="#session-controls" title="Permalink to this headline">¶</a></h2>
+<p>SIMP provides a number of security features for sessions. These features
+include:</p>
+<ul class="simple">
+<li>Accounts are locked after <strong>five</strong> invalid log on attempts over a <strong>15
+minute</strong> period. The account is then locked for <strong>15 minutes</strong>. No
+administrator action is required to unlock an account. [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id116"><span>AC-7</span></a>]</li>
+<li>System banners are presented to a user both before and after logging on. The
+default banner should be customized for each implementation. [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id122"><span>AC-8</span></a>]</li>
+<li>After a successful log on, the date, time, and source of the last log on is
+presented to the user. The number of failed log on attempts since the last
+log on is also provided. [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id134"><span>AC-9</span></a> and <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ac-9-1"><span>AC-9 (1)</span></a>]</li>
+<li>A limit of <strong>10</strong> concurrent SSH sessions are allowed per user. This can be
+further limited if an implementation decides it is set too high.  Given the
+way SSH is used in most operational settings, this default value is
+reasonable.  [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id140"><span>AC-10</span></a>]</li>
+<li>Session lock only applies if the <code class="docutils literal"><span class="pre">windowmanager::gnome</span></code> module is used.
+Sessions lock automatically after <strong>15 minutes</strong> of inactivity.  Users must
+authenticate their access with valid credentials to reestablish a session.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id142"><span>AC-11</span></a>]</li>
+</ul>
+</div>
+<div class="section" id="permitted-actions-without-identification-and-authentication">
+<h2>6.2.13. Permitted Actions Without Identification and Authentication<a class="headerlink" href="#permitted-actions-without-identification-and-authentication" title="Permalink to this headline">¶</a></h2>
+<p>SIMP has a number of applications that do not require both identification and
+authentication. These services are listed below along with an explanation of
+why these aspects are not required.  Implementations should include any
+additional services that do require identification and/or authentication.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id154"><span>AC-14</span></a>]</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="96%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Service/Application</th>
+<th class="head">Rationale</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>TFTP</td>
+<td>TFTP is a simple file transfer application that, in the SIMP environment, does not allow for writing to the files being accessed. This application is primarily used to support the Preboot Execution Environment (PXE) booting of hosts and the updating of network devices. There is no option to authenticate systems at this level by protocol design. TFTP is limited to a user’s local subnet using IPtables and is enforced additionally with TCPWrappers.</td>
+</tr>
+<tr class="row-odd"><td>DHCP</td>
+<td>By default, system IP addresses are not pooled, but are rather statically assigned to a client, which is identified by the MAC address. DHCP is limited to the local subnet.</td>
+</tr>
+<tr class="row-even"><td>Apache/YUM</td>
+<td>RPMs are stored in a directory for systems to use for both kickstart and package updating. Sensitive information should never be stored here. Apache/YUM is limited to the local subnet.</td>
+</tr>
+<tr class="row-odd"><td>DNS</td>
+<td>The DNS protocol does not require identification nor authentication. DNS is limited to the local subnet.</td>
+</tr>
+</tbody>
+</table>
+<p>Table: Actions Without Identification and Authentication</p>
+</div>
+<div class="section" id="security-attributes">
+<h2>6.2.14. Security Attributes<a class="headerlink" href="#security-attributes" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../glossary.html#term-selinux"><span class="xref std std-term">SELinux</span></a> is fully enforcing, in targeted mode, in SIMP. SELinux is an
+implementation of <a class="reference internal" href="../glossary.html#term-mandatory-access-control"><span class="xref std std-term">Mandatory Access Control</span></a>. It can be set to enforcing
+mode during the SIMP configuration or turned on at a later time. All of the
+SIMP packaged modules have been designed to work with SELinux set to enforcing.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id161"><span>AC-16</span></a>]</p>
+</div>
+<div class="section" id="remote-access">
+<h2>6.2.15. Remote Access<a class="headerlink" href="#remote-access" title="Permalink to this headline">¶</a></h2>
+<p>Remote access in SIMP is performed over <a class="reference internal" href="../glossary.html#term-ssh"><span class="xref std std-term">SSH</span></a>, specifically using the
+OpenSSH software. OpenSSH provides both confidentiality and integrity of remote
+access sessions. The SSH <a class="reference internal" href="../glossary.html#term-iptables"><span class="xref std std-term">IPTables</span></a> rules allow connections from any
+host. SSH relies on other Linux mechanisms to provide identification and
+authentication of a user.  As discussed in the auditing section, user actions
+are audited with the audit daemon (<code class="docutils literal"><span class="pre">auditd</span></code>) and <a class="reference internal" href="../glossary.html#term-sudosh"><span class="xref std std-term">sudosh</span></a>.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id177"><span>AC-17</span></a>]</p>
+</div>
+<div class="section" id="systems-and-communications-protection">
+<h2>6.2.16. Systems and Communications Protection<a class="headerlink" href="#systems-and-communications-protection" title="Permalink to this headline">¶</a></h2>
+<p>The following sections provide information regarding application partitioning,
+shared resources, and various levels of protection for systems and
+communications.</p>
+</div>
+<div class="section" id="user-and-administration-application-separation-application-partitioning">
+<h2>6.2.17. User and Administration Application Separation (Application Partitioning)<a class="headerlink" href="#user-and-administration-application-separation-application-partitioning" title="Permalink to this headline">¶</a></h2>
+<p>SIMP can be used in a variety of ways. The most common is a platform for
+hosting other services or applications. In that case, there are only
+administrative users present. Users with accounts will be considered as a type
+of privileged user.</p>
+<p>SIMP can also be used as a platform for workstations or general users
+performing non-administrative activities. In both cases, general users with
+accounts on an individual host are allowed access to the host using the
+<code class="docutils literal"><span class="pre">pam::access</span></code> module, so long as they have an account on the target host. No
+user may perform or have access to administrative functions unless given
+<code class="docutils literal"><span class="pre">sudo</span></code> or <a class="reference internal" href="../glossary.html#term-sudosh"><span class="xref std std-term">sudosh</span></a> privileges via Puppet.</p>
+</div>
+<div class="section" id="shared-resources">
+<h2>6.2.18. Shared Resources<a class="headerlink" href="#shared-resources" title="Permalink to this headline">¶</a></h2>
+<p>There are several layers of access control that prevent the unauthorized
+sharing of resources in SIMP. Account access, operating system <a class="reference internal" href="../glossary.html#term-dac"><span class="xref std std-term">DAC</span></a>
+settings, and the use of <a class="reference internal" href="../glossary.html#term-pki"><span class="xref std std-term">PKI</span></a> collectively prevent resources from being
+shared in ways that were not intended.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1512"><span>SC-4</span></a>]</p>
+</div>
+<div class="section" id="denial-of-service-protection">
+<h2>6.2.19. Denial of Service Protection<a class="headerlink" href="#denial-of-service-protection" title="Permalink to this headline">¶</a></h2>
+<p>SIMP has limited ability to prevent or limit the effects of Denial of Service
+(<a class="reference internal" href="../glossary.html#term-dos"><span class="xref std std-term">DoS</span></a>) attacks. The primary measures in place are to drop improperly
+formatted packets using <a class="reference internal" href="../glossary.html#term-iptables"><span class="xref std std-term">IPTables</span></a> and Kernel configurations such as
+<a class="reference internal" href="../glossary.html#term-syn-cookies"><span class="xref std std-term">SYN cookies</span></a>.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1516"><span>SC-5</span></a>]</p>
+</div>
+<div class="section" id="boundary-protection">
+<h2>6.2.20. Boundary Protection<a class="headerlink" href="#boundary-protection" title="Permalink to this headline">¶</a></h2>
+<p>SIMP does not provide boundary protection. [SC-7]</p>
+</div>
+<div class="section" id="transmission-security">
+<h2>6.2.21. Transmission Security<a class="headerlink" href="#transmission-security" title="Permalink to this headline">¶</a></h2>
+<p>SIMP traffic is protected with protocols that provide confidentiality and
+integrity of data while in transit. The tables in <a class="reference internal" href="#flow-enforcement"><span>Information Flow Enforcement</span></a>
+describe the protocols used to encrypt traffic and explain the protocols that
+cannot be protected at the transmission layer. <a class="reference internal" href="../glossary.html#term-ssh"><span class="xref std std-term">SSH</span></a>, and <a class="reference internal" href="../glossary.html#term-tls"><span class="xref std std-term">TLS</span></a> all
+provide data transmission integrity and confidentiality. The software that
+controls them on Red Hat and CentOS are OpenSSH and OpenSSL. The SIMP team
+takes industry guidance into consideration when configuring these services. For
+example, the list the cryptographic ciphers available is limited to the highest
+ciphers that SIMP needs. All others are disabled.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1560"><span>SC-8</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1566"><span>SC-9</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1626"><span>SC-23</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1525"><span>SC-7</span></a>]</p>
+</div>
+<div class="section" id="single-user-mode">
+<h2>6.2.22. Single User Mode<a class="headerlink" href="#single-user-mode" title="Permalink to this headline">¶</a></h2>
+<p>SIMP systems have a password requirement for single user mode. In the event
+maintenance needs to be performed at a system console, users must be in
+possession of the <code class="docutils literal"><span class="pre">root</span></code> password before they can be authenticated.
+Bootloader passwords are also set to prevent unauthorized modifications to boot
+parameters.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1633"><span>SC-24</span></a>]</p>
+</div>
+<div class="section" id="pki-and-cryptography">
+<h2>6.2.23. PKI and Cryptography<a class="headerlink" href="#pki-and-cryptography" title="Permalink to this headline">¶</a></h2>
+<p>SIMP has two native certificate authorities. The first is known as <em>Fake CA</em>. A
+local certificate authority is used to create properly formed server
+certificates if an implementation does not have other means of obtaining them.
+Many SIMP services require certificates; therefore, SIMP provides this tool for
+testing or for situations where other certificates are not available. The
+second certificate authority, <em>Puppet CA</em>, is built into Puppet. Puppet
+creates, distributes, and manages certificates that are specifically for
+Puppet.</p>
+<p>The <em>Fake CA</em> certificates should be replaced with your own hardware-generated
+certificates if at all possible. The <em>Puppet CA</em> may be replaced but please
+understand all ramifications to the infrastructure before doing so.</p>
+<p>More information on the Puppet CA can be found in the Puppet Labs <a class="reference external" href="https://docs.puppet.com/background/ssl/index.html">security documentation</a>.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1599"><span>SC-17</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1580"><span>SC-13</span></a>]</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Fake CA certificates should not be used in an operational setting unless no
+better options are available.</p>
+</div>
+</div>
+<div class="section" id="mobile-code">
+<h2>6.2.24. Mobile Code<a class="headerlink" href="#mobile-code" title="Permalink to this headline">¶</a></h2>
+<p>SIMP does not use mobile code; however, there are not any particular tools that
+will prevent its use.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1601"><span>SC-18</span></a>]</p>
+</div>
+<div class="section" id="protection-of-information-at-rest">
+<h2>6.2.25. Protection of Information at Rest<a class="headerlink" href="#protection-of-information-at-rest" title="Permalink to this headline">¶</a></h2>
+<p>SIMP provides the capability to enable Full Disk Encryption (FDE) by default.
+However, in the interest of automated reboots, the initial <strong>randomly
+generated</strong> key is baked into the <code class="docutils literal"><span class="pre">initrd</span></code>. Please see the
+<a class="reference internal" href="../getting_started_guide/ISO_Install/Disk_Encryption.html#ig-disk-encryption"><span>Disk Encryption</span></a> section of the Installation Guide for details.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1642"><span>SC-28</span></a>]</p>
+</div>
+<div class="section" id="audit-and-accountability">
+<h2>6.2.26. Audit and Accountability<a class="headerlink" href="#audit-and-accountability" title="Permalink to this headline">¶</a></h2>
+<p>This section discusses the content, storage, and protection of auditable
+events.</p>
+</div>
+<div class="section" id="auditable-events">
+<h2>6.2.27. Auditable Events<a class="headerlink" href="#auditable-events" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">Auditd</span></code> and <code class="docutils literal"><span class="pre">Rsyslog</span></code> provide the foundation for SIMP auditing. <code class="docutils literal"><span class="pre">Auditd</span></code>
+performs the majority of the security-related events; however, other Linux logs
+also have security information in them and are captured using <code class="docutils literal"><span class="pre">rsyslog</span></code>.</p>
+<p>The default auditable events for SIMP were developed based on several industry
+best practices including those from the SCAP Security Guide and several
+government configuration guides. The suggested rules by those guides were
+fine-tuned so the audit daemon would not fill logs with useless records or
+reduce performance. These guides should be referenced for a detailed
+explanation of why rules are applied. Additional justification can be found in
+the comments of the SIMP audit rules found in the appendix of this guide.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id285"><span>AU-2</span></a>]</p>
+<p>The SIMP development team reviews every release of the major security guides
+for updated auditable events suggestions. Each of those suggestions is reviewed
+and applied if deemed applicable.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#au-2-3"><span>AU-2 (3)</span></a>]</p>
+<p>Privileged commands are audited as part of the SIMP auditing configuration.
+This is accomplished by monitoring <code class="docutils literal"><span class="pre">sudo</span></code> commands with <code class="docutils literal"><span class="pre">auditd</span></code>.
+Session interaction for administrators that use <a class="reference internal" href="../glossary.html#term-sudosh"><span class="xref std std-term">sudosh</span></a> are also logged.
+Each <code class="docutils literal"><span class="pre">sudosh</span></code> session can be reviewed using <code class="docutils literal"><span class="pre">sudosh-replay</span></code> and are also
+sent to <code class="docutils literal"><span class="pre">rsyslog</span></code>.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#au-2-4"><span>AU-2 (4)</span></a>]</p>
+</div>
+<div class="section" id="content-of-audit-records">
+<h2>6.2.28. Content of Audit Records<a class="headerlink" href="#content-of-audit-records" title="Permalink to this headline">¶</a></h2>
+<p>Audit records capture the following information [<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id295"><span>AU-3</span></a>]:</p>
+<ul class="simple">
+<li>Date and Time</li>
+<li>UID and GID of the user performing the action</li>
+<li>Command</li>
+<li>Event ID</li>
+<li>Key</li>
+<li>Node Hostname/IP Address</li>
+<li>Login Session ID</li>
+<li>Executable</li>
+</ul>
+</div>
+<div class="section" id="audit-storage">
+<h2>6.2.29. Audit Storage<a class="headerlink" href="#audit-storage" title="Permalink to this headline">¶</a></h2>
+<p>Audit logs are stored locally on a separate partition in the <code class="docutils literal"><span class="pre">/var/log</span></code>
+directory. The size of this partition is configurable. Other default audit
+storage configurations include:</p>
+<ul class="simple">
+<li>A syslog log is written when the audit partition has <strong>75MB</strong> free. (This
+can be changed to e-mail, if an e-mail infrastructure is in place.)
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#au-5a"><span>AU-5a.</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#au-5-1"><span>AU-5 (1)</span></a>]</li>
+<li>The log file rotates once it reaches <strong>30MB</strong>.</li>
+</ul>
+</div>
+<div class="section" id="audit-reduction-and-response">
+<h2>6.2.30. Audit Reduction and Response<a class="headerlink" href="#audit-reduction-and-response" title="Permalink to this headline">¶</a></h2>
+<p>SIMP provides a means to capture the proper information for audit records and
+stores them centrally. Each implementation must decide and document how it
+reduces, analyzes, and responds to audit events.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id302"><span>AU-5</span></a>]</p>
+<p><code class="docutils literal"><span class="pre">Auditd</span></code>, like all services in SIMP, is controlled by Puppet. Stopping the
+service without disabling Puppet means the service will always be started
+automatically during a Puppet run. The files that control the audit
+configuration will also revert to their original state if changed manually on a
+client node. In the event <code class="docutils literal"><span class="pre">auditd</span></code> fails, the system will continue to
+operate.  Several security guides have suggested that the system should shut
+down if <code class="docutils literal"><span class="pre">auditd</span></code> fails for any reason. To prevent operational issues, SIMP
+will not shut down, but will provide an alert via <code class="docutils literal"><span class="pre">syslog</span></code> when this happens.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#au-5-1"><span>AU-5 (1)</span></a>]</p>
+<p>SIMP also comes with an optional module for the Elasticsearch/Logstash/Grafana
+(ELG) stack. These three open source tools can be combined to parse, index, and
+visualize logs. There are also SIMP provided dashboards for the Kibana web
+interface. Implementations can build their own dashboards to meet local
+security or functional needs for log reduction and management.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id310"><span>AU-6</span></a>]</p>
+<p>See <a class="reference internal" href="../user_guide/HOWTO/Central_Log_Collection/Logstash.html#elasticsearch-logstash-and-grafana"><span>Elasticsearch, Logstash, and Grafana</span></a> for more information.</p>
+</div>
+<div class="section" id="protection-of-audit-information">
+<h2>6.2.31. Protection of Audit Information<a class="headerlink" href="#protection-of-audit-information" title="Permalink to this headline">¶</a></h2>
+<p>The primary means of protecting the audit logs is through the use of file
+permissions. Audit records are stored in the <code class="docutils literal"><span class="pre">/var/log</span></code> directory and can
+only be accessed by <code class="docutils literal"><span class="pre">root</span></code>. Audit logs are rotated off daily if the
+implementation has not developed a way of offloading the logs to another
+location where they can be backed up. Lastly, if the
+<code class="docutils literal"><span class="pre">rsyslog::stock::log_server</span></code> module is implemented, logs are transmitted to
+the log server over a TLS protected link.</p>
+</div>
+<div class="section" id="time-synchronization">
+<h2>6.2.32. Time Synchronization<a class="headerlink" href="#time-synchronization" title="Permalink to this headline">¶</a></h2>
+<p>Each SIMP client (including the Puppet Master) has <code class="docutils literal"><span class="pre">ntpd</span></code> enabled by default.
+Part of the installation directs the clients to a time server.  If no servers
+are available, the SIMP clients can use the Puppet Master as the central time
+source. Audit logs receive their time stamp from the local server&#8217;s system
+clock; therefore, the SIMP client must be connected to a central time source
+for timestamps in audit logs to be accurate.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Operational_Security.html" class="btn btn-neutral float-right" title="6.3. Operational Security" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Introduction.html" class="btn btn-neutral" title="6.1. Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.4.2. Building SIMP From Tarball &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="3.4. Building a SIMP ISO" href="../Building_A_SIMP_ISO.html"/>
+        <link rel="next" title="3.4.3. Building SIMP From Source" href="Building_SIMP_From_Source.html"/>
+        <link rel="prev" title="3.4.1. Environment Preparation" href="Environment_Preparation.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">3. Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">3.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dynamic/Known_OS_Compatibility.html">3.2. Known OS Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installing_SIMP_From_A_Repository.html">3.3. Installing SIMP From A Repository</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Building_A_SIMP_ISO.html">3.4. Building a SIMP ISO</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Environment_Preparation.html">3.4.1. Environment Preparation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">3.4.2. Building SIMP From Tarball</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started">3.4.2.1. Getting Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-the-iso">3.4.2.2. Generating The ISO!</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Building_SIMP_From_Source.html">3.4.3. Building SIMP From Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Building_SIMP_Via_Rake.html">3.4.4. Building SIMP via Rake</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ISO_Install/index.html">3.5. SIMP Server ISO Installation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation_Miscellaney.html">3.6. Installation Miscellany</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">3. SIMP Getting Started Guide</a> &raquo;</li>
+      
+          <li><a href="../Building_A_SIMP_ISO.html">3.4. Building a SIMP ISO</a> &raquo;</li>
+      
+    <li>3.4.2. Building SIMP From Tarball</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/getting_started_guide/ISO_Build/Building_SIMP_From_Tarball.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-simp-from-tarball">
+<span id="gsg-building-simp-from-tarball"></span><h1>3.4.2. Building SIMP From Tarball<a class="headerlink" href="#building-simp-from-tarball" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Building SIMP from a pre-built tarball is the fastest method for getting a
+known stable build of a SIMP ISO and should be preferred over other methods.</p>
+</div>
+<div class="section" id="getting-started">
+<h2>3.4.2.1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please have your environment prepared as specified by
+<a class="reference internal" href="Environment_Preparation.html#gsg-environment-preparation"><span>Environment Preparation</span></a> before continuing.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You do <strong>not</strong> need <code class="docutils literal"><span class="pre">mock</span></code> on your system if you are generating an ISO
+based on the SIMP Tarball!</p>
+</div>
+<p>Download the CentOS/RedHat installation media:</p>
+<blockquote>
+<div><ul class="simple">
+<li>SIMP_5.X: <a class="reference external" href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1511.iso">CentOS-7-x86_64-DVD-1511.iso</a></li>
+<li>SIMP_4.X: <a class="reference external" href="http://isoredirect.centos.org/centos/6/isos/x86_64/">DVD1 and DVD2</a> of the CentOS 6.8 release. For example,
+<code class="docutils literal"><span class="pre">CentOS-6.8-x86_64-bin-DVD1.iso</span></code></li>
+</ul>
+</div></blockquote>
+<p>Download the SIMP release tarball, found on our <a class="reference external" href="https://bintray.com/simp/Releases/Artifacts#files">BinTray artifacts repository</a>.</p>
+<p>Download the latest tarball according to your needs. If you are not sure what
+version you need, check the <a class="reference internal" href="../../help/FAQ/SIMP_Version_Guide.html#faq-simp-version-guide"><span>SIMP Version Guide</span></a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <a class="reference external" href="https://bintray.com/simp/Releases/download_file?file_path=SIMP-DVD-CentOS-5.2.0-0.tar.gz">latest 5.2.0-0 release (for CentOS 7)</a></li>
+<li>The <a class="reference external" href="https://bintray.com/simp/Releases/download_file?file_path=SIMP-DVD-CentOS-4.3.0-0.tar.gz">latest 4.3.0-0 release (for CentOS 6)</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="generating-the-iso">
+<h2>3.4.2.2. Generating The ISO!<a class="headerlink" href="#generating-the-iso" title="Permalink to this headline">¶</a></h2>
+<p>Change into the <code class="docutils literal"><span class="pre">simp-core</span></code> directory and make sure you are on the correct
+branch for your target SIMP version:</p>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>$ cd simp-core
+$ git checkout tags/5.2.0-0 # for SIMP 5 and CentOS 7
+$ git checkout tags/4.3.1-0 # for SIMP 4 and CentOS 6
+</pre></div>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">bundle</span> <span class="pre">install</span></code> to make sure that all of the build tools and dependencies are
+installed and up to date:</p>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>$ bundle install
+</pre></div>
+</div>
+<p>Make sure all of the source materials that were downloaded above are in your
+current working directory.</p>
+<p>Run the <code class="docutils literal"><span class="pre">build:auto</span></code> rake task to create a bootable ISO:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do <strong>not</strong> add any whitespace before or after the commas. This is an artiface
+of using <code class="docutils literal"><span class="pre">rake</span></code>.</p>
+</div>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>$ bundle exec rake build:auto[&lt;SIMP version&gt;,&lt;directory containing source ISOs&gt;,&lt;path to tarball&gt;]
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>$ # for SIMP 5 and CentOS 7
+$ bundle exec rake build:auto[5.1.X,.,SIMP-DVD-CentOS-5.2.0-0.tar.gz]
+
+$ # for SIMP 4 and CentOS 6
+$ bundle exec rake build:auto[4.2.X,.,SIMP-DVD-CentOS-4.3.0-0.tar.gz]
+</pre></div>
+</div>
+<p>Once the process completes, you should have a bootable SIMP ISO ready for
+installation!</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Building_SIMP_From_Source.html" class="btn btn-neutral float-right" title="3.4.3. Building SIMP From Source" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Environment_Preparation.html" class="btn btn-neutral" title="3.4.1. Environment Preparation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.5.3. Disk Encryption &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="3.5. SIMP Server ISO Installation Guide" href="index.html"/>
+        <link rel="next" title="3.6. Installation Miscellany" href="../Installation_Miscellaney.html"/>
+        <link rel="prev" title="3.5.2. SIMP Server Installation" href="SIMP_Server_Installation.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">3. Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">3.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dynamic/Known_OS_Compatibility.html">3.2. Known OS Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installing_SIMP_From_A_Repository.html">3.3. Installing SIMP From A Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Building_A_SIMP_ISO.html">3.4. Building a SIMP ISO</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">3.5. SIMP Server ISO Installation Guide</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Introduction.html">3.5.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SIMP_Server_Installation.html">3.5.2. SIMP Server Installation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">3.5.3. Disk Encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#method">3.5.3.1. Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation">3.5.3.2. Implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#replacing-the-current-password">3.5.3.3. Replacing the Current Password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#removing-the-password-file">3.5.3.4. Removing the Password File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation_Miscellaney.html">3.6. Installation Miscellany</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">3. SIMP Getting Started Guide</a> &raquo;</li>
+      
+          <li><a href="index.html">3.5. SIMP Server ISO Installation Guide</a> &raquo;</li>
+      
+    <li>3.5.3. Disk Encryption</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/getting_started_guide/ISO_Install/Disk_Encryption.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="disk-encryption">
+<span id="ig-disk-encryption"></span><h1>3.5.3. Disk Encryption<a class="headerlink" href="#disk-encryption" title="Permalink to this headline">¶</a></h1>
+<p>The default <a class="reference internal" href="../../glossary.html#term-iso"><span class="xref std std-term">ISO</span></a> and kickstart files in SIMP now encrypt the first
+physical volume if the <code class="docutils literal"><span class="pre">simp_disk_crypt</span></code> option is provided at the boot
+command line.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The system is set to <strong>automatically</strong> decrypt at boot! This means that the
+password is embedded in the <a class="reference internal" href="../../glossary.html#term-initrd"><span class="xref std std-term">initrd</span></a> file.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">/boot</span></code> directory is <strong>not</strong> encrypted, since that would prevent the
+system from booting automatically.</p>
+</div>
+<div class="section" id="method">
+<h2>3.5.3.1. Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<p>When enabled, SIMP implements disk encryption, with automatic decryption, so
+that users have the option to use their own keys in the future. Alternatively,
+users may remove the system local keys and require that a password be entered
+at each boot.</p>
+<p>The primary goal of providing automatic decryption was to give users a clean
+and seamless experience when using the initial system. It is understood that
+this is not best practice since automatic decryption of the disks requires the
+system to embed the password files in the system <a class="reference internal" href="../../glossary.html#term-initrd"><span class="xref std std-term">initrd</span></a>.</p>
+<p>Disk encryption was not enabled by default for two reasons. The first is that
+it can take an unacceptable amount of time to build a system if enough entropy
+is not present. The second is that a lot of hardware contains the ability to
+encrypt the disk at that level. If this is present, the utility of a second
+layer of disk encryption is not necessarily warranted or a good idea.</p>
+</div>
+<div class="section" id="implementation">
+<h2>3.5.3.2. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>The system keys are referenced in <code class="docutils literal"><span class="pre">/etc/crypttab</span></code> and, by default, reside at
+<code class="docutils literal"><span class="pre">/etc/.cryptcreds</span></code>. At build time, these files are copied into all
+<a class="reference internal" href="../../glossary.html#term-initrd"><span class="xref std std-term">initrd</span></a> files present on the system. This ensures that all kernels can
+successfully boot the system.</p>
+<p>The <code class="docutils literal"><span class="pre">/etc/dracut.conf</span></code> file is also updated to ensure that any new kernel
+loads will be able to boot successfully.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The <code class="docutils literal"><span class="pre">/etc/.cryptcreds</span></code> file <strong>is</strong> encrypted when the system is off.
+However, a copy is in the unencrypted <a class="reference internal" href="../../glossary.html#term-initrd"><span class="xref std std-term">initrd</span></a> files in <code class="docutils literal"><span class="pre">/boot</span></code> and
+should not be considered secure from physical access to the raw disk image.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please be aware that <strong>all</strong> characters in the <code class="docutils literal"><span class="pre">/etc/.cryptcreds</span></code> file are
+part of the password. The lack of a trailing newline is <strong>very</strong> important.</p>
+</div>
+</div>
+<div class="section" id="replacing-the-current-password">
+<h2>3.5.3.3. Replacing the Current Password<a class="headerlink" href="#replacing-the-current-password" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The underlying system uses <a class="reference internal" href="../../glossary.html#term-luks"><span class="xref std std-term">LUKS</span></a>, so any usage outside of this
+document should refer to the <a class="reference internal" href="../../glossary.html#term-luks"><span class="xref std std-term">LUKS</span></a> implementation that matches your
+system version.</p>
+</div>
+<p>To change the password, you will need to perform the following steps.</p>
+<ol class="arabic simple">
+<li>Back up the original password file</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If something goes amiss, you&#8217;re seriously going to need this</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Get the <a class="reference internal" href="../../glossary.html#term-uuid"><span class="xref std std-term">UUID</span></a> of your partition</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>This will be in the <code class="docutils literal"><span class="pre">/etc/crypttab</span></code> file. You&#8217;ll want the entire
+<code class="docutils literal"><span class="pre">UUID=&lt;uuid&gt;</span></code> string</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Create the new password</li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p class="first">Remember that this needs to be <strong>exactly</strong> what you will use. If you ever
+expect to type this at the command line, don&#8217;t forget to strip your
+trailing spaces.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">string</span>
+
+<span class="c1"># The length of the new password</span>
+<span class="n">length</span> <span class="o">=</span> <span class="mi">1024</span>
+
+<span class="c1"># What the password should consist of</span>
+<span class="n">charset</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">lowercase</span><span class="o">+</span><span class="n">string</span><span class="o">.</span><span class="n">uppercase</span><span class="o">+</span><span class="n">string</span><span class="o">.</span><span class="n">digits</span>
+
+<span class="n">passfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/etc/.cryptcreds.new&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="n">passfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">)))</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Update the key</li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p class="first">There is a faster way to do this in <a class="reference internal" href="../../glossary.html#term-el"><span class="xref std std-term">EL</span></a> 7, but this method works on
+both systems</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cryptsetup luksAddKey --key-slot <span class="m">1</span> --key-file /etc/.cryptcreds <span class="nv">UUID</span><span class="o">=</span>&lt;uuid&gt; /etc/.cryptcreds.new
+$ cryptsetup luksKillSlot --key-file /etc/.cryptcreds 0
+
+$ cryptsetup luksAddKey --key-slot <span class="m">0</span> --key-file /etc/.cryptcreds.new <span class="nv">UUID</span><span class="o">=</span>&lt;uuid&gt; /etc/.cryptcreds.new
+$ cryptsetup luksKillSlot --key-file /etc/.cryptcreds.new 1
+
+<span class="c1"># Only do this step if the previous steps succeeded!</span>
+$ mv /etc/.cryptcreds.new /etc/.cryptcreds
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Update your <a class="reference internal" href="../../glossary.html#term-initrd"><span class="xref std std-term">initrd</span></a> files</li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p class="first">You want to make sure to update <strong>all</strong> of your <a class="reference internal" href="../../glossary.html#term-initrd"><span class="xref std std-term">initrd</span></a> files since
+you&#8217;ll want to be able to boot from any kernel.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="k">for</span> x in <span class="sb">`</span>ls -d /lib/modules/*<span class="sb">`</span><span class="p">;</span> <span class="k">do</span>
+  <span class="nv">installed_kernel</span><span class="o">=</span><span class="sb">`</span>basename <span class="nv">$x</span><span class="sb">`</span>
+  dracut -f <span class="s2">&quot;/boot/initramfs-</span><span class="si">${</span><span class="nv">installed_kernel</span><span class="si">}</span><span class="s2">.img&quot;</span> <span class="nv">$installed_kernel</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="removing-the-password-file">
+<h2>3.5.3.4. Removing the Password File<a class="headerlink" href="#removing-the-password-file" title="Permalink to this headline">¶</a></h2>
+<p>If you wish to remove the password file from your system, you will need to
+perform the following steps:</p>
+<ol class="arabic simple">
+<li>Back up the password file!</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If you lose this, you won&#8217;t be able to get into your system after reboot</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Using your favorite text editor, remove the <cite>install_items</cite> line in
+<cite>/etc/dracut.conf</cite> that contains the reference to <cite>/etc/.cryptcreds</cite></li>
+<li>Remove the <cite>/etc/.cryptcreds</cite> file from the system</li>
+<li>Update your <a class="reference internal" href="../../glossary.html#term-initrd"><span class="xref std std-term">initrd</span></a> files</li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p class="first">You want to make sure to update <strong>all</strong> of your <a class="reference internal" href="../../glossary.html#term-initrd"><span class="xref std std-term">initrd</span></a> files since
+you&#8217;ll want to be able to boot from any kernel.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="k">for</span> x in <span class="sb">`</span>ls -d /lib/modules/*<span class="sb">`</span><span class="p">;</span> <span class="k">do</span>
+  <span class="nv">installed_kernel</span><span class="o">=</span><span class="sb">`</span>basename <span class="nv">$x</span><span class="sb">`</span>
+  dracut -f <span class="s2">&quot;/boot/initramfs-</span><span class="si">${</span><span class="nv">installed_kernel</span><span class="si">}</span><span class="s2">.img&quot;</span> <span class="nv">$installed_kernel</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Installation_Miscellaney.html" class="btn btn-neutral float-right" title="3.6. Installation Miscellany" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="SIMP_Server_Installation.html" class="btn btn-neutral" title="3.5.2. SIMP Server Installation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

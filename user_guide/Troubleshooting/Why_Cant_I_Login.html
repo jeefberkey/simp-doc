@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.6.2. Why Can’t I Login?! &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="4.6. Troubleshooting Common Issues" href="../Troubleshooting.html"/>
+        <link rel="next" title="4.6.3. Checking Your SIMP PKI Communication" href="PKI_Validation.html"/>
+        <link rel="prev" title="4.6.1. My Services Are Dying!" href="My_Services_Are_Dying.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../User_Management.html">4.4. User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="My_Services_Are_Dying.html">4.6.1. My Services Are Dying!</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">4.6.2. Why Can&#8217;t I Login?!</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sssd-password-checks">4.6.2.1. SSSD Password Checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pam-access-restrictions">4.6.2.2. PAM Access Restrictions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#faillock">4.6.2.3. Faillock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ldap-lockout">4.6.2.4. LDAP Lockout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting-dns">4.6.2.5. Troubleshooting DNS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pki-issues">4.6.2.6. PKI Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="PKI_Validation.html">4.6.3. Checking Your SIMP PKI Communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Puppet_Certificate_Issues.html">4.6.4. Puppet Certificate Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+          <li><a href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a> &raquo;</li>
+      
+    <li>4.6.2. Why Can&#8217;t I Login?!</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/user_guide/Troubleshooting/Why_Cant_I_Login.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="why-can-t-i-login">
+<h1>4.6.2. Why Can&#8217;t I Login?!<a class="headerlink" href="#why-can-t-i-login" title="Permalink to this headline">¶</a></h1>
+<p>If you&#8217;ve reached this page, you&#8217;re having issues logging into your system with
+a newly created account.</p>
+<p>In almost all cases, this is because either your user has not been placed in a
+group allowed to access the system, your <a class="reference internal" href="../../glossary.html#term-dns"><span class="xref std std-term">DNS</span></a> is setup incorrectly, or
+your <a class="reference internal" href="../../glossary.html#term-pki"><span class="xref std std-term">PKI</span></a> certificates are invalid.</p>
+<div class="section" id="sssd-password-checks">
+<h2>4.6.2.1. SSSD Password Checks<a class="headerlink" href="#sssd-password-checks" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../glossary.html#term-sssd"><span class="xref std std-term">SSSD</span></a> has been made the default name service caching service in SIMP.
+During this process, we discovered that SSSD will enforce password complexity
+restrictions <strong>upon login</strong>. This means that, if your password does not meet
+the system password complexity requirements, you will not be able to login
+until an administrator changes your password to something stronger.</p>
+<p>For the default complexity rules, see the <a class="reference internal" href="../../help/FAQ/Password_Complexity.html#faq-password-complexity"><span>What is the Password Complexity for SIMP?</span></a> FAQ.</p>
+</div>
+<div class="section" id="pam-access-restrictions">
+<h2>4.6.2.2. PAM Access Restrictions<a class="headerlink" href="#pam-access-restrictions" title="Permalink to this headline">¶</a></h2>
+<p>By default, SIMP uses the <code class="docutils literal"><span class="pre">pam_access.so</span></code> <a class="reference internal" href="../../glossary.html#term-pam"><span class="xref std std-term">PAM</span></a> module to restrict
+access on each individual host. While this may not seem as flexible as some
+methods, it is the most failsafe method for ensuring that you don&#8217;t
+accidentally interrupt services due to network issues connecting to your
+<a class="reference internal" href="../../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> server.</p>
+<p>To allow a user to access a particular system, you need to use the
+<a class="reference external" href="https://github.com/simp/pupmod-simp-pam/blob/master/manifests/access/rule.pp">pam::access::manage</a> define as shown below.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">pam</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">rule</span> <span class="p">{</span> <span class="s1">&#39;Allow the security group into the system&#39;</span><span class="p">:</span>
+  <span class="n">users</span>   <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;(security)&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="n">origins</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;ALL&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="n">comment</span> <span class="o">=&gt;</span> <span class="s1">&#39;The core security team&#39;</span>
+<span class="p">}</span>
+
+<span class="n">pam</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">rule</span> <span class="p">{</span> <span class="s1">&#39;Allow bob into the system from the proxy only&#39;</span><span class="p">:</span>
+  <span class="n">users</span>   <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;bob&#39;</span><span class="o">]</span><span class="p">,</span>
+  <span class="n">origins</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;proxy.${::domain}&quot;</span><span class="o">]</span><span class="p">,</span>
+  <span class="n">comment</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bob the proxied&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="faillock">
+<h2>4.6.2.3. Faillock<a class="headerlink" href="#faillock" title="Permalink to this headline">¶</a></h2>
+<p>If a user fails to authenticate properly in <strong>5</strong> consecutive tries (the
+default <code class="docutils literal"><span class="pre">pam::deny</span></code>), <a class="reference internal" href="../../glossary.html#term-pam"><span class="xref std std-term">PAM</span></a> will lock the account.</p>
+<p>To see a list of user authentication attempts, run <code class="docutils literal"><span class="pre">faillock</span></code>.</p>
+<p>If a user is marked as invalid (I) or reaches the max number of attempts, you
+will need to reset <code class="docutils literal"><span class="pre">faillock</span></code> before authentication can occur.  To do so, run</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ faillock --reset --user &lt;user&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="ldap-lockout">
+<h2>4.6.2.4. LDAP Lockout<a class="headerlink" href="#ldap-lockout" title="Permalink to this headline">¶</a></h2>
+<p>If your account is in LDAP, you may have locked yourself out.  Like
+<a class="reference internal" href="../../glossary.html#term-pam"><span class="xref std std-term">PAM</span></a>, <a class="reference internal" href="../../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> has a maximum number of logins, <strong>5</strong> by default.
+See <code class="docutils literal"><span class="pre">openldap::server::conf::default_ldif::ppolicy_pwd_max_failure</span></code>.</p>
+<p>To determine if the account is locked, run the following on the LDAP server:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ slapcat -a <span class="nv">uid</span><span class="o">=</span>&lt;user&gt;
+</pre></div>
+</div>
+<p>If you see <code class="docutils literal"><span class="pre">pwdAccountLockedTime</span></code> then the account is locked, and you will
+need to follow the instructions in <a class="reference internal" href="../User_Management/LDAP.html#unlock-ldap-label"><span>Unlock an LDAP Account</span></a> to unlock it.</p>
+</div>
+<div class="section" id="troubleshooting-dns">
+<h2>4.6.2.5. Troubleshooting DNS<a class="headerlink" href="#troubleshooting-dns" title="Permalink to this headline">¶</a></h2>
+<p>If <a class="reference internal" href="../../glossary.html#term-pam"><span class="xref std std-term">PAM</span></a> is not the issue, you may be having <a class="reference internal" href="../../glossary.html#term-dns"><span class="xref std std-term">DNS</span></a> issues. This can
+evidence itself in two ways.</p>
+<p>First, per the &#8216;Bob&#8217; example above, you may be using an <a class="reference internal" href="../../glossary.html#term-fqdn"><span class="xref std std-term">FQDN</span></a> to
+identify a host on your network. If <a class="reference internal" href="../../glossary.html#term-dns"><span class="xref std std-term">DNS</span></a> is not properly configured,
+then there is no way for the host to understand that you should have access
+from this remote system.</p>
+<p>Second, the default <a class="reference internal" href="../../glossary.html#term-pki"><span class="xref std std-term">PKI</span></a> settings in SIMP ensure that all connections
+are validated against the <a class="reference internal" href="../../glossary.html#term-fqdn"><span class="xref std std-term">FQDN</span></a> of the client system. In the case of an
+<a class="reference internal" href="../../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> connection, a misconfiguration in DNS may result in an inability
+to authenticate against the <a class="reference internal" href="../../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> service.</p>
+<p>In the following sections, we will assume that we have a host named
+<code class="docutils literal"><span class="pre">system.my.domain</span></code> with the IP address <code class="docutils literal"><span class="pre">1.2.3.4</span></code>.</p>
+<div class="section" id="testing-a-forward-lookup">
+<h3>4.6.2.5.1. Testing a Forward Lookup<a class="headerlink" href="#testing-a-forward-lookup" title="Permalink to this headline">¶</a></h3>
+<p>The following should return the expected IP address for your system.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ nslookup system.my.domain
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-a-reverse-lookup">
+<h3>4.6.2.5.2. Testing a Reverse Lookup<a class="headerlink" href="#testing-a-reverse-lookup" title="Permalink to this headline">¶</a></h3>
+<p>The following should return the expected hostname for your system. This
+hostname <strong>must</strong> be either the primary name in the <a class="reference internal" href="../../glossary.html#term-pki"><span class="xref std std-term">PKI</span></a> certificate or
+a valid alternate name.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ nslookup 1.2.3.4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pki-issues">
+<h2>4.6.2.6. PKI Issues<a class="headerlink" href="#pki-issues" title="Permalink to this headline">¶</a></h2>
+<p>If both PAM and DNS appear to be correct, you should next validate that your
+<a class="reference internal" href="../../glossary.html#term-pki"><span class="xref std std-term">PKI</span></a> certificates are both valid and functional.</p>
+<p>See <a class="reference internal" href="PKI_Validation.html#pki-validation"><span>Checking Your SIMP PKI Communication</span></a> for additional guidance.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PKI_Validation.html" class="btn btn-neutral float-right" title="4.6.3. Checking Your SIMP PKI Communication" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="My_Services_Are_Dying.html" class="btn btn-neutral" title="4.6.1. My Services Are Dying!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+
+Known OS Compatibility
+----------------------
+
+* **SIMP 5.2.1-0**
+
+    * **CentOS 7.0**
+
+      * **ISO #1:** CentOS-7-x86_64-DVD-1511.iso
+      * **Checksum:** 907e5755f824c5848b9c8efbb484f3cd945e93faa024bad6ba875226f9683b16
+
+    * **RedHat 7.2**
+
+      * **ISO #1:** rhel-server-7.2-x86_64-dvd.iso
+      * **Checksum:** 03f3a0291634335f6995534d829bd21ffaa0d000004dfeb1b2fb81052d64a4d5
+
+* **SIMP 4.3.0-0**
+
+    * **CentOS 6.8**
+
+      * **ISO #1:** CentOS-6.8-x86_64-bin-DVD1.iso
+      * **Checksum:** 1dda55622614a8b43b448a72f87d6cb7f79de1eff49ee8c5881a7d9db28d4e35
+
+      * **ISO #2:** CentOS-6.8-x86_64-bin-DVD2.iso
+      * **Checksum:** 0aba869427b4ce04e100d72744daf7fea1f7be2e4be56b658095bd9e99e04e6d
+
+    * **RedHat 6.8**
+
+      * **ISO #1:** rhel-server-6.8-x86_64-dvd.iso
+      * **Checksum:** d35fd1af20f6adef9b11b46c2534ae8b6e18de7754889e2b51808b436dff2804
+
+* **SIMP 5.1.X**
+
+    * **CentOS 7.0**
+
+      * **ISO #1:** CentOS-7-x86_64-DVD-1511.iso
+      * **Checksum:** 907e5755f824c5848b9c8efbb484f3cd945e93faa024bad6ba875226f9683b16
+
+    * **RedHat 7.2**
+
+      * **ISO #1:** rhel-server-7.2-x86_64-dvd.iso
+      * **Checksum:** 03f3a0291634335f6995534d829bd21ffaa0d000004dfeb1b2fb81052d64a4d5
+
+* **SIMP 4.2.X**
+
+    * **CentOS 6.8**
+
+      * **ISO #1:** CentOS-6.8-x86_64-bin-DVD1.iso
+      * **Checksum:** 1dda55622614a8b43b448a72f87d6cb7f79de1eff49ee8c5881a7d9db28d4e35
+
+      * **ISO #2:** CentOS-6.8-x86_64-bin-DVD2.iso
+      * **Checksum:** 0aba869427b4ce04e100d72744daf7fea1f7be2e4be56b658095bd9e99e04e6d
+
+    * **RedHat 6.8**
+
+      * **ISO #1:** rhel-server-6.8-x86_64-dvd.iso
+      * **Checksum:** d35fd1af20f6adef9b11b46c2534ae8b6e18de7754889e2b51808b436dff2804
+

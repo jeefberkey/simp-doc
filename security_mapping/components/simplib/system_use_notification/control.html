@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.1.1.22. System Use Notification &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="7.1.1. SIMPLib" href="../simplib.html"/>
+        <link rel="next" title="7.1.2. SIMP" href="../../simp/simp.html"/>
+        <link rel="prev" title="7.1.1.21. Session Termination" href="../session_termination/control.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../../../index.html">
+        
+
+        
+          
+          <img src="../../../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">7. Security Control Mapping</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../Components.html">7.1. SIMP Components</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../simplib.html">7.1.1. SIMPLib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../access_enforcement/control.html">7.1.1.1. Access Enforcement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../audit_events/control.html">7.1.1.2. Audit Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../authenticator_management/control.html">7.1.1.3. Authenticator Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../baseline_configuration/control.html">7.1.1.4. Baseline Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../boundary_protection/control.html">7.1.1.5. Boundary Protection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../concurrent_session_control/control.html">7.1.1.6. Concurrent Session Controls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cryptographic_protection/control.html">7.1.1.7. Cryptographic Protection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../denial_of_service_protection/control.html">7.1.1.8. Denial of Service Protection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../disable_inactive_accounts/control.html">7.1.1.9. Disable Inactive Accounts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../discretionary_access_control/control.html">7.1.1.10. Discretionary Access Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../error_handling/control.html">7.1.1.11. Error Handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flaw_remediation/control.html">7.1.1.12. Flaw Remediation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identification_and_authentication/control.html">7.1.1.13. Identification and Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../least_functionality/control.html">7.1.1.14. Least Functionality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../least_privilege/control.html">7.1.1.15. Least Privilege</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../malicious_code_protection/control.html">7.1.1.16. Malicious Code Protection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../previous_logon_access_notification/control.html">7.1.1.17. Previous Login Notification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../privileged_accounts/control.html">7.1.1.18. Privileged Accounts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../secure_name_address_resolution_service_authoritative_source/control.html">7.1.1.19. Secure Name / Address Resolution Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../session_lock/control.html">7.1.1.20. Session Lock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../session_termination/control.html">7.1.1.21. Session Termination</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">7.1.1.22. System Use Notification</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../simp/simp.html">7.1.2. SIMP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../aide/aide.html">7.1.3. AIDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../apache/apache.html">7.1.4. Apache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auditd/auditd.html">7.1.5. Auditd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../clamav/clamav.html">7.1.6. ClamAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../compliance/compliance.html">7.1.7. Compliance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../iptables/iptables.html">7.1.8. IPTables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../named/named.html">7.1.9. Named/Bind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../openldap/openldap.html">7.1.10. OpenLDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pam/pam.html">7.1.11. PAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pupmod/pupmod.html">7.1.12. Pupmod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rsync/rsync.html">7.1.13. Rsync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ssh/ssh.html">7.1.14. SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../stunnel/stunnel.html">7.1.15. Stunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sudo/sudo.html">7.1.16. Sudo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sudosh/sudosh.html">7.1.17. Sudosh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tcpwrappers/tcpwrappers.html">7.1.18. TCP Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Controls.html">7.2. Security Control Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../index.html#indices-and-tables">7.3. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">7. SIMP Security Control Mapping</a> &raquo;</li>
+      
+          <li><a href="../../../Components.html">7.1. SIMP Components</a> &raquo;</li>
+      
+          <li><a href="../simplib.html">7.1.1. SIMPLib</a> &raquo;</li>
+      
+    <li>7.1.1.22. System Use Notification</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/security_mapping/components/simplib/system_use_notification/control.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="system-use-notification">
+<h1>7.1.1.22. System Use Notification<a class="headerlink" href="#system-use-notification" title="Permalink to this headline">¶</a></h1>
+<p>A default SIMP warning banner is presented to the user prior to login.  The
+content of that banner is:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>---------------------------------- ATTENTION -----------------------------------
+                    THIS IS A RESTRICTED COMPUTER SYSTEM
+
+This computer system, and all related equipment, networks, and network devices
+are provided for authorised use only.  All systems controlled by this
+organisation will be monitored for all lawful purposes.  Monitoring includes
+the totality of the operating system and connected networks.  No events on this
+system are excluded from record and there are no exclusions from this policy.
+
+Use of this system constitutes consent to full monitoring of your activities
+for use by the authorised monitoring organisation.  Unauthorised use of this
+system, including uninvited connections, may subject you to criminal
+prosecution.
+
+The data collected from this system may be used for any purpose by the
+collecting organisation.  If you do not agree to this monitoring, discontinue
+use of the system IMMEDIATELY.
+</pre></div>
+</div>
+<p>References: <a class="reference internal" href="../../../controls/nist80053rev4/800-53-controls.html#ac-8a"><span>AC-8a.</span></a>, <a class="reference internal" href="../../../controls/nist80053rev4/800-53-controls.html#ac-8a-2"><span>AC-8a.2.</span></a>, <a class="reference internal" href="../../../controls/nist80053rev4/800-53-controls.html#ac-8a-3"><span>AC-8a.3.</span></a>, <a class="reference internal" href="../../../controls/nist80053rev4/800-53-controls.html#ac-8c-1"><span>AC-8c.1.</span></a></p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../simp/simp.html" class="btn btn-neutral float-right" title="7.1.2. SIMP" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../session_termination/control.html" class="btn btn-neutral" title="7.1.1.21. Session Termination" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.6.1. My Services Are Dying! &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="4.6. Troubleshooting Common Issues" href="../Troubleshooting.html"/>
+        <link rel="next" title="4.6.2. Why Can’t I Login?!" href="Why_Cant_I_Login.html"/>
+        <link rel="prev" title="4.6. Troubleshooting Common Issues" href="../Troubleshooting.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../User_Management.html">4.4. User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="">4.6.1. My Services Are Dying!</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#destructive-reasoning-with-svckill">4.6.1.1. Destructive Reasoning with <cite>svckill</cite></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avoiding-destruction">4.6.1.2. Avoiding Destruction</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Why_Cant_I_Login.html">4.6.2. Why Can&#8217;t I Login?!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PKI_Validation.html">4.6.3. Checking Your SIMP PKI Communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Puppet_Certificate_Issues.html">4.6.4. Puppet Certificate Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+          <li><a href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a> &raquo;</li>
+      
+    <li>4.6.1. My Services Are Dying!</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/user_guide/Troubleshooting/My_Services_Are_Dying.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="my-services-are-dying">
+<span id="services-dying"></span><h1>4.6.1. My Services Are Dying!<a class="headerlink" href="#my-services-are-dying" title="Permalink to this headline">¶</a></h1>
+<p>The following section describes how to mitigate issues relating to
+destructive reasoning and avoiding destruction of the SIMP system.</p>
+<div class="section" id="destructive-reasoning-with-svckill">
+<h2>4.6.1.1. Destructive Reasoning with <cite>svckill</cite><a class="headerlink" href="#destructive-reasoning-with-svckill" title="Permalink to this headline">¶</a></h2>
+<p>Most security guides that have been published on the Internet strongly
+suggest disabling all services that are not necessary for system
+operation. However, to list every possible service that may be
+controlled by the chkconfig type on a given system in a manifest would
+not be useful and would bloat the memory space of the running Puppet
+process.</p>
+<p>As an alternative solution, the SIMP Team implemented the svckill
+module that runs with every Puppet run.</p>
+<p>The svckill module:</p>
+<ul class="simple">
+<li>Collects a list of all services on the system. These are the same
+services that the user sees after typing <code class="docutils literal"><span class="pre">chkconfig</span> <span class="pre">--list</span></code></li>
+<li>Ignores certain critical services, including Puppet, IPtables, and
+the network.</li>
+<li>Collects a list of all services that are defined in the manifests and
+modules.</li>
+<li>Ensures that every service that is defined in the manifests and
+modules is excluded from the list of services to kill.</li>
+<li>Kills and disables everything else.</li>
+</ul>
+</div>
+<div class="section" id="avoiding-destruction">
+<h2>4.6.1.2. Avoiding Destruction<a class="headerlink" href="#avoiding-destruction" title="Permalink to this headline">¶</a></h2>
+<p>If certain services should not be killed, declare them in the node
+manifest space or in the <cite>svckill::ignore</cite> array in hiera.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The key is to declare the services and not set them to any other
+option. By adding them to the manifest, the <em>svckill</em> module will
+ignore them.</p>
+</div>
+<p>The example below demonstrates this in a manifest, assuming that the
+<em>keepmealive</em> service is added to the <em>chkconfig</em>.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="c1">#Ppreventing a service from being killed by svckill</span>
+<span class="n">service</span> <span class="p">{</span> <span class="s2">&quot;keepmealive&quot;</span><span class="p">:</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Why_Cant_I_Login.html" class="btn btn-neutral float-right" title="4.6.2. Why Can’t I Login?!" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Troubleshooting.html" class="btn btn-neutral" title="4.6. Troubleshooting Common Issues" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

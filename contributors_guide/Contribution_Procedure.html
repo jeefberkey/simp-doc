@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.2. Contribution Procedure &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../index.html"/>
+        <link rel="up" title="5. Contributing to SIMP" href="index.html"/>
+        <link rel="next" title="5.3. Maintenance Procedure" href="Maintenance_Procedure.html"/>
+        <link rel="prev" title="5.1. Introduction" href="Introduction.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html">
+        
+
+        
+          
+          <img src="../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Contributing to SIMP</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html">5.1. Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">5.2. Contribution Procedure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#commit-message-conventions">5.2.1. Commit Message Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Maintenance_Procedure.html">5.3. Maintenance Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Resources.html">5.4. Useful Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">5. Contributing to SIMP</a> &raquo;</li>
+      
+    <li>5.2. Contribution Procedure</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/contributors_guide/Contribution_Procedure.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="contribution-procedure">
+<span id="gsg-contributors-guide-contribution-procedure"></span><h1>5.2. Contribution Procedure<a class="headerlink" href="#contribution-procedure" title="Permalink to this headline">¶</a></h1>
+<p>We use the standard <a class="reference external" href="https://guides.github.com/introduction/flow/">GitHub workflow</a> for SIMP development with the exception
+that we use a <a class="reference external" href="https://github.com/blog/2141-squash-your-commits">Squash and Merge</a> merge method for pulling in changes, in order
+to maintain a more legible commit history on <cite>master</cite>.</p>
+<ol class="arabic">
+<li><p class="first">Search the <a class="reference external" href="https://simp-project.atlassian.net">SIMP JIRA</a> for an open ticket that is relevant to the issue or
+open a new one.</p>
+</li>
+<li><p class="first">Use the <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">GitHub GUI to fork and clone</a> the repository (we&#8217;ll use
+<code class="docutils literal"><span class="pre">pupmod-simp-iptables</span></code> for the rest of this walkthrough)</p>
+</li>
+<li><p class="first">Clone the repo you want to work on:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:&lt;YOUR_GITHUB_NAME&gt;/pupmod-simp-iptables</span> <span class="pre">iptables</span></code></li>
+</ul>
+</li>
+<li><p class="first">Enter the directory and create a <a class="reference external" href="https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow">feature branch</a>: <code class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">SIMP-XXXX</span></code></p>
+</li>
+<li><p class="first">Do your work! <cite>(Including tests, of course)</cite></p>
+</li>
+<li><p class="first">Commit your work. We will <a class="reference external" href="https://github.com/blog/2141-squash-your-commits">squash</a> your <a class="reference external" href="https://help.github.com/articles/using-pull-requests">pull request</a> into one commit
+when we merge it, so you can use as many commits as you&#8217;d like.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The <strong>first</strong> commit should use the <a class="reference internal" href="#commit-message-conventions">Commit Message Conventions</a></p>
+</div>
+</li>
+<li><p class="first">Push your changes to Github on your feature branch:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">SIMP-XXXX</span></code></li>
+</ul>
+</li>
+<li><p class="first">Using the GitHub GUI, create a <a class="reference external" href="https://help.github.com/articles/using-pull-requests">pull request</a> from your feature branch to
+the branch of the original repo that you want to contribute to. Leave the
+&#8216;<a class="reference external" href="https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/">Allow edits from maintainers</a>&#8216; checkbox checked to let a team member add
+add commits to your pull request.</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://travis-ci.org/simp">Travis-CI</a> will run the spec tests for the branch and a member of the SIMP
+team will <a class="reference external" href="https://help.github.com/articles/reviewing-proposed-changes-in-a-pull-request/">review</a> your submission. You should receive emails from Github as
+the code reviews progress.</p>
+</li>
+</ol>
+<div class="section" id="commit-message-conventions">
+<h2>5.2.1. Commit Message Conventions<a class="headerlink" href="#commit-message-conventions" title="Permalink to this headline">¶</a></h2>
+<p>An example commit message that following the SIMP conventions:</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>(SIMP-999) Fix the broken thing [50 chars max]
+
+Discussion about the fix (if needed) [each line: 72 chars max]
+
+SIMP-998 #comment Comment on a related issue [72 chars max]
+SIMP-999 #close
+</pre></div>
+</div>
+</div></blockquote>
+<p>The first commit message should be the following format:</p>
+<blockquote>
+<div><ul class="simple">
+<li>First line:<ul>
+<li>Start with the Issue name in parentheses [e.g., <code class="docutils literal"><span class="pre">(SIMP-999)</span></code>], followed
+by a summary of the change</li>
+<li>No longer than <strong>50</strong> characters</li>
+<li>Followed by a line of white space</li>
+</ul>
+</li>
+<li>Subsequent lines:<ul>
+<li>Each line should be no longer than <strong>72</strong> characters</li>
+<li>Describe the previous behavior, why it was changed, and the changes in
+detail</li>
+</ul>
+</li>
+<li>Issue references:<ul>
+<li><a class="reference external" href="https://confluence.atlassian.com/bitbucket/processing-jira-software-issues-with-smart-commit-messages-298979931.html">JIRA issues can be referenced</a> at the end of the commit message</li>
+<li>It is recommended to only use <a class="reference external" href="https://confluence.atlassian.com/bitbucket/processing-jira-software-issues-with-smart-commit-messages-298979931.html">JIRA Smart Commit Tags</a> <code class="docutils literal"><span class="pre">#comment</span></code> and
+<code class="docutils literal"><span class="pre">#close</span></code></li>
+<li>Avoid <code class="docutils literal"><span class="pre">#resolve</span></code> and <code class="docutils literal"><span class="pre">#time</span></code> as it will not update JIRA until
+after the issue is merged</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Maintenance_Procedure.html" class="btn btn-neutral float-right" title="5.3. Maintenance Procedure" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Introduction.html" class="btn btn-neutral" title="5.1. Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

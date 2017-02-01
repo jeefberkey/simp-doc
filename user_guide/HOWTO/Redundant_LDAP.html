@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.7.14. HOWTO Enable Redundant LDAP &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="4.7. SIMP HOWTO Guides" href="../HOWTO.html"/>
+        <link rel="next" title="4.7.15. HOWTO Enable SFTP Restricted Accounts" href="SFTP_Restricted_Accounts.html"/>
+        <link rel="prev" title="4.7.13. HOWTO Configure a Puppet Server Behind a NAT" href="Puppet_Server_NAT.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../User_Management.html">4.4. User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../HOWTO.html">4.7. SIMP HOWTO Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Central_Log_Collection.html">4.7.1. Setup Central Log Collection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Changing_Puppet_Masters.html">4.7.2. Change Puppet Masters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Disable_dhcpd.html">4.7.3. Disable dhcpd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Disable_named.html">4.7.4. Disable named</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Discard_Mail_to_Root.html">4.7.5. Discard Mail to Root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Exclude_Repositories.html">4.7.6. Exclude YUM Repositories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NFS.html">4.7.7. Configure NFS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="IPTables_NAT_Rules.html">4.7.8. Configure IPTables NAT Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Kerberos.html">4.7.9. Enable Kerberos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Managing_Workstation_Infrastructures.html">4.7.10. Manage Workstation Infrastructures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Network_Build.html">4.7.11. Kickstart the Initial Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Puppetmaster_Backup.html">4.7.12. Backup the Puppet Master</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Puppet_Server_NAT.html">4.7.13. Configure a Puppet Server Behind a NAT</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">4.7.14. Enable Redundent LDAP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-the-master">4.7.14.1. Set up the Master</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-the-redundant-slave-servers">4.7.14.2. Set up the Redundant(Slave) Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#promote-a-slave-node">4.7.14.3. Promote a Slave Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-a-node-or-demote-a-master">4.7.14.4. Remove a Node or Demote a Master</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">4.7.14.5. Troubleshooting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#further-information">4.7.14.6. Further Information</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="SFTP_Restricted_Accounts.html">4.7.15. Enable SFTP Restricted Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSH_Keys.html">4.7.16. Setup SSH Authorized Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Upgrade_SIMP.html">4.7.17. Upgrade SIMP (Coming Soon!)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Manage_TPM.html">4.7.18. Manage TPM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+          <li><a href="../HOWTO.html">4.7. SIMP HOWTO Guides</a> &raquo;</li>
+      
+    <li>4.7.14. HOWTO Enable Redundant LDAP</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/user_guide/HOWTO/Redundant_LDAP.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="howto-enable-redundant-ldap">
+<h1>4.7.14. HOWTO Enable Redundant LDAP<a class="headerlink" href="#howto-enable-redundant-ldap" title="Permalink to this headline">¶</a></h1>
+<p>This section describes how to set up redundant OpenLDAP servers in SIMP.  These
+servers are also referred to as &#8220;slave&#8221; servers.</p>
+<div class="section" id="set-up-the-master">
+<h2>4.7.14.1. Set up the Master<a class="headerlink" href="#set-up-the-master" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to setup an ldapmaster is to set it up on the puppet master
+using <cite>simp config</cite> during the initial configuration of the Puppet server. This
+is done by answering &#8220;YES&#8221; to &#8220;use ldap?&#8221; query when you run simp config and
+answering the basic questions it asks you.  If it is not desirable to have the
+ldap server on the Puppet server a redundant LDAP server can be set up on an
+alternate server and promoted to master using the directions below.</p>
+<p>However if there is already a working infrastructure and you want to move to
+openldap you can do the following:</p>
+<p>Configure the following settings in <code class="docutils literal"><span class="pre">simp_def.yaml</span></code> in the hiera directory:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># === ldap ===</span>
+<span class="c1"># Whether or not to use LDAP on this system.</span>
+<span class="c1"># If you disable this, modules will not attempt to use LDAP where possible.</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="c1"># The Base DN of the LDAP server</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::base_dn</span><span class="p p-Indicator">:</span> <span class="s">&quot;dc=your,dc=domain&quot;</span>
+
+<span class="c1"># LDAP Bind Distinguished Name</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::bind_dn</span><span class="p p-Indicator">:</span> <span class="s">&quot;cn=hostAuth,ou=Hosts,%{hiera(&#39;ldap::base_dn&#39;)}&quot;</span>
+
+<span class="c1"># The LDAP bind password</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::bind_pw</span><span class="p p-Indicator">:</span> <span class="s">&quot;MyRandomlyGeneratedLargePassword&quot;</span>
+
+<span class="c1"># The salted LDAP bind password hash</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::bind_hash</span><span class="p p-Indicator">:</span> <span class="s">&quot;{SSHA}9nByVJSZFBe8FfMkar1ovpRxJLdB0Crr&quot;</span>
+
+<span class="c1">#</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::sync_dn</span><span class="p p-Indicator">:</span> <span class="s">&quot;cn=LDAPSync,ou=Hosts,%{hiera(&#39;ldap::base_dn&#39;)}&quot;</span>
+
+<span class="c1"># The LDAP sync password</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::sync_pw</span><span class="p p-Indicator">:</span> <span class="s">&quot;MyOtherRandomVeryLargePassword&quot;</span>
+
+<span class="c1"># The SSHA hash for ldap::sync_pw</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::sync_hash</span><span class="p p-Indicator">:</span> <span class="s">&quot;{SSHA}VlgYUmRzyuuKZXM3L8RT28En/eqtuTUO&quot;</span>
+
+<span class="c1"># The LDAP root DN.</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::root_dn</span><span class="p p-Indicator">:</span> <span class="s">&quot;cn=LDAPAdmin,ou=People,%{hiera(&#39;ldap::base_dn&#39;)}&quot;</span>
+
+<span class="c1"># The LDAP root password hash.</span>
+<span class="c1"># If you set this with simp config, type the password and the hash will be</span>
+<span class="c1"># generated for you.&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::root_hash</span><span class="p p-Indicator">:</span> <span class="s">&quot;{SSHA}GSCDnNF6KMXBf1F8eIe5xvQxVJou3zGu&quot;</span>
+
+<span class="c1"># This is the LDAP master in URI form (ldap://server)</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::master</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap://ldap_server1.your.domain</span>
+
+<span class="c1"># === ldap::uri ===</span>
+<span class="c1"># List of OpenLDAP servers in URI form (ldap://server)</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::uri</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ldap://ldap_server1.your.domain</span>
+
+<span class="c1"># === sssd::domains ===</span>
+<span class="c1"># A list of domains for SSSD to use.</span>
+<span class="c1"># `simp config` will automatically populate this field with `FQDN` if</span>
+<span class="c1"># `use_fqdn` is true, otherwise it will comment out the field.</span>
+<span class="c1">#</span>
+<span class="l l-Scalar l-Scalar-Plain">sssd::domains</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">LDAP</span>
+</pre></div>
+</div>
+<p>Add the <cite>simp::ldap_server</cite> class into the yaml file for the ldap server in
+Hiera (<cite>hieradata/hosts/ldap_server1.your.domain.yaml</cite>):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">classes</span> <span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;simp::server::ldap&#39;</span>
+</pre></div>
+</div>
+<p>Leave any other classes that are there if they are needed.  Run the puppet
+agent on the ldap server until it runs cleanly. Run the agent on the puppet
+server.  Once all the other clients update against the Puppet server, they will
+be able to authenticate against the LDAP server.  Adding users and groups is
+described in the <a class="reference internal" href="../User_Management.html#user-management"><span>User Management</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Information on how the create salted ({SSHA}) passwords can be found at the
+<a class="reference external" href="http://www.openldap.org/faq/data/cache/347.html">OpenLDAP site</a>.</p>
+</div>
+</div>
+<div class="section" id="set-up-the-redundant-slave-servers">
+<h2>4.7.14.2. Set up the Redundant(Slave) Servers<a class="headerlink" href="#set-up-the-redundant-slave-servers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-settings">
+<h3>4.7.14.2.1. Default Settings<a class="headerlink" href="#default-settings" title="Permalink to this headline">¶</a></h3>
+<p>Once the master is ready, LDAP slave nodes can be configured to replicate data
+from the master. These servers are read-only, and modifications cannot be made
+to LDAP entries while the master is down.</p>
+<p>Slave nodes can be configured via hiera by using <cite>simp_options::simp::ldap_server::is_slave</cite>,
+setting the replication id, and adding the <cite>simp_options::simp::ldap_server</cite> class.  This
+will set up your redundant server using the defaults. To do these three things,
+add the following lines to the
+<code class="docutils literal"><span class="pre">hieradata/hosts/ldap_server2.your.domain.yaml</span></code> file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">simp::server::ldap:is_slave</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">simp::server::ldap:rid</span><span class="p p-Indicator">:</span> <span class="s">&quot;888&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">classes</span> <span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;simp::server::ldap&#39;</span>
+</pre></div>
+</div>
+<p id="uri">To make other clients aware of this server, add the redundant server&#8217;s URI to
+lists of URIs in the <code class="docutils literal"><span class="pre">hieradata/simp_def.yaml</span></code> file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># === ldap::uri ===</span>
+<span class="c1"># List of OpenLDAP servers in URI form (ldap://server)</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::uri</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ldap://ldap_server1.your.domain</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ldap://ldap_server2.your.domain</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To see the defaults for LDAP replication in SIMP, review the parameters passed
+to the module <code class="docutils literal"><span class="pre">openldap/manifests/server/syncrepl.pp</span></code>. These parameters are
+used to add the replication settings to the <code class="docutils literal"><span class="pre">syncrepl.conf</span></code> file.
+Definitions can be found in the syncrepl.conf (5) man page.</p>
+</div>
+</div>
+<div class="section" id="custom-replication-settings">
+<h3>4.7.14.2.2. Custom Replication Settings<a class="headerlink" href="#custom-replication-settings" title="Permalink to this headline">¶</a></h3>
+<p>If settings other than the defaults are needed, create a manifest under
+<cite>site::</cite> and use the <cite>openldap::server::syncrepl</cite> class with the necessary
+parameters.</p>
+<p>In this example, the site profile is called <cite>site::ldapslave</cite> and the RID of
+the server is <cite>999</cite> (these can be changed).  One setting, <cite>sizelimit</cite>, is being
+overwritten but you can overwrite any number of them.</p>
+<div class="highlight-puppet"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="na">site</span><span class="p">::</span><span class="na">ldapslave</span> <span class="p">{</span>
+
+  <span class="k">include</span> <span class="s">&#39;simp::server::ldap&#39;</span><span class="c"></span>
+
+<span class="c">  # custom settings:</span>
+  <span class="na">openldap</span><span class="p">::</span><span class="na">server</span><span class="p">::</span><span class="na">syncrepl</span> <span class="p">{</span> <span class="s">&#39;999&#39;</span><span class="p">:</span>
+    <span class="na">sizelimit</span>  <span class="o">=&gt;</span> <span class="s">&#39;5000&#39;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The name of the <cite>openldap::server::syncrepl</cite> instance must be a unique replication id.</p>
+<p>Place this file in the <cite>site::</cite> module&#8217;s  <cite>manifests/</cite> directory using the name
+<cite>ldapslave.pp</cite>.   Include this class from the slave server&#8217;s hiera .yaml file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">classes</span> <span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;site::ldapslave&#39;</span>
+</pre></div>
+</div>
+<p>Lastly, add the server to the <a class="reference internal" href="#uri">URI</a> listing in <cite>simp_def.yaml</cite> so all the
+clients know about it once they have updated from the puppet master.</p>
+</div>
+</div>
+<div class="section" id="promote-a-slave-node">
+<h2>4.7.14.3. Promote a Slave Node<a class="headerlink" href="#promote-a-slave-node" title="Permalink to this headline">¶</a></h2>
+<p>Slave nodes can be promoted to act as the LDAP master node. To do this, change
+the node classifications of the relevant hosts.  For a node with the default
+settings, just remove the <code class="docutils literal"><span class="pre">simp::ldap_server::is_slave</span> <span class="pre">:</span> <span class="pre">true</span></code> from the
+server&#8217;s hiera .yaml file and change the setting for the master ldap in the
+<code class="docutils literal"><span class="pre">simp_def.yaml</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># This is the LDAP master in URI form (ldap://server)</span>
+<span class="l l-Scalar l-Scalar-Plain">simp_options::ldap::master</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap://ldap_server1.your.domain</span>
+</pre></div>
+</div>
+<p>For a redundant server set up using custom settings, remove the call to the
+custom class and replace it with the call to the site::ldap_server class in the
+servers yaml file and set the master setting in the <code class="docutils literal"><span class="pre">simp_def.yaml</span></code> file as
+shown above.</p>
+<p>In both cases, if the current master is not down, make sure it has completed
+replication before changing the settings.  Once the settings are changed, run
+puppet agent -t on the ldap server. After the next Puppet run on all the hosts
+the server will be promoted to master and all the slaves will point to it.</p>
+</div>
+<div class="section" id="remove-a-node-or-demote-a-master">
+<h2>4.7.14.4. Remove a Node or Demote a Master<a class="headerlink" href="#remove-a-node-or-demote-a-master" title="Permalink to this headline">¶</a></h2>
+<p>To demote a master, simply configure it as slave in either of the
+configurations above after the new master has been configured and put in place,
+then run the puppet agent.  Lastly, manually remove the active database from
+the server. (Check the setting <code class="docutils literal"><span class="pre">openldap::server::conf::directory</span></code> setting
+for the location of the files.)</p>
+<p>To remove an LDAP server, first remove the server from the <a class="reference internal" href="#uri">URI</a>  settings in
+<code class="docutils literal"><span class="pre">simp_def.yaml</span></code>.  Give the clients time to update from the puppet server so
+they do not attempt to call it.  Then remove relevant settings from it&#8217;s hiera
+.yaml file and run the puppet agent.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h2>4.7.14.5. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>If the system is not replicating, it is possible that another user has updated
+the <code class="docutils literal"><span class="pre">simp_options::ldap::sync_pw</span></code> and <code class="docutils literal"><span class="pre">simp_options::ldap::sync_hash</span></code> entries in the
+<code class="docutils literal"><span class="pre">/etc/puppetlabs/code/environments/simp/simp_def.yaml</span></code> file without also updating the
+value in LDAP itself; this is the most common issue reported by users.</p>
+<p>Currently, SIMP cannot self-modify the LDAP database directly; therefore, the
+LDAP Administrator needs to perform this action. Refer to the
+<a class="reference internal" href="../User_Management.html#user-management"><span>User Management</span></a> chapter for more information on manipulating entries in
+OpenLDAP.</p>
+<p>The example below shows the changes necessary to update the
+<code class="docutils literal"><span class="pre">simp_options::ldap::sync</span></code> information in LDAP.</p>
+<p>Update <code class="docutils literal"><span class="pre">simp_options::ldap::sync</span></code> Information in LDAP Examples</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=LDAPSync,ou=People,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
+<span class="l l-Scalar l-Scalar-Plain">replace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">userPassword</span>
+<span class="l l-Scalar l-Scalar-Plain">userPassword</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Hash from simp_options::ldap::sync_hash&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="further-information">
+<h2>4.7.14.6. Further Information<a class="headerlink" href="#further-information" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://www.openldap.org/doc/admin24/intro.html">OpenLDAP site</a> contains more information on configuring and maintaining Open LDAP servers.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SFTP_Restricted_Accounts.html" class="btn btn-neutral float-right" title="4.7.15. HOWTO Enable SFTP Restricted Accounts" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Puppet_Server_NAT.html" class="btn btn-neutral" title="4.7.13. HOWTO Configure a Puppet Server Behind a NAT" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

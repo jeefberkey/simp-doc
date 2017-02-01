@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.4.1. Environment Preparation &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="3.4. Building a SIMP ISO" href="../Building_A_SIMP_ISO.html"/>
+        <link rel="next" title="3.4.2. Building SIMP From Tarball" href="Building_SIMP_From_Tarball.html"/>
+        <link rel="prev" title="3.4. Building a SIMP ISO" href="../Building_A_SIMP_ISO.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">3. Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">3.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dynamic/Known_OS_Compatibility.html">3.2. Known OS Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installing_SIMP_From_A_Repository.html">3.3. Installing SIMP From A Repository</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Building_A_SIMP_ISO.html">3.4. Building a SIMP ISO</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="">3.4.1. Environment Preparation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started">3.4.1.1. Getting Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-ruby">3.4.1.2. Set Up Ruby</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-mock">3.4.1.3. Configure Mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-to-work">3.4.1.4. Prepare to Work</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Building_SIMP_From_Tarball.html">3.4.2. Building SIMP From Tarball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Building_SIMP_From_Source.html">3.4.3. Building SIMP From Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Building_SIMP_Via_Rake.html">3.4.4. Building SIMP via Rake</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ISO_Install/index.html">3.5. SIMP Server ISO Installation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation_Miscellaney.html">3.6. Installation Miscellany</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">3. SIMP Getting Started Guide</a> &raquo;</li>
+      
+          <li><a href="../Building_A_SIMP_ISO.html">3.4. Building a SIMP ISO</a> &raquo;</li>
+      
+    <li>3.4.1. Environment Preparation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/getting_started_guide/ISO_Build/Environment_Preparation.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="environment-preparation">
+<span id="gsg-environment-preparation"></span><h1>3.4.1. Environment Preparation<a class="headerlink" href="#environment-preparation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getting-started">
+<h2>3.4.1.1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can skip setting up <code class="docutils literal"><span class="pre">mock</span></code> if you are generating an ISO from a release tarball!</p>
+</div>
+<div class="section" id="required-packages">
+<h3>3.4.1.1.1. Required Packages<a class="headerlink" href="#required-packages" title="Permalink to this headline">¶</a></h3>
+<p>Before we proceed, you&#8217;ll want to make sure that you have a few <a class="reference internal" href="../../glossary.html#term-rpm"><span class="xref std std-term">RPM</span></a>
+packages installed on your system and that your build system has access to the
+Internet. If you&#8217;re using <a class="reference internal" href="../../glossary.html#term-enterprise-linux"><span class="xref std std-term">Enterprise Linux</span></a> as your build system, you
+will need to enable <a class="reference internal" href="../../glossary.html#term-epel"><span class="xref std std-term">EPEL</span></a> for your system prior to proceeding.</p>
+<div class="section" id="required-rpms">
+<h4>3.4.1.1.1.1. Required RPMs<a class="headerlink" href="#required-rpms" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Installing from EL 6:</span>
+
+  $ sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+  $ sudo yum install -y augeas-devel createrepo genisoimage git gnupg2 <span class="se">\</span>
+      libicu-devel libxml2 libxml2-devel libxslt libxslt-devel <span class="se">\</span>
+      mock rpm-sign rpmdevtools clamav gcc gcc-c++ ruby-devel
+
+<span class="c1"># Installing from EL 7:</span>
+
+  $ sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  $ sudo yum install -y augeas-devel createrepo genisoimage git gnupg2 <span class="se">\</span>
+      libicu-devel libxml2 libxml2-devel libxslt libxslt-devel <span class="se">\</span>
+      mock rpm-sign rpmdevtools clamav-update gcc gcc-c++ ruby-devel
+
+<span class="c1"># Installing from Fedora 23/24:</span>
+
+  $ sudo dnf install -y augeas-devel createrepo genisoimage git gnupg <span class="se">\</span>
+      libicu-devel libxml2 libxml2-devel libxslt libxslt-devel <span class="se">\</span>
+      mock rpm-sign rpmdevtools clamav-update gcc gcc-c++ ruby-devel
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please use a <strong>non-root</strong> user for building SIMP!</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SIMP build generates various keys and does quite a bit of package
+signing. As such, your system mustto be able to keep its entropy pool
+full at all times. If you check <code class="docutils literal"><span class="pre">/proc/sys/kernel/random/entropy_avail</span></code>
+and it shows a number below <strong>1024</strong>, then you should either make sure that
+<code class="docutils literal"><span class="pre">rngd</span></code> is running and pointed to a hardware source (preferred) or install
+and use <strong>haveged</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="set-up-ruby">
+<h2>3.4.1.2. Set Up Ruby<a class="headerlink" href="#set-up-ruby" title="Permalink to this headline">¶</a></h2>
+<p>We highly recommend using <a class="reference internal" href="../../glossary.html#term-rvm"><span class="xref std std-term">RVM</span></a> to make it easy to develop and test
+against several versions of <a class="reference internal" href="../../glossary.html#term-ruby"><span class="xref std std-term">Ruby</span></a> at once without damaging your
+underlying Operating System.</p>
+<div class="section" id="rvm-installation">
+<h3>3.4.1.2.1. RVM Installation<a class="headerlink" href="#rvm-installation" title="Permalink to this headline">¶</a></h3>
+<p>The following commands, taken from the <a class="reference external" href="https://rvm.io/rvm/install">RVM Installation Page</a> can be used to
+install <a class="reference internal" href="../../glossary.html#term-rvm"><span class="xref std std-term">RVM</span></a> for your user.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gpg2 --keyserver hkp://keys.gnupg.net --recv-keys <span class="se">\</span>
+    409B6B1796C275462A1703113804BB82D39DC0E3
+$ <span class="se">\c</span>url -sSL https://get.rvm.io <span class="p">|</span> bash -s stable --ruby<span class="o">=</span>2.1.9
+$ <span class="nb">source</span> ~/.rvm/scripts/rvm
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-the-default-ruby">
+<h3>3.4.1.2.2. Set the Default Ruby<a class="headerlink" href="#set-the-default-ruby" title="Permalink to this headline">¶</a></h3>
+<p>You&#8217;ll want to use <a class="reference internal" href="../../glossary.html#term-ruby"><span class="xref std std-term">Ruby</span></a> 2.1.9 as your default <a class="reference internal" href="../../glossary.html#term-rvm"><span class="xref std std-term">RVM</span></a> for SIMP
+development.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ rvm use --default 2.1.9
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Once this is done, you can simply type <code class="docutils literal"><span class="pre">rvm</span> <span class="pre">use</span> <span class="pre">2.1.9</span></code>.</p>
+</div>
+</div>
+<div class="section" id="bundler">
+<h3>3.4.1.2.3. Bundler<a class="headerlink" href="#bundler" title="Permalink to this headline">¶</a></h3>
+<p>The next important tool is <a class="reference external" href="http://bundler.io/">Bundler</a>. Bundler makes it easy to install Gems
+and their dependencies. It gets this information from the Gemfile found in the
+root of each repo. The Gemfile contains all of the gems required for working
+with the repo. More info on Bundler can be found on the
+<a class="reference external" href="http://bundler.io/rationale.html">Bundler Rationale Page</a> and more information on Rubygems can be found at
+<a class="reference external" href="http://guides.rubygems.org/what-is-a-gem/">Rubygems.org</a>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ rvm all <span class="k">do</span> gem install bundler
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configure-mock">
+<h2>3.4.1.3. Configure Mock<a class="headerlink" href="#configure-mock" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you plan on just building from a tarball, you can skip this section.</p>
+</div>
+<p>Building SIMP from scratch makes heavy use of Mock to create clean packages. As
+such, you need to ensure that your system is ready.</p>
+<div class="section" id="add-your-user-to-the-mock-group">
+<h3>3.4.1.3.1. Add Your User to the Mock Group<a class="headerlink" href="#add-your-user-to-the-mock-group" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ getent group mock &gt; /dev/null <span class="o">||</span> sudo newgrp mock
+$ sudo usermod -a -G mock <span class="nv">$USER</span>
+</pre></div>
+</div>
+<p>You may need to run <code class="docutils literal"><span class="pre">newgrp</span></code> or logout and back in for the group settings to
+take effect.</p>
+</div>
+</div>
+<div class="section" id="prepare-to-work">
+<h2>3.4.1.4. Prepare to Work<a class="headerlink" href="#prepare-to-work" title="Permalink to this headline">¶</a></h2>
+<p>You are now ready to begin development!</p>
+<p>Clone simp-core:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/simp/simp-core
+$ <span class="nb">cd</span> simp-core
+</pre></div>
+</div>
+<p>Check out your desired branch of SIMP:</p>
+<ul class="simple">
+<li>To check out a stable SIMP release, check out a tag:</li>
+</ul>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>$ git fetch --tags
+$ git checkout tags/5.2.0-0
+</pre></div>
+</div>
+<ul class="simple">
+<li>To check out an unstable SIMP release, check out the latest 5.X or 4.X HEAD:</li>
+</ul>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>$ git checkout 5.1.X
+$ git checkout 4.2.X
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">SIMP &gt;= 5.2.X, &gt;= 4.3.X are still developed on the <code class="docutils literal"><span class="pre">5.1.X</span></code> and <code class="docutils literal"><span class="pre">4.2.X</span></code>
+branches, respectively. All future development will be made on the
+<code class="docutils literal"><span class="pre">master</span></code> branch.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Any branch that is not tagged with a git tag should be treated as
+<strong>unstable</strong>.</p>
+</div>
+<p>Grab gem dependencies:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ bundle install
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Building_SIMP_From_Tarball.html" class="btn btn-neutral float-right" title="3.4.2. Building SIMP From Tarball" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Building_A_SIMP_ISO.html" class="btn btn-neutral" title="3.4. Building a SIMP ISO" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

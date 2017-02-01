@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to the SIMP documentation! &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="#"/>
+        <link rel="next" title="1. For The Impatient" href="getting_started_guide/Just_Install.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="#">
+        
+
+        
+          
+          <img src="_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>Welcome to the SIMP documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-the-simp-documentation">
+<h1>Welcome to the SIMP documentation!<a class="headerlink" href="#welcome-to-the-simp-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the 5.2.1-0 release of SIMP, which is
+compatible with the 7.2 release of CentOS and Red Hat Enterprise
+Linux (RHEL).  This guide will walk a user through the process of installing
+and managing a <a class="reference internal" href="glossary.html#term-simp"><span class="xref std std-term">SIMP</span></a> system.  It also provides a mapping of security
+features to security requirements, which can be used to document a system&#8217;s
+security conformance.</p>
+<p>The System Integrity Management Platform (<a class="reference internal" href="glossary.html#term-simp"><span class="xref std std-term">SIMP</span></a>) is an
+<a class="reference internal" href="glossary.html#term-open-source"><span class="xref std std-term">Open Source</span></a> framework designed around the concept that individuals and
+organizations should not need to repeat the work of automating the basic
+components of their operating system infrastructure.</p>
+<p>Expanding upon this philosophy, SIMP also aims to take care of routine policy
+compliance to include <a class="reference internal" href="glossary.html#term-nist-800-53"><span class="xref std std-term">NIST 800-53</span></a>, <a class="reference internal" href="glossary.html#term-fips"><span class="xref std std-term">FIPS</span></a> 140-2, the
+<a class="reference internal" href="glossary.html#term-disa-stig"><span class="xref std std-term">DISA STIG</span></a>, and the <a class="reference internal" href="glossary.html#term-scap-security-guide"><span class="xref std std-term">SCAP Security Guide</span></a>.</p>
+<p>By using the <a class="reference internal" href="glossary.html#term-puppet"><span class="xref std std-term">Puppet</span></a> automation stack, SIMP is working toward the
+concept of a self-healing infrastructure that, when used with a consistent
+configuration management process, will allow users to have confidence that
+their systems not only start in compliance but remain in compliance over time.</p>
+<p>Finally, SIMP has a goal of remaining flexible enough to properly maintain your
+operational infrastructure. To this end, where possible, the SIMP components
+are written to allow all security-related capabilities to be easily adjusted to
+meet the needs of individual applications.</p>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_guide/Just_Install.html">1. For the Impatient</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started_guide/Just_Install.html#what-is-simp">1.1. What is SIMP?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started_guide/Just_Install.html#diving-right-in">1.2. Diving Right In</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic/Changelog.html">2. Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#simp-6-is-coming">2.1. SIMP 6 is Coming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#manual-changes-required-for-pre-5-1-0-upgrades">2.2. Manual Changes Required for Pre-5.1.0 Upgrades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#deprecations">2.3. Deprecations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#breaking-changes">2.4. Breaking Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#significant-updates">2.5. Significant Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#upgrade-guidance">2.6. Upgrade Guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#security-announcements">2.7. Security Announcements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#rpm-updates">2.8. RPM Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#rpm-deprecations">2.9. RPM Deprecations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#fixed-bugs">2.10. Fixed Bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#new-features">2.11. New Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Changelog.html#known-bugs">2.12. Known Bugs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_guide/index.html">3. Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started_guide/Introduction.html">3.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic/Known_OS_Compatibility.html">3.2. Known OS Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started_guide/Installing_SIMP_From_A_Repository.html">3.3. Installing SIMP From A Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started_guide/Building_A_SIMP_ISO.html">3.4. Building a SIMP ISO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started_guide/ISO_Install/index.html">3.5. SIMP Server ISO Installation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started_guide/Installation_Miscellaney.html">3.6. Installation Miscellany</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">4. User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/User_Management.html">4.4. User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/Troubleshooting.html">4.6. Troubleshooting Common Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributors_guide/index.html">5. Contributing to SIMP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributors_guide/Introduction.html">5.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributors_guide/Contribution_Procedure.html">5.2. Contribution Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributors_guide/Maintenance_Procedure.html">5.3. Maintenance Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributors_guide/Resources.html">5.4. Useful Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security_conop/index.html">6. Security Concept of Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security_conop/Introduction.html">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_conop/Technical_Security.html">6.2. Technical Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_conop/Operational_Security.html">6.3. Operational Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_conop/System_Management.html">6.4. Information System Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security_mapping/index.html">7. Security Control Mapping</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security_mapping/Components.html">7.1. SIMP Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_mapping/Controls.html">7.2. Security Control Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_mapping/index.html#indices-and-tables">7.3. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="help/index.html">8. Help</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="help/FAQ.html">8.1. Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/Public_Resources.html">8.2. Public Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/Commercial_Resources.html">8.3. Commercial Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/index.html#indices-and-tables">8.4. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">9. License</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license.html#legal-notice">9.1. Legal Notice</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">11. Glossary of Terms</a></li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getting_started_guide/Just_Install.html" class="btn btn-neutral float-right" title="1. For The Impatient" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

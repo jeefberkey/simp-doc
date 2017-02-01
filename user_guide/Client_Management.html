@@ -1,0 +1,643 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2. Client Management &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../index.html"/>
+        <link rel="up" title="4. SIMP User Guide" href="index.html"/>
+        <link rel="next" title="4.3. General Administration" href="SIMP_Administration.html"/>
+        <link rel="prev" title="4.1. Introduction" href="Introduction.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html">
+        
+
+        
+          
+          <img src="../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">4.2. Client Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-requirements">4.2.1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-puppet-master">4.2.2. Configuring the Puppet Master</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-dns">4.2.2.1. Configure DNS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-dhcp">4.2.2.2. Configure DHCP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-pxe-boot">4.2.2.3. Configure PXE Boot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apply-certificates">4.2.2.4. Apply Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-client">4.2.3. Setting Up the Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-puppet-issues">4.2.4. Troubleshooting Puppet Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-certificate-issues">4.2.5. Troubleshooting Certificate Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User_Management.html">4.4. User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Troubleshooting.html">4.6. Troubleshooting Common Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+    <li>4.2. Client Management</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/user_guide/Client_Management.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="client-management">
+<span id="id1"></span><h1>4.2. Client Management<a class="headerlink" href="#client-management" title="Permalink to this headline">¶</a></h1>
+<p>This chapter provides guidance to install and configure SIMP clients
+based on the standard SIMP system installed using the SIMP DVD.</p>
+<div class="section" id="system-requirements">
+<h2>4.2.1. System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
+<p>Client systems should meet the following minimum requirements:</p>
+<ul class="simple">
+<li>Hardware/<a class="reference internal" href="../glossary.html#term-virtual-machine"><span class="xref std std-term">Virtual Machine</span></a> (VM) : Capable of running RHEL 6 or 7 x86_64</li>
+<li>RAM: 512 MB</li>
+<li>HDD: 15 GB</li>
+</ul>
+</div>
+<div class="section" id="configuring-the-puppet-master">
+<h2>4.2.2. Configuring the Puppet Master<a class="headerlink" href="#configuring-the-puppet-master" title="Permalink to this headline">¶</a></h2>
+<p>Perform the following actions as <code class="docutils literal"><span class="pre">root</span></code> on the Puppet Master system <strong>prior</strong>
+to attempting to install a client.</p>
+<div class="section" id="configure-dns">
+<h3>4.2.2.1. Configure DNS<a class="headerlink" href="#configure-dns" title="Permalink to this headline">¶</a></h3>
+<p>In SIMP, numerous and/or large configuration files are distributed via
+<code class="docutils literal"><span class="pre">rsync</span></code> by Puppet to minimize management cost. These managed files presently
+include DNS configuration files and can be found at
+<code class="docutils literal"><span class="pre">/var/simp/environments/simp/rsync/&lt;OSTYPE&gt;/&lt;MAJORRELEASE&gt;/bind_dns/default</span></code>.</p>
+<p>The following configuration steps are for a SIMP-managed setup. However, you
+can use an existing DNS infrastructure.</p>
+<ol class="arabic simple">
+<li>Navigate to <code class="docutils literal"><span class="pre">/var/simp/environments/simp/rsync/&lt;OSTYPE&gt;/&lt;MAJORRELEASE&gt;/bind_dns/default</span></code></li>
+<li>Modify the <code class="docutils literal"><span class="pre">named</span></code> files to correctly reflect the environment.<ul>
+<li>The relevant files under <code class="docutils literal"><span class="pre">bind_dns/default</span></code> are as follows:<ul>
+<li><code class="docutils literal"><span class="pre">named/etc/named.conf</span></code></li>
+<li><code class="docutils literal"><span class="pre">named/etc/zones/your.domain</span></code></li>
+<li><code class="docutils literal"><span class="pre">named/var/named/forward/your.domain.db</span></code></li>
+<li><code class="docutils literal"><span class="pre">named/var/named/reverse/0.0.10.db</span></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Review <code class="docutils literal"><span class="pre">named/etc/named.conf</span></code> and update the following:<ul>
+<li>Update the <a class="reference internal" href="../glossary.html#term-ip"><span class="xref std std-term">IP</span></a> for allow-query and allow-recursion</li>
+<li>Delete any unnecessary zone stanzas (i.e. forwarding) if not
+necessary</li>
+<li>Substitute in the <a class="reference internal" href="../glossary.html#term-fqdn"><span class="xref std std-term">FQDN</span></a> of your domain for all occurrences of
+<code class="docutils literal"><span class="pre">your.domain</span></code></li>
+</ul>
+</li>
+<li>Add clients to <code class="docutils literal"><span class="pre">named/var/named/forward/your.domain.db</span></code> and
+<code class="docutils literal"><span class="pre">named/var/named/reverse/0.0.10.db</span></code> and then rename these files
+to appropriately match your environment.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple">
+<li>Type <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">agent</span> <span class="pre">-t</span></code> on the Puppet Master to apply
+the changes.</li>
+<li>Validate DNS and ensure the <code class="docutils literal"><span class="pre">/etc/resolv.conf</span></code> is updated appropriately.</li>
+<li>If an error about the <code class="docutils literal"><span class="pre">rndc.key</span></code> appears when starting <code class="docutils literal"><span class="pre">named</span></code>, see the
+<a class="reference external" href="https://www.isc.org/downloads/bind/">Bind Documentation</a>.  Once you have
+resolved the issue, re-run the puppet command <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">agent</span> <span class="pre">-t</span></code> on the
+Puppet Master to apply.</li>
+</ol>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">You can adjust the list of clients in your
+<code class="docutils literal"><span class="pre">named/var/named/forward/&lt;your.domain&gt;.db</span></code> and
+<code class="docutils literal"><span class="pre">named/var/named/reverse/&lt;your</span> <span class="pre">reverse</span> <span class="pre">domain&gt;.db</span></code> files at any time.
+Just remember to run <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">agent</span> <span class="pre">-t</span> <span class="pre">--tags</span> <span class="pre">named</span></code> on the Puppet
+Master to propagate these updates.</p>
+</div>
+</div>
+<div class="section" id="configure-dhcp">
+<h3>4.2.2.2. Configure DHCP<a class="headerlink" href="#configure-dhcp" title="Permalink to this headline">¶</a></h3>
+<p>Perform the following actions as <code class="docutils literal"><span class="pre">root</span></code> on the Puppet Master system
+prior to attempting to install a client.</p>
+<p>Open the <code class="docutils literal"><span class="pre">/var/simp/enviroments/simp/rsync/&lt;OSTYPE&gt;/&lt;MAJORRELEASE&gt;/dhcpd/dhcpd.conf</span></code> file
+and edit it to suit the necessary environment.</p>
+<p>Make sure the following is done in the <code class="docutils literal"><span class="pre">dhcpd.conf</span></code> :</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">next-server</span></code> setting in the <code class="docutils literal"><span class="pre">pxeclients</span></code> class block points to the
+IP Address of the <a class="reference internal" href="../glossary.html#term-tftp"><span class="xref std std-term">TFTP</span></a> server.</li>
+<li>Create a Subnet block and edit the following:<ul>
+<li>Make sure the <strong>router</strong> and <strong>netmask</strong> are correct for your
+environment.</li>
+<li>Enter the hardware ethernet and fixed-address for each client that will
+be kickstarted.  For increased security, it is suggested that SIMP
+environments not allow clients to pick random IP Address in a subnet.
+The MAC address must be associated with and IP Address here. (You can add
+additional ones as needed.)</li>
+<li>Enter the domain name for option <strong>domain-name</strong></li>
+<li>Enter the IP Address of the DNS server for option <strong>domain-name-servers</strong></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p>Save and close the file.</p>
+<p>Run <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">agent</span> <span class="pre">-t</span></code> on the Puppet Master to apply the changes.</p>
+</div>
+<div class="section" id="configure-pxe-boot">
+<h3>4.2.2.3. Configure PXE Boot<a class="headerlink" href="#configure-pxe-boot" title="Permalink to this headline">¶</a></h3>
+<p>Sample kickstart templates have been provided in the <code class="docutils literal"><span class="pre">/var/www/ks</span></code> directory on the SIMP server  and on the SIMP DVD under <code class="docutils literal"><span class="pre">/ks</span></code>.  Pre-boot images are located in the DVD under <code class="docutils literal"><span class="pre">/images/pxeboot</span></code>.  If you have an existing <a class="reference internal" href="../glossary.html#term-preboot-execution-environment"><span class="xref std std-term">Preboot Execution Environment</span></a> (PXE) setup you can use these to PXE a SIMP client. Follow your own sites procedures for this.</p>
+<p>In this section we describe how to configure the Kickstart and TFTP servers to PXE boot a SIMP client.  (The DHCP server setup, also required for PXE booting, is discussed in and earlier chapter.)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This example sets up a PXE boot for a system that is the same OS as the SIMP Server. If you are setting up a PXE boot for a different OS then you must make sure that the OS packages are available for all systems you are trying to PXE boot through YUM. There are notes throughout the instructions to help in setting multiple OS but they are not comprehensive.  You should understand DHCP, KS, YUM and TFTP relationships for PXE booting before attempting this.</p>
+</div>
+<div class="section" id="setting-up-kickstart">
+<h4>4.2.2.3.1. Setting Up Kickstart<a class="headerlink" href="#setting-up-kickstart" title="Permalink to this headline">¶</a></h4>
+<p>This section describes how to configure the kickstart server.</p>
+<ol class="arabic simple">
+<li>Locate the following files in the <code class="docutils literal"><span class="pre">/var/www/ks</span></code> directory<ul>
+<li><code class="docutils literal"><span class="pre">pupclient_x86_64.cfg</span></code></li>
+<li><code class="docutils literal"><span class="pre">diskdetect.sh</span></code></li>
+</ul>
+</li>
+<li>Open each of the files and follow the instructions provided within them to replace the variables.
+You need to know the IP Addresses of the YUM, Kickstart, and TFTPserver. (They default to the simp server in simp config).<ul>
+<li><code class="docutils literal"><span class="pre">pupclient_x86_64.cfg</span></code>: Replace the variables noted at the top and generate and
+enter the passwords.</li>
+<li><code class="docutils literal"><span class="pre">diskdetect.sh</span></code>:  The <code class="docutils literal"><span class="pre">diskdetect.sh</span></code> script is responsible for detecting the first active disk
+and applying a disk configuration. Edit this file to meet any necessary requirements or use this file
+as a starting point for further work. It will work as is for most systems as long as your disk device names are in the list.</li>
+</ul>
+</li>
+<li>Type <code class="docutils literal"><span class="pre">chown</span> <span class="pre">root.apache</span> <span class="pre">/var/www/ks/*</span></code> to ensure that all files are owned by <code class="docutils literal"><span class="pre">root</span></code> and in the <code class="docutils literal"><span class="pre">apache</span></code> group.</li>
+<li>Type <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">640</span> <span class="pre">/var/www/ks/*</span></code> to change the permissions so the owner can read and write the file and the <code class="docutils literal"><span class="pre">apache</span></code> group can only read.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The URLs and locations in the file are setup for a default SIMP install. That means the same OS and version as the SIMP server, all servers in one location (on the SIMP server) and in specific directories. If you have installed these servers in a different location than the defaults, you may need to edit URLs or directories.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want to PXE boot more than this operating system, make a copy of these files, name them appropriately and update URLS and links inside and anything else you may need. (You must know what you are doing before attempting this.) If you are booting more than one OS you must also make sure your YUM server has the OS packages for the other OSs. By default the YUM server on SIMP has the packages only for the version of OS installed on the SIMP server.</p>
+</div>
+</div>
+<div class="section" id="setting-up-tftp">
+<h4>4.2.2.3.2. Setting up TFTP<a class="headerlink" href="#setting-up-tftp" title="Permalink to this headline">¶</a></h4>
+<p>This section describes the process of setting up static files and
+manifests for TFTP.</p>
+<div class="section" id="static-files">
+<h5>4.2.2.3.2.1. Static Files<a class="headerlink" href="#static-files" title="Permalink to this headline">¶</a></h5>
+<p>Verify the static files are in the correct location:</p>
+<p>Type <code class="docutils literal"><span class="pre">cd</span> <span class="pre">/var/simp/enviroments/simp/rsync/&lt;OSTYPE&gt;/&lt;MAJORRELEASE&gt;/tftpboot</span></code></p>
+<p>(&lt;OSTYPE&gt; and &lt;MAJORRELEASE&gt; under rsync are the type and version of the SIMP <strong>server</strong>)</p>
+<p>Verify there is a <code class="docutils literal"><span class="pre">linux-install</span></code> directory and cd to this directory.</p>
+<p>Under the linux-install directory you should find a directory named <code class="docutils literal"><span class="pre">OSTYPE-MAJORRELEASE.MINORRELEASE-ARCH</span></code>
+and a link to this directory named <code class="docutils literal"><span class="pre">OSTYPE-MAJORRELEASE-ARCH</span></code>.</p>
+<p>Under OSTYPE-MAJORRELEASE.MINORRELEASE-ARCH you should find the files:</p>
+<ul class="simple">
+<li>initrd.img</li>
+<li>vmlinuz</li>
+</ul>
+<p>If these are not there then you must create the directories as needed and copy the files from
+<code class="docutils literal"><span class="pre">/var/www/yum/&lt;OSTYPE&gt;/&lt;MAJORRELEASE&gt;/&lt;ARCH&gt;/images/pxeboot</span></code> or from the images directory on the SIMP DVD.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The link is what is used in the TFTP configuration files.</p>
+</div>
+</div>
+<div class="section" id="manifest">
+<h5>4.2.2.3.2.2. Manifest<a class="headerlink" href="#manifest" title="Permalink to this headline">¶</a></h5>
+<p>Create a site manifest for the TFTP server on the Puppet server.</p>
+<ol class="arabic simple">
+<li>Create the file <code class="docutils literal"><span class="pre">/etc/puppetlabs/code/environments/simp/modules/site/manifests/tftpboot.pp</span></code>.  Use the source code example below.<ul>
+<li>Replace KSSERVER with the IP address of Kickstart server (or the code to look up the IP Address using Hiera).</li>
+<li>Replace OSTYPE, MAJORRELEASE and ARCH with the correct values for the systems you will be PXE booting.</li>
+<li>MODEL NAME is usually of the form OSTYPE-MAJORRELEASE-ARCH for consistency.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">site</span><span class="o">::</span><span class="n">tftpboot</span> <span class="p">{</span>
+  <span class="kp">include</span> <span class="s1">&#39;::tftpboot&#39;</span>
+
+  <span class="n">tftpboot</span><span class="o">::</span><span class="n">linux_model</span> <span class="p">{</span> <span class="s1">&#39;el7_x86_64&#39;</span><span class="p">:</span>
+    <span class="n">kernel</span> <span class="o">=&gt;</span> <span class="s1">&#39;OSTYPE-MAJORRELEASE-ARCH/vmlinuz&#39;</span><span class="p">,</span>
+    <span class="n">initrd</span> <span class="o">=&gt;</span> <span class="s1">&#39;OSTYPE-MAJORRELEASE-ARCH/initrd.img&#39;</span><span class="p">,</span>
+    <span class="n">ks</span>     <span class="o">=&gt;</span> <span class="s2">&quot;https://KSSERVER/ks/pupclient_x86_64.cfg&quot;</span><span class="p">,</span>
+    <span class="n">extra</span>  <span class="o">=&gt;</span> <span class="s2">&quot;inst.noverifyssl ksdevice=bootif</span><span class="se">\n</span><span class="s2">ipappend 2&quot;</span>
+  <span class="p">}</span>
+
+  <span class="o">::</span><span class="n">tftpboot</span><span class="o">::</span><span class="n">assign_host</span> <span class="p">{</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">model</span> <span class="o">=&gt;</span> <span class="s1">&#39;el7_x86_64&#39;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># Note the difference in the `extra` arguments here.</span>
+<span class="k">class</span> <span class="n">site</span><span class="o">::</span><span class="n">tftpboot</span> <span class="p">{</span>
+  <span class="kp">include</span> <span class="s1">&#39;::tftpboot&#39;</span>
+
+  <span class="n">tftpboot</span><span class="o">::</span><span class="n">linux_model</span> <span class="p">{</span> <span class="s1">&#39;el6_x86_64&#39;</span><span class="p">:</span>
+    <span class="n">kernel</span> <span class="o">=&gt;</span> <span class="s1">&#39;OSTYPE-MAJORRELEASE-ARCH/vmlinuz&#39;</span><span class="p">,</span>
+    <span class="n">initrd</span> <span class="o">=&gt;</span> <span class="s1">&#39;OSTYPE-MAJORRELEASE-ARCH/initrd.img&#39;</span><span class="p">,</span>
+    <span class="n">ks</span>     <span class="o">=&gt;</span> <span class="s2">&quot;https://KSSERVER/ks/pupclient_x86_64.cfg&quot;</span><span class="p">,</span>
+    <span class="n">extra</span>  <span class="o">=&gt;</span> <span class="s2">&quot;noverifyssl ksdevice=bootif</span><span class="se">\n</span><span class="s2">ipappend 2&quot;</span>
+  <span class="p">}</span>
+
+  <span class="n">tftpboot</span><span class="o">::</span><span class="n">assign_host</span> <span class="p">{</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">model</span> <span class="o">=&gt;</span> <span class="s1">&#39;el6_x86_64&#39;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Add the tftpboot site manifest on your puppet server node via Hiera.
+Create the file (or edit if it exists):  <code class="docutils literal"><span class="pre">/etc/puppetlabs/code/environments/simp/hieradata/hosts/&lt;tftp.server.fqdn&gt;.yaml</span></code>.
+(By default the TFTP server is the same as your puppet server so it should exist.)
+Add the following example code to that yaml file.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">classes</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;site::tftpboot&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>After updating the above file, type <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">agent</span> <span class="pre">-t</span> <span class="pre">--tags</span> <span class="pre">tftpboot</span></code>
+on the Puppet server.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To PXE boot more OSs, create, in the tftpboot.pp file, a tftpboot::linux_model
+block for each OS type using the extra directories and kickstart files
+created using the notes in previous sections. Point individual systems to
+them by adding assign_host lines with their MAC pointing to the appropriate
+model name.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="apply-certificates">
+<span id="certificates"></span><h3>4.2.2.4. Apply Certificates<a class="headerlink" href="#apply-certificates" title="Permalink to this headline">¶</a></h3>
+<p>All clients in a SIMP system must have <a class="reference internal" href="../glossary.html#term-public-key-infrastructure"><span class="xref std std-term">Public Key Infrastructure</span></a> (PKI)
+keypairs generated for the server.  These keys reside in the
+<code class="docutils literal"><span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code> directory  on the
+SIMP server and are served to the clients over the puppet protocol.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These keypairs are <strong>not</strong> the keys that the Puppet server uses for its
+operation. Do not get the two confused.</p>
+</div>
+<p>This section provides guidance on installing official certificates or, as
+an interim measure, generating certificates from the Fake (self-signing)
+Certificate Authority provided by SIMP.</p>
+<div class="section" id="installing-official-certificates">
+<h4>4.2.2.4.1. Installing Official Certificates<a class="headerlink" href="#installing-official-certificates" title="Permalink to this headline">¶</a></h4>
+<p>Below are the steps to install official certificates for a SIMP client on
+the SIMP server:</p>
+<ol class="arabic simple">
+<li>Copy the certificates received from a proper <a class="reference internal" href="../glossary.html#term-ca"><span class="xref std std-term">CA</span></a> to the SIMP server.</li>
+<li>Add the keys for the node to <code class="docutils literal"><span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code>.</li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p class="first">Type <code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist/***&lt;Client</span> <span class="pre">System</span> <span class="pre">FQDN&gt;***</span></code></p>
+</li>
+<li><p class="first">Type</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mv ***&lt;Certificate Directory&gt;***/***&lt;FQDN&gt;***.<span class="o">[</span>pem<span class="p">|</span>pub<span class="o">]</span> <span class="se">\</span>
+/var/simp/environments/simp/site_files/pki_files/files/keydist/***&lt;FQDN&gt;***
+</pre></div>
+</div>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">root.puppet</span> <span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code></p>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">u=rwX,g=rX,o-rwx</span> <span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code></p>
+</li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Create and populate the <code class="docutils literal"><span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist/cacerts</span></code>
+directory.</li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>Type <code class="docutils literal"><span class="pre">cd</span> <span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code></li>
+<li>Type <code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">cacerts</span></code> and copy the root CA public certificates into cacerts in Privacy
+Enhanced Mail (PEM) format (one per file).</li>
+<li>Type <code class="docutils literal"><span class="pre">cd</span> <span class="pre">cacerts</span></code></li>
+<li>Type <code class="docutils literal"><span class="pre">for</span> <span class="pre">file</span> <span class="pre">in</span> <span class="pre">*.pem;</span> <span class="pre">do</span> <span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">$file</span> <span class="pre">`openssl</span> <span class="pre">x509</span> <span class="pre">-in</span> <span class="pre">$file</span> <span class="pre">-hash</span> <span class="pre">-noout`.0;</span> <span class="pre">done</span></code></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="generating-certificates-from-the-fake-ca">
+<h4>4.2.2.4.2. Generating Certificates from the Fake CA<a class="headerlink" href="#generating-certificates-from-the-fake-ca" title="Permalink to this headline">¶</a></h4>
+<p>If server certificates have not or could not be obtained at the time of client
+installation, SIMP provides a way to create them for the system, so that it
+will work until proper certificates are provided.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This option should not be used for any operational system that can use proper
+enterprise PKI certificates.</p>
+</div>
+<p>Below are the steps to generate the certificates using the SIMP-provided, Fake CA.</p>
+<ol class="arabic simple">
+<li>Type <code class="docutils literal"><span class="pre">cd</span> <span class="pre">/etc/puppetlabs/code/environments/simp/FakeCA</span></code></li>
+<li>Type <code class="docutils literal"><span class="pre">vi</span> <span class="pre">togen</span></code></li>
+<li>Remove old entries from the file and add the <a class="reference internal" href="../glossary.html#term-fully-qualified-domain-name"><span class="xref std std-term">Fully Qualified Domain Name</span></a>
+(FQDN) of the systems (one per line) for which certificates will be created.</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>To use alternate DNS names for the same system, separate the names with
+commas and without spaces.</p>
+<p class="last">For example, <code class="docutils literal"><span class="pre">.name,alt.name1,alt.name2.</span></code></p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Type <code class="docutils literal"><span class="pre">wc</span> <span class="pre">cacertkey</span></code></li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Ensure that the <code class="docutils literal"><span class="pre">cacertkey</span></code> file is not empty. If it is, enter text into
+the file; then save and close the file.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Type <code class="docutils literal"><span class="pre">./gencerts_nopass.sh</span> <span class="pre">auto</span></code></li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To avoid using the default Fake CA values, remove the <code class="docutils literal"><span class="pre">auto</span></code> statement
+from the <code class="docutils literal"><span class="pre">./gencerts_nopass.sh</span></code> command.</p>
+</div>
+</div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If the <code class="docutils literal"><span class="pre">clean.sh</span></code> command is run after the certificates have been
+generated, you will not be able to generate new host certificates under the
+old CA. To troubleshoot certificate problems, see the
+<a class="reference internal" href="#cm-troubleshoot-cert-issues"><span>Troubleshooting Certificate Issues</span></a> section.</p>
+</div>
+<p>If issues arise while generating keys, type <code class="docutils literal"><span class="pre">cd</span> <span class="pre">/etc/puppetlabs/code/environments/simp/FakeCA</span></code>
+to navigate to the <code class="docutils literal"><span class="pre">/etc/puppetlabs/code/environments/simp/FakeCA</span></code> directory, then type
+<code class="docutils literal"><span class="pre">./clean.sh</span></code> to start over.</p>
+<p>After running the <code class="docutils literal"><span class="pre">clean.sh</span></code> script, type <code class="docutils literal"><span class="pre">./gencerts_nopass.sh</span></code> to
+run the script again using the previous procedure table.</p>
+</div>
+</div>
+</div>
+<div class="section" id="setting-up-the-client">
+<h2>4.2.3. Setting Up the Client<a class="headerlink" href="#setting-up-the-client" title="Permalink to this headline">¶</a></h2>
+<p>The following lists the steps to <a class="reference internal" href="../glossary.html#term-pxe"><span class="xref std std-term">PXE</span></a> boot the system and set up the
+client.</p>
+<ol class="arabic simple">
+<li>Set up your client&#8217;s <a class="reference internal" href="../glossary.html#term-bios"><span class="xref std std-term">BIOS</span></a> or virtual settings to boot off the
+network.</li>
+<li>Make sure the <a class="reference internal" href="../glossary.html#term-mac"><span class="xref std std-term">MAC</span></a> address of the client is set up in <a class="reference internal" href="../glossary.html#term-dhcp"><span class="xref std std-term">DHCP</span></a>
+(see <a class="reference internal" href="#configure-dhcp">Configure DHCP</a> for more info.)</li>
+<li>Restart the system.</li>
+<li>Once the client installs, reboots, and begins to bootstrap, it will check in
+for the first time.</li>
+<li>Puppet will not autosign puppet certificates by default and waitforcert is
+enabled. The client will check in every 30 seconds for a signed cert. Log on
+to the puppet server and run <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">cert</span> <span class="pre">sign</span> <span class="pre">&lt;puppet.client.fqdn&gt;</span></code>.</li>
+</ol>
+<p>Upon successful deployment of a new client, it is highly recommended that
+<a class="reference internal" href="User_Management/LDAP.html#managing-ldap-users"><span>LDAP administrative accounts</span></a> be created.</p>
+</div>
+<div class="section" id="troubleshooting-puppet-issues">
+<h2>4.2.4. Troubleshooting Puppet Issues<a class="headerlink" href="#troubleshooting-puppet-issues" title="Permalink to this headline">¶</a></h2>
+<p>If the client has been kickstarted, but is not communicating with the Puppet
+server, try the following options:</p>
+<ul class="simple">
+<li>Check the forward and reverse <a class="reference internal" href="../glossary.html#term-dns"><span class="xref std std-term">DNS</span></a> entries on the client and server;
+both must be correct.</li>
+<li>Check the time on the systems. More than an hour&#8217;s difference will cause
+serious issues with certificates.</li>
+<li>Remove <code class="docutils literal"><span class="pre">/etc/puppetlabs/puppet/ssl</span></code> on the client system; run <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">cert</span>
+<span class="pre">--clean</span> <span class="pre">***&lt;Client</span> <span class="pre">Host</span> <span class="pre">Name&gt;***</span></code> on the Puppet server and try again.</li>
+</ul>
+</div>
+<div class="section" id="troubleshooting-certificate-issues">
+<span id="cm-troubleshoot-cert-issues"></span><h2>4.2.5. Troubleshooting Certificate Issues<a class="headerlink" href="#troubleshooting-certificate-issues" title="Permalink to this headline">¶</a></h2>
+<p>If host certificates do not appear to be working and the banner is not getting
+rsync&#8217;d to the clients, ensure that all certificates verify against the
+installed <a class="reference internal" href="../glossary.html#term-ca"><span class="xref std std-term">CA</span></a> certificates.</p>
+<p>The table below lists the steps to determine which certificates are working and
+which are not.</p>
+<ol class="arabic simple">
+<li>Navigate to <code class="docutils literal"><span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code></li>
+<li>Run <code class="docutils literal"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-name</span> <span class="pre">“****&lt;your.domain&gt;*.pub”</span> <span class="pre">-exec</span> <span class="pre">openssl</span> <span class="pre">verify</span> <span class="pre">-CApath</span> <span class="pre">cacerts</span> <span class="pre">{}</span> <span class="pre">\;</span></code></li>
+</ol>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The screen displays <code class="docutils literal"><span class="pre">./&lt;Host</span> <span class="pre">Name&gt;.&lt;Your.Domain&gt;/&lt;Host</span>
+<span class="pre">Name&gt;.&lt;Your.Domain&gt;.pub:</span> <span class="pre">OK</span></code> If anything other than OK appears for each
+host, analyze the error and ensure that the CA certificates are correct.</p>
+</div>
+<p>If the <code class="docutils literal"><span class="pre">TXT_DB</span></code> error number <strong>2</strong> appears, revoke the certificate that is
+being regenerated. The table below lists the steps to revoke the certificate.</p>
+<ol class="arabic">
+<li><p class="first">Navigate to <code class="docutils literal"><span class="pre">/var/simp/environments/simp/site_files/pki_files/files/keydist</span></code></p>
+</li>
+<li><p class="first">Run</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>OPENSSL_CONF=default.cnf openssl ca -revoke \
+keydist/*&lt;Host to Revoke&gt;*/*&lt;Host to Revoke&gt;*.pub
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SIMP_Administration.html" class="btn btn-neutral float-right" title="4.3. General Administration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Introduction.html" class="btn btn-neutral" title="4.1. Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

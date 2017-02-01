@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.3. Operational Security &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../index.html"/>
+        <link rel="up" title="6. SIMP Security Concepts" href="index.html"/>
+        <link rel="next" title="6.4. Information System Management" href="System_Management.html"/>
+        <link rel="prev" title="6.2. Technical Security" href="Technical_Security.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html">
+        
+
+        
+          
+          <img src="../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Security Concept of Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Technical_Security.html">6.2. Technical Security</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">6.3. Operational Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-management">6.3.1. Configuration Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#baseline-configurations">6.3.1.1. Baseline Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#managing-configuration-changes">6.3.1.2. Managing Configuration Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#security-verification-and-flaw-remediation">6.3.1.3. Security Verification and Flaw Remediation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#malicious-code-protection">6.3.1.4. Malicious Code Protection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#software-and-information-integrity">6.3.1.5. Software and Information Integrity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#remote-maintenance">6.3.2. Remote Maintenance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incident-response">6.3.3. Incident Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contingency-planning">6.3.4. Contingency Planning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-backup">6.3.5. System Backup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Management.html">6.4. Information System Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">6. SIMP Security Concepts</a> &raquo;</li>
+      
+    <li>6.3. Operational Security</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/security_conop/Operational_Security.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="operational-security">
+<h1>6.3. Operational Security<a class="headerlink" href="#operational-security" title="Permalink to this headline">¶</a></h1>
+<p>This chapter contains SIMP security concepts that are related to the
+operational security controls in <a class="reference internal" href="../glossary.html#term-nist-800-53"><span class="xref std std-term">NIST 800-53</span></a>.</p>
+<div class="section" id="configuration-management">
+<h2>6.3.1. Configuration Management<a class="headerlink" href="#configuration-management" title="Permalink to this headline">¶</a></h2>
+<p>This section describes the management of various configurations within SIMP.</p>
+<div class="section" id="baseline-configurations">
+<h3>6.3.1.1. Baseline Configurations<a class="headerlink" href="#baseline-configurations" title="Permalink to this headline">¶</a></h3>
+<p>SIMP baselines include configuration settings and Puppet modules.  Currently,
+baselines are maintained for both Red Hat/CentOS 6.x, and Red Hat/CentOS 7.x.
+Each configuration item that is managed by a Puppet module has an RPM installed
+on the Puppet Master in the form of <code class="docutils literal"><span class="pre">pupmod-name-x.x.x-x</span></code>. This process
+allows for one main SIMP baseline to be maintained and modules to be upgraded
+easily. An overall SIMP RPM is also installed on the Puppet Master, which
+denotes the version number of SIMP that is installed.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id456"><span>CM-2</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#cm-2-2"><span>CM-2 (2)</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#cm-2-3"><span>CM-2 (3)</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id506"><span>CM-6</span></a>]</p>
+<p>SIMP installs a minimal set of <a class="reference internal" href="../glossary.html#term-rpm"><span class="xref std std-term">RPM</span></a> packages, which can be found in the
+kickstart files on the ISO. RPMs, services, and IPTables rules all use a
+whitelist stance for allowing access or installation.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#cm-2-5"><span>CM-2 (5)</span></a>]</p>
+<ul class="simple">
+<li>Additional RPMs must be installed by each implementation.</li>
+<li>Services must be declared explicitly or they will be disabled by Puppet</li>
+<li>IPTables rules must allow a service explicitly.</li>
+</ul>
+</div>
+<div class="section" id="managing-configuration-changes">
+<h3>6.3.1.2. Managing Configuration Changes<a class="headerlink" href="#managing-configuration-changes" title="Permalink to this headline">¶</a></h3>
+<p>Configuration change approvals are managed by each implementation; SIMP only
+provides the mechanisms to apply changes on clients. A combination of Puppet,
+rsync, and <a class="reference internal" href="../glossary.html#term-yum"><span class="xref std std-term">YUM</span></a> is used to apply those changes across any number of
+target Puppet clients. All changes made are audited with <code class="docutils literal"><span class="pre">auditd</span></code> or are
+logged to via <code class="docutils literal"><span class="pre">syslog</span></code>.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#cm-3a"><span>CM-3a.</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#cm-3-3"><span>CM-3 (3)</span></a>]</p>
+<p>Linux systems are made up of hundreds of configuration files that can contain
+numerous of settings. SIMP does not make an attempt to manage all of the
+settings in every file. Instead, critical operating system files or files that
+need to be controlled centrally are managed. Implementations can manage
+additional files if they are deemed necessary.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id506"><span>CM-6</span></a>]</p>
+</div>
+<div class="section" id="security-verification-and-flaw-remediation">
+<h3>6.3.1.3. Security Verification and Flaw Remediation<a class="headerlink" href="#security-verification-and-flaw-remediation" title="Permalink to this headline">¶</a></h3>
+<p>SIMP cannot detect flaws automatically; each implementation is responsible for
+tracking flaws. However, SIMP provides a way for flaws to be fixed across all
+clients. One or all of the following can help automate flaw remediation
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id506"><span>CM-6</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1719"><span>SI-2</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#si-2-1"><span>SI-2 (1)</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#si-2-4"><span>SI-2 (4)</span></a>]:</p>
+<ul class="simple">
+<li><strong>Puppet:</strong><ul>
+<li>Apply a configuration change to files that are managed by Puppet.</li>
+</ul>
+</li>
+<li><strong>rsync:</strong><ul>
+<li>Use this mechanism to deliver a file to a client. This can be used with or
+without Puppet to synchronize files.</li>
+</ul>
+</li>
+<li><strong>YUM:</strong><ul>
+<li>Update packages nightly with YUM. Placing an updated package in YUM and
+running a YUM update manually, or allowing time for the cron job to run,
+will ensure packages on all clients are updated.  Otherwise, a cron job
+will perform a daily update of packages with YUM.</li>
+</ul>
+</li>
+<li><strong>MCollective:</strong><ul>
+<li>Allow users to execute <strong>specific</strong> commands across large numbers of nodes
+in an auditable, distributed, and scalable, fashion.</li>
+</ul>
+</li>
+</ul>
+<p>The extent of security verification that is performed currently is based on
+changes to files that Puppet or the Advanced Intrusion Detection Environment
+(AIDE) provides. There are also Security Content Automation Protocol (SCAP)
+profiles available from the SCAP-Security-Guide project that check security
+configuration settings.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1802"><span>SI-6</span></a>]</p>
+</div>
+<div class="section" id="malicious-code-protection">
+<h3>6.3.1.4. Malicious Code Protection<a class="headerlink" href="#malicious-code-protection" title="Permalink to this headline">¶</a></h3>
+<p>For most environments, SIMP will use ClamAV to protect against malicious code.
+Rsync is used to push out new definitions, which should be updated by the local
+administrator regularly. SIMP also comes with a <code class="docutils literal"><span class="pre">mcafee::uvscan</span></code> module that
+manages an installation of uvscan, if it is preferred. The module can configure
+<code class="docutils literal"><span class="pre">.dat</span></code> file updates to occur over <code class="docutils literal"><span class="pre">rsync</span></code>.</p>
+<p>Both the ClamAV and McAfee modules provide a method to run a scan via cron on a
+customer scheduled basis.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1733"><span>SI-3</span></a>]</p>
+<p>SIMP also comes with the <code class="docutils literal"><span class="pre">chkrootkit</span></code> tool to check for <em>rootkits</em>. The tool
+runs as a cron job and places its output into syslog.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1733"><span>SI-3</span></a>]</p>
+</div>
+<div class="section" id="software-and-information-integrity">
+<h3>6.3.1.5. Software and Information Integrity<a class="headerlink" href="#software-and-information-integrity" title="Permalink to this headline">¶</a></h3>
+<p>Unauthorized changes to a local client can be detected by Puppet or AIDE (for
+any file managed by Puppet). In the event that a managed file is changed
+locally, Puppet will revert the file back to its original state.  It is
+important to note that this is a function of Puppet and is intended to be more
+of a configuration management feature rather than a security feature. If a
+Puppet client has been compromised, the Puppet Master may not have the ability
+to retake control over that client.  However, the Puppet Master can configure
+all other nodes to deny traffic from the compromised node if they are
+configured by the administrator to do so. There are additional configuration
+files that are checked by AIDE, which is triggered by a cron job. AIDE logs any
+detected file changes in syslog. Each implementation may add additional files
+that are managed by Puppet or watched by AIDE. The AIDE baseline database is
+updated periodically to handle the installation and updating of system RPMs and
+reduce false positives.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1811"><span>SI-7</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#si-7-1"><span>SI-7 (1)</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#si-7-2"><span>SI-7 (2)</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#si-7-3"><span>SI-7 (3)</span></a>]</p>
+</div>
+</div>
+<div class="section" id="remote-maintenance">
+<h2>6.3.2. Remote Maintenance<a class="headerlink" href="#remote-maintenance" title="Permalink to this headline">¶</a></h2>
+<p>Remote maintenance can be performed on SIMP using <a class="reference internal" href="../glossary.html#term-ssh"><span class="xref std std-term">SSH</span></a>. Local
+maintenance can be performed at the console or via serial port (if available).
+SSH sessions are tracked and logged using the security features built into
+SIMP. Console access requires someone to have access to the physical (or
+virtual) console along with the <code class="docutils literal"><span class="pre">root</span></code> password. Auditing of those actions
+also occurs in accordance with the configured audit policy. It is up to the
+implementer to decide how to distribute authentication information for remote
+maintenance.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id893"><span>MA-4</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#ma-4-1"><span>MA-4 (1)</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id933"><span>MA-6</span></a>]</p>
+</div>
+<div class="section" id="incident-response">
+<h2>6.3.3. Incident Response<a class="headerlink" href="#incident-response" title="Permalink to this headline">¶</a></h2>
+<p>While Puppet is not intended to be a security product primarily, its features
+help provide security functionality such as dynamic reconfigurations and
+wide-scale consistent mitigation application. If an implementation chooses,
+they can leverage Puppet&#8217;s ability to reconfigure systems as part of incident
+response.</p>
+<p>SIMP also delivers an MCollective infrastructure which can be used to rapidly
+query for system state or apply hotfixes in a scalable manner.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id783"><span>IR-1</span></a>]</p>
+</div>
+<div class="section" id="contingency-planning">
+<h2>6.3.4. Contingency Planning<a class="headerlink" href="#contingency-planning" title="Permalink to this headline">¶</a></h2>
+<p>SIMP does not provide any direct support for contingency planning. Some of the
+mechanisms provided by SIMP might be used to support an implementation&#8217;s
+contingency plan.</p>
+</div>
+<div class="section" id="system-backup">
+<h2>6.3.5. System Backup<a class="headerlink" href="#system-backup" title="Permalink to this headline">¶</a></h2>
+<p>SIMP comes with a module called <code class="docutils literal"><span class="pre">backuppc</span></code>. This module provides a base
+configuration of the <a class="reference external" href="http://backuppc.sourceforge.net/">BackupPC</a> software
+and allows Puppet servers and clients to perform backups.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#cp-10-6"><span>CP-10 (6)</span></a>]</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="System_Management.html" class="btn btn-neutral float-right" title="6.4. Information System Management" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Technical_Security.html" class="btn btn-neutral" title="6.2. Technical Security" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

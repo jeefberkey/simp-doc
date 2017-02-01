@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.4.2. Managing Local/Service Users &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="4.4. User Management" href="../User_Management.html"/>
+        <link rel="next" title="4.4.3. Managing SSSD LOCAL Domain And Users" href="SSSD.html"/>
+        <link rel="prev" title="4.4.1. Managing Users with Lightweight Directory Access Protocol (LDAP)" href="LDAP.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../User_Management.html">4.4. User Management</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="LDAP.html">4.4.1. Managing Users with Lightweight Directory Access Protocol (LDAP)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">4.4.2. Managing Local/Service Users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#service-account">4.4.2.1. Service Account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#local-user-account">4.4.2.2. Local User Account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing">4.4.2.3. Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="SSSD.html">4.4.3. Managing SSSD LOCAL Domain And Users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+          <li><a href="../User_Management.html">4.4. User Management</a> &raquo;</li>
+      
+    <li>4.4.2. Managing Local/Service Users</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/user_guide/User_Management/Local_Users.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="managing-local-service-users">
+<span id="local-user-management"></span><h1>4.4.2. Managing Local/Service Users<a class="headerlink" href="#managing-local-service-users" title="Permalink to this headline">¶</a></h1>
+<p>Though the SIMP team <strong>highly recommends</strong> using <a class="reference internal" href="LDAP.html#managing-ldap-users"><span>LDAP</span></a>
+to centrally manage your users, you may occasionally need to set up a
+<a class="reference internal" href="../../glossary.html#term-service-account"><span class="xref std std-term">service account</span></a> or specific local users on your systems.</p>
+<p>This section walks you through doing this in a way that is compatible with
+SIMP.</p>
+<p>The following examples assume that you are using the <code class="docutils literal"><span class="pre">site</span></code> module to set up
+your users. The examples may easily be extrapolated into defined types if you
+wish but are presented as classes for simplicity.</p>
+<p>If you are not familiar with setting up <a class="reference internal" href="../../glossary.html#term-ssh"><span class="xref std std-term">SSH</span></a> keys, you may want to
+follow the relevant <a class="reference external" href="https://help.github.com/articles/generating-ssh-keys">GitHub documentation</a>.</p>
+<div class="section" id="service-account">
+<h2>4.4.2.1. Service Account<a class="headerlink" href="#service-account" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">site</span><span class="o">::</span><span class="n">service_account</span> <span class="p">{</span>
+  <span class="kp">include</span> <span class="s1">&#39;::ssh&#39;</span>
+
+  <span class="vg">$_svc_account_user</span>           <span class="o">=</span> <span class="s1">&#39;svcuser&#39;</span>
+  <span class="vg">$_svc_account_group</span>          <span class="o">=</span> <span class="s1">&#39;svcgroup&#39;</span>
+  <span class="vg">$_svc_account_id</span>             <span class="o">=</span> <span class="s1">&#39;1777&#39;</span>
+  <span class="vg">$_svc_account_homedir</span>        <span class="o">=</span> <span class="s2">&quot;/var/local/${_svc_account_user}&quot;</span>
+
+  <span class="c1"># Since this is a service account, automatically generate an SSH key for</span>
+  <span class="c1"># the user and store it on the Puppet master for distribution.</span>
+  <span class="vg">$_svc_account_ssh_private_key</span> <span class="o">=</span> <span class="n">ssh_keygen</span><span class="p">(</span><span class="vg">$_svc_account_user</span><span class="p">,</span> <span class="s1">&#39;2048&#39;</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+  <span class="vg">$_svc_account_ssh_public_key</span> <span class="o">=</span> <span class="n">ssh_keygen</span><span class="p">(</span><span class="vg">$_svc_account_user</span><span class="p">,</span> <span class="s1">&#39;2048&#39;</span><span class="p">)</span>
+
+  <span class="n">group</span> <span class="p">{</span> <span class="vg">$_svc_account_group</span><span class="p">:</span>
+    <span class="n">gid</span>       <span class="o">=&gt;</span> <span class="vg">$_svc_account_id</span><span class="p">,</span>
+    <span class="n">allowdupe</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="n">user</span> <span class="p">{</span> <span class="vg">$_svc_account_user</span><span class="p">:</span>
+    <span class="n">uid</span>        <span class="o">=&gt;</span> <span class="vg">$_svc_account_id</span><span class="p">,</span>
+    <span class="n">allowdupe</span>  <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+    <span class="n">gid</span>        <span class="o">=&gt;</span> <span class="vg">$_svc_account_group</span><span class="p">,</span>
+    <span class="n">home</span>       <span class="o">=&gt;</span> <span class="vg">$_svc_account_homedir</span><span class="p">,</span>
+    <span class="n">managehome</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+    <span class="n">shell</span>      <span class="o">=&gt;</span> <span class="s1">&#39;/bin/bash&#39;</span>
+  <span class="p">}</span>
+
+  <span class="n">file</span> <span class="p">{</span> <span class="s2">&quot;${_svc_account_homedir}/.ssh&quot;</span><span class="p">:</span>
+    <span class="k">ensure</span> <span class="o">=&gt;</span> <span class="n">directory</span><span class="p">,</span>
+    <span class="n">owner</span>  <span class="o">=&gt;</span> <span class="vg">$_svc_account_user</span><span class="p">,</span>
+    <span class="n">group</span>  <span class="o">=&gt;</span> <span class="vg">$_svc_account_group</span><span class="p">,</span>
+    <span class="n">mode</span>   <span class="o">=&gt;</span> <span class="s1">&#39;0600&#39;</span>
+  <span class="p">}</span>
+
+  <span class="n">ssh_authorized_key</span> <span class="p">{</span> <span class="vg">$_svc_account_user</span><span class="p">:</span>
+    <span class="n">type</span>    <span class="o">=&gt;</span> <span class="s1">&#39;ssh-rsa&#39;</span><span class="p">,</span>
+    <span class="n">key</span>     <span class="o">=&gt;</span> <span class="vg">$_svc_account_ssh_public_key</span><span class="p">,</span>
+    <span class="n">target</span>  <span class="o">=&gt;</span> <span class="s2">&quot;${_svc_account_homedir}/.ssh/authorized_keys&quot;</span><span class="p">,</span>
+    <span class="nb">require</span> <span class="o">=&gt;</span> <span class="o">[</span>
+      <span class="no">File</span><span class="o">[</span><span class="s2">&quot;${_svc_account_homedir}/.ssh&quot;</span><span class="o">]</span><span class="p">,</span>
+      <span class="no">User</span><span class="o">[</span><span class="vg">$_svc_account_user</span><span class="o">]</span>
+    <span class="o">]</span>
+  <span class="p">}</span>
+
+  <span class="n">file</span> <span class="p">{</span> <span class="s2">&quot;${_svc_account_homedir}/.ssh/id_rsa&quot;</span><span class="p">:</span>
+    <span class="n">mode</span>    <span class="o">=&gt;</span> <span class="s1">&#39;0600&#39;</span><span class="p">,</span>
+    <span class="n">owner</span>   <span class="o">=&gt;</span> <span class="vg">$_svc_account_user</span><span class="p">,</span>
+    <span class="n">group</span>   <span class="o">=&gt;</span> <span class="vg">$_svc_account_group</span><span class="p">,</span>
+    <span class="n">content</span> <span class="o">=&gt;</span> <span class="vg">$_svc_account_ssh_private_key</span>
+  <span class="p">}</span>
+
+  <span class="n">file</span> <span class="p">{</span> <span class="s2">&quot;/etc/ssh/local_keys/${_svc_account_user}&quot;</span><span class="p">:</span>
+    <span class="n">owner</span>  <span class="o">=&gt;</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+    <span class="n">group</span>  <span class="o">=&gt;</span> <span class="vg">$_svc_account_group</span><span class="p">,</span>
+    <span class="n">mode</span>   <span class="o">=&gt;</span> <span class="s1">&#39;0644&#39;</span><span class="p">,</span>
+    <span class="n">source</span> <span class="o">=&gt;</span> <span class="s2">&quot;puppet:///site/ssh_autokeys/${_svc_account_user}.pub&quot;</span>
+  <span class="p">}</span>
+
+  <span class="n">sudo</span><span class="o">::</span><span class="n">user_specification</span> <span class="p">{</span> <span class="vg">$_svc_account_user</span><span class="p">:</span>
+    <span class="n">user_list</span> <span class="o">=&gt;</span> <span class="vg">$_svc_account_user</span><span class="p">,</span>
+    <span class="n">host_list</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="vg">$:</span><span class="ss">:fqdn</span><span class="o">]</span><span class="p">,</span>
+    <span class="n">runas</span>     <span class="o">=&gt;</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+    <span class="n">cmnd</span>      <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;/bin/cat /var/log/app.log&#39;</span><span class="o">]</span><span class="p">,</span>
+    <span class="n">passwd</span>    <span class="o">=&gt;</span> <span class="kp">false</span>
+  <span class="p">}</span>
+
+  <span class="c1"># Allow this service account from everywhere</span>
+  <span class="n">pam</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">manage</span> <span class="p">{</span> <span class="s2">&quot;Allow ${_svc_account_user}&quot;</span><span class="p">:</span>
+    <span class="n">users</span>   <span class="o">=&gt;</span> <span class="vg">$_svc_account_user</span><span class="p">,</span>
+    <span class="n">origins</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;ALL&#39;</span><span class="o">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="local-user-account">
+<h2>4.4.2.2. Local User Account<a class="headerlink" href="#local-user-account" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">site</span><span class="o">::</span><span class="n">local_account</span> <span class="p">{</span>
+  <span class="kp">include</span> <span class="s1">&#39;::ssh&#39;</span>
+
+  <span class="vg">$_local_account_user</span>           <span class="o">=</span> <span class="s1">&#39;localuser&#39;</span>
+  <span class="vg">$_local_account_group</span>          <span class="o">=</span> <span class="s1">&#39;localgroup&#39;</span>
+  <span class="vg">$_local_account_id</span>             <span class="o">=</span> <span class="s1">&#39;1778&#39;</span>
+
+  <span class="c1"># You&#39;ll probably want this in /home unless you&#39;re using NFS</span>
+  <span class="vg">$_local_account_homedir</span>        <span class="o">=</span> <span class="s2">&quot;/home/${_local_account_user}&quot;</span>
+
+  <span class="c1"># You&#39;ll need to get this from the user as it is their public key.</span>
+  <span class="vg">$_local_account_ssh_public_key</span> <span class="o">=</span> <span class="s1">&#39;AAA...==&#39;</span>
+
+  <span class="n">group</span> <span class="p">{</span> <span class="vg">$_local_account_group</span><span class="p">:</span>
+    <span class="n">gid</span>       <span class="o">=&gt;</span> <span class="vg">$_local_account_id</span><span class="p">,</span>
+    <span class="n">allowdupe</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="n">user</span> <span class="p">{</span> <span class="vg">$_local_account_user</span><span class="p">:</span>
+    <span class="n">uid</span>        <span class="o">=&gt;</span> <span class="vg">$_local_account_id</span><span class="p">,</span>
+    <span class="n">allowdupe</span>  <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+    <span class="n">gid</span>        <span class="o">=&gt;</span> <span class="vg">$_local_account_group</span><span class="p">,</span>
+    <span class="n">home</span>       <span class="o">=&gt;</span> <span class="vg">$_local_account_homedir</span><span class="p">,</span>
+    <span class="n">managehome</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+    <span class="n">shell</span>      <span class="o">=&gt;</span> <span class="s1">&#39;/bin/bash&#39;</span>
+  <span class="p">}</span>
+
+  <span class="c1"># If you want your local user to have a password (no key),</span>
+  <span class="c1"># omit this block and manually assign a password to the user</span>
+  <span class="c1"># after creation (passwd &lt;user&gt;)</span>
+  <span class="n">file</span> <span class="p">{</span> <span class="s2">&quot;/etc/ssh/local_keys/${_local_account_user}&quot;</span><span class="p">:</span>
+    <span class="n">owner</span>  <span class="o">=&gt;</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+    <span class="n">group</span>  <span class="o">=&gt;</span> <span class="vg">$_local_account_group</span><span class="p">,</span>
+    <span class="n">mode</span>   <span class="o">=&gt;</span> <span class="s1">&#39;0644&#39;</span><span class="p">,</span>
+    <span class="n">source</span> <span class="o">=&gt;</span> <span class="vg">$_local_account_ssh_public_key</span>
+  <span class="p">}</span>
+
+  <span class="n">sudo</span><span class="o">::</span><span class="n">user_specification</span> <span class="p">{</span> <span class="vg">$_local_account_user</span><span class="p">:</span>
+    <span class="n">user_list</span> <span class="o">=&gt;</span> <span class="vg">$_local_account_user</span><span class="p">,</span>
+    <span class="n">host_list</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="vg">$:</span><span class="ss">:fqdn</span><span class="o">]</span><span class="p">,</span>
+    <span class="n">runas</span>     <span class="o">=&gt;</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+    <span class="n">cmnd</span>      <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;/bin/cat /var/log/app.log&#39;</span><span class="o">]</span><span class="p">,</span>
+    <span class="n">passwd</span>    <span class="o">=&gt;</span> <span class="kp">false</span>
+  <span class="p">}</span>
+
+  <span class="c1"># Allow this account from everywhere</span>
+  <span class="n">pam</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">manage</span> <span class="p">{</span> <span class="s2">&quot;Allow ${_local_account_user}&quot;</span><span class="p">:</span>
+    <span class="n">users</span>   <span class="o">=&gt;</span> <span class="vg">$_local_account_user</span><span class="p">,</span>
+    <span class="n">origins</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;ALL&#39;</span><span class="o">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing">
+<h2>4.4.2.3. Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<p>The table below lists the steps to test that the configuration was
+applied correctly.</p>
+<ol class="arabic simple">
+<li>Log on to a server that has the template code configuration applied.</li>
+<li>Type <code class="docutils literal"><span class="pre">su</span> <span class="pre">-</span> <span class="pre">***&lt;USERNAME&gt;***</span></code></li>
+<li>Type <code class="docutils literal"><span class="pre">exec</span> <span class="pre">/usr/bin/ssh-agent</span> <span class="pre">/bin/bash</span></code> to ensure that ssh-agent has a
+shell running.</li>
+<li>Type <code class="docutils literal"><span class="pre">/usr/bin/ssh-add</span></code> to attach the user&#8217;s certificates.</li>
+<li><strong>Optional</strong>: Type <code class="docutils literal"><span class="pre">/usr/bin/ssh-add</span> <span class="pre">-l</span></code> to double check that the user&#8217;s
+certificates were added successfully.</li>
+<li>Type <code class="docutils literal"><span class="pre">ssh</span> <span class="pre">***&lt;HOST&gt;***</span></code> to SSH to a target machine that has the template
+code configuration applied.</li>
+</ol>
+<p>If successful, the user should be authenticated and gain access to the target
+machine without entering a password.</p>
+<p>If the user is prompted for a password, check to see if the permissions are set
+up properly and that the certificate keys are in the correct locations. In
+addition, check the <code class="docutils literal"><span class="pre">/etc/security/access.conf</span></code> file to ensure that it
+contains the user or user&#8217;s group in an allow statement. See <code class="docutils literal"><span class="pre">access.conf(5)</span></code>
+for details.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SSSD.html" class="btn btn-neutral float-right" title="4.4.3. Managing SSSD LOCAL Domain And Users" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="LDAP.html" class="btn btn-neutral" title="4.4.1. Managing Users with Lightweight Directory Access Protocol (LDAP)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

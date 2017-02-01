@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.4.1. Managing Users with Lightweight Directory Access Protocol (LDAP) &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../../index.html"/>
+        <link rel="up" title="4.4. User Management" href="../User_Management.html"/>
+        <link rel="next" title="4.4.2. Managing Local/Service Users" href="Local_Users.html"/>
+        <link rel="prev" title="4.4. User Management" href="../User_Management.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html">
+        
+
+        
+          
+          <img src="../../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../User_Management.html">4.4. User Management</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="">4.4.1. Managing Users with Lightweight Directory Access Protocol (LDAP)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-simp-ldifs">4.4.1.1. Prepare SIMP ldifs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-user">4.4.1.2. Add a User</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-a-user">4.4.1.3. Remove a User</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-common-ldap-operations">4.4.1.4. Additional Common LDAP Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting-issues">4.4.1.5. Troubleshooting Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Local_Users.html">4.4.2. Managing Local/Service Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSSD.html">4.4.3. Managing SSSD LOCAL Domain And Users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Troubleshooting.html">4.6. Troubleshooting Common Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">4. SIMP User Guide</a> &raquo;</li>
+      
+          <li><a href="../User_Management.html">4.4. User Management</a> &raquo;</li>
+      
+    <li>4.4.1. Managing Users with Lightweight Directory Access Protocol (LDAP)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/user_guide/User_Management/LDAP.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="managing-users-with-lightweight-directory-access-protocol-ldap">
+<span id="managing-ldap-users"></span><h1>4.4.1. Managing Users with Lightweight Directory Access Protocol (LDAP)<a class="headerlink" href="#managing-users-with-lightweight-directory-access-protocol-ldap" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#prepare-simp-ldifs" id="id1">Prepare SIMP ldifs</a></li>
+<li><a class="reference internal" href="#add-a-user" id="id2">Add a User</a><ul>
+<li><a class="reference internal" href="#add-a-user-with-a-password" id="id3">Add a User with a Password</a></li>
+<li><a class="reference internal" href="#add-a-user-without-a-password" id="id4">Add a User without a Password</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#remove-a-user" id="id5">Remove a User</a></li>
+<li><a class="reference internal" href="#additional-common-ldap-operations" id="id6">Additional Common LDAP Operations</a><ul>
+<li><a class="reference internal" href="#add-a-group" id="id7">Add a Group</a></li>
+<li><a class="reference internal" href="#remove-a-group" id="id8">Remove a Group</a></li>
+<li><a class="reference internal" href="#add-users-to-a-group" id="id9">Add Users to a Group</a></li>
+<li><a class="reference internal" href="#remove-users-from-a-group" id="id10">Remove Users from a Group</a></li>
+<li><a class="reference internal" href="#update-a-user-s-ssh-public-key" id="id11">Update a User&#8217;s SSH Public Key</a></li>
+<li><a class="reference internal" href="#force-a-password-reset" id="id12">Force a Password Reset</a></li>
+<li><a class="reference internal" href="#lock-an-ldap-account" id="id13">Lock an LDAP Account</a></li>
+<li><a class="reference internal" href="#unlock-an-ldap-account" id="id14">Unlock an LDAP Account</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting-issues" id="id15">Troubleshooting Issues</a></li>
+</ul>
+</div>
+<div class="section" id="prepare-simp-ldifs">
+<h2><a class="toc-backref" href="#id1">4.4.1.1. Prepare SIMP ldifs</a><a class="headerlink" href="#prepare-simp-ldifs" title="Permalink to this headline">¶</a></h2>
+<p>SIMP natively uses OpenLDAP for user and group management. Actionable
+copies of the <a class="reference internal" href="../../glossary.html#term-ldap"><span class="xref std std-term">LDAP</span></a> Data Interchange Format (.ldif) files can be found
+on the system in the <code class="docutils literal"><span class="pre">/usr/share/doc/simp-doc-&lt;Version&gt;/ldifs</span></code> directory.
+Copy these files into <code class="docutils literal"><span class="pre">/root/ldifs</span></code> and fix their Distinguished Names:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir /root/ldifs
+$ cp /usr/share/doc/simp-doc-*/ldifs/* /root/ldifs
+$ <span class="nb">cd</span> /root/ldifs
+$ sed -i <span class="s1">&#39;s/dc=your,dc=domain/&lt;your actual DN information&gt;/g&#39;</span> <span class="se">\*</span>.ldif
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not leave any extraneous spaces in LDIF files!</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Use `:set list` in vim to see hidden spaces at the end of lines.</span>
+
+<span class="c1"># Use the following to strip out inappropriate characters</span>
+
+sed -i <span class="se">\</span>
+  <span class="s1">&#39;s/\\(^[[:graph:]]\*:\\)[[:space:]]\*\\ ([[:graph:]]\*\\) \\[[:space:]]\*$/\\1\\2/&#39;</span> <span class="se">\</span>
+  file.ldif
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Use the <code class="docutils literal"><span class="pre">[</span></code> and <code class="docutils literal"><span class="pre">]</span></code> characters to scroll right when using
+ELinks.</p>
+</div>
+</div>
+<div class="section" id="add-a-user">
+<h2><a class="toc-backref" href="#id2">4.4.1.2. Add a User</a><a class="headerlink" href="#add-a-user" title="Permalink to this headline">¶</a></h2>
+<p>Users can be added with or without a password. Follow the instructions
+in the following sections.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Every user must belong to a unique, primary group, but can optionally
+belong to one or more, secondary groups.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This process should not be used to create users or groups for daemon
+processes unless the user has experience.</p>
+</div>
+<div class="section" id="add-a-user-with-a-password">
+<h3><a class="toc-backref" href="#id3">4.4.1.2.1. Add a User with a Password</a><a class="headerlink" href="#add-a-user-with-a-password" title="Permalink to this headline">¶</a></h3>
+<p>To add a user with a password to the system, along with a unique group for
+that user:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Use the <code class="docutils literal"><span class="pre">slappasswd</span></code> command to generate a password hash for a user.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/adduser_with_password.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=&lt;username&gt;,ou=Group,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">posixGroup</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
+<span class="l l-Scalar l-Scalar-Plain">cn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;username&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">gidNumber</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Unique GID Number&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;Group</span><span class="nv"> </span><span class="s">Description&gt;&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=&lt;username&gt;,ou=People,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">uid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;username&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">cn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;username&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">givenName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;First Name&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">sn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Last Name&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">mail</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;e-mail address&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">inetOrgPerson</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">posixAccount</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">shadowAccount</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ldapPublicKey</span>
+<span class="l l-Scalar l-Scalar-Plain">shadowMax</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">180</span>
+<span class="l l-Scalar l-Scalar-Plain">shadowMin</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="l l-Scalar l-Scalar-Plain">shadowWarning</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">7</span>
+<span class="l l-Scalar l-Scalar-Plain">shadowLastChange</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10701</span>
+<span class="l l-Scalar l-Scalar-Plain">sshPublicKey</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;some SSH public key&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">loginShell</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
+<span class="l l-Scalar l-Scalar-Plain">uidNumber</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;some UID number above 500&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">gidNumber</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;some GID number above 500&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">homeDirectory</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/&lt;username&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">userPassword</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;slappasswd generated SSHA hash&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">pwdReset</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">TRUE</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapadd -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldifs/adduser_with_password.ldif
+</pre></div>
+</div>
+<p>Ensure that an administrative account is created as soon as the SIMP system has
+been properly configured. Administrative accounts should belong to the
+<code class="docutils literal"><span class="pre">administrators</span></code> LDAP group (gidNumber 700). Members of this LDAP group can
+utilize sudo sudosh for privilege escalation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The <code class="docutils literal"><span class="pre">pwdReset:</span> <span class="pre">TRUE</span></code> command causes the user to change the
+assigned password at the next login. This command is useful to
+pre-generate the password first and change it at a later time.</p>
+<p class="last">This command appears to be broken in some versions of <code class="docutils literal"><span class="pre">nss_ldap</span></code>.
+Therefore, to avoid future issues set <code class="docutils literal"><span class="pre">shadowLastChange</span></code> to a value
+around 10000.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The initial password set for a user must conform to the password policy
+or the user will not be able to login and change his/her password, even
+though the password reset has been enabled by <code class="docutils literal"><span class="pre">pwdReset:</span> <span class="pre">TRUE</span></code>.</p>
+</div>
+</div>
+<div class="section" id="add-a-user-without-a-password">
+<h3><a class="toc-backref" href="#id4">4.4.1.2.2. Add a User without a Password</a><a class="headerlink" href="#add-a-user-without-a-password" title="Permalink to this headline">¶</a></h3>
+<p>To add a user without a password to the system, along with a unique group
+for that user</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/adduser_no_password.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=&lt;username&gt;,ou=Group,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">posixGroup</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
+<span class="l l-Scalar l-Scalar-Plain">cn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;username&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">gidNumber</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Unique GID Number&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;Group</span><span class="nv"> </span><span class="s">Description&gt;&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=&lt;username&gt;,ou=People,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">uid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;username&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">cn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;username&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">givenName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;First Name&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">sn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Last Name&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">mail</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;e-mail address&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">inetOrgPerson</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">posixAccount</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">shadowAccount</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ldapPublicKey</span>
+<span class="l l-Scalar l-Scalar-Plain">sshPublicKey</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;some SSH public key&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">loginShell</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
+<span class="l l-Scalar l-Scalar-Plain">uidNumber</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;some UID number above 500&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">gidNumber</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;GID number from above&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">homeDirectory</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/&lt;username&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapadd -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldifs/adduser_no_password.ldif
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="remove-a-user">
+<h2><a class="toc-backref" href="#id5">4.4.1.3. Remove a User</a><a class="headerlink" href="#remove-a-user" title="Permalink to this headline">¶</a></h2>
+<p>To remove a user from the system, along with a unique group for that user:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/del_user.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=&lt;User UID&gt;,ou=Group,dc=example,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changeType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">delete</span>
+
+<span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=&lt;User UID&gt;,ou=People,dc=example,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changeType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">delete</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapmodify -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldifs/del_user.ldif
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-common-ldap-operations">
+<h2><a class="toc-backref" href="#id6">4.4.1.4. Additional Common LDAP Operations</a><a class="headerlink" href="#additional-common-ldap-operations" title="Permalink to this headline">¶</a></h2>
+<p>As described below, other useful operations can be executed using the
+remaining LDIF files.</p>
+<div class="section" id="add-a-group">
+<h3><a class="toc-backref" href="#id7">4.4.1.4.1. Add a Group</a><a class="headerlink" href="#add-a-group" title="Permalink to this headline">¶</a></h3>
+<p>SIMP systems are preconfigured with two groups:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">administrators</span></code> (700):  Group that has both sudosh and ssh privileges</li>
+<li><code class="docutils literal"><span class="pre">users</span></code> (100): Group that does not have sudosh or ssh privileges</li>
+</ul>
+<p>To add another group:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/add_group.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=&lt;groupname&gt;,ou=Group,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">posixGroup</span>
+<span class="l l-Scalar l-Scalar-Plain">objectClass</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">top</span>
+<span class="l l-Scalar l-Scalar-Plain">cn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;groupname&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">gidNumber</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Unique GID number&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;Some</span><span class="nv"> </span><span class="s">useful</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">description&gt;&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapadd -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldifs/add_group.ldif
+</pre></div>
+</div>
+</div>
+<div class="section" id="remove-a-group">
+<h3><a class="toc-backref" href="#id8">4.4.1.4.2. Remove a Group</a><a class="headerlink" href="#remove-a-group" title="Permalink to this headline">¶</a></h3>
+<p>To remove a group:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/del_group.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=&lt;Group Name&gt;,ou=Group,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">delete</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapmodify -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldifs/del_group.ldif
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-users-to-a-group">
+<h3><a class="toc-backref" href="#id9">4.4.1.4.3. Add Users to a Group</a><a class="headerlink" href="#add-users-to-a-group" title="Permalink to this headline">¶</a></h3>
+<p>To add users to a group:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/add_to_group.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=&lt;Group Name&gt;,ou=Group,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
+<span class="l l-Scalar l-Scalar-Plain">add</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">memberUid</span>
+<span class="l l-Scalar l-Scalar-Plain">memberUid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;UID1&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">memberUid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;UID2&gt;</span>
+<span class="nn">...</span>
+<span class="l l-Scalar l-Scalar-Plain">memberUid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;UIDX&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapmodify -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldifs/add_to_group.ldif
+</pre></div>
+</div>
+</div>
+<div class="section" id="remove-users-from-a-group">
+<h3><a class="toc-backref" href="#id10">4.4.1.4.4. Remove Users from a Group</a><a class="headerlink" href="#remove-users-from-a-group" title="Permalink to this headline">¶</a></h3>
+<p>To remove users from a group:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/del_to_group.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cn=&lt;Group Name&gt;,ou=Group,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
+<span class="l l-Scalar l-Scalar-Plain">delete</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">memberUid</span>
+<span class="l l-Scalar l-Scalar-Plain">memberUid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;UID1&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">memberUid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;UID2&gt;</span>
+<span class="nn">...</span>
+<span class="l l-Scalar l-Scalar-Plain">memberUid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;UIDX&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapmodify -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldifs/del_from_group.ldif
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-a-user-s-ssh-public-key">
+<h3><a class="toc-backref" href="#id11">4.4.1.4.5. Update a User&#8217;s SSH Public Key</a><a class="headerlink" href="#update-a-user-s-ssh-public-key" title="Permalink to this headline">¶</a></h3>
+<p>To update an SSH public key:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/mod_sshkey.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=&lt;User UID&gt;,ou=People,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
+<span class="l l-Scalar l-Scalar-Plain">replace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sshPublicKey</span>
+<span class="l l-Scalar l-Scalar-Plain">sshPublicKey</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;User OpenSSH Public Key&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ldapmodify -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldif/mod_sshkey.ldif
+</pre></div>
+</div>
+</div>
+<div class="section" id="force-a-password-reset">
+<h3><a class="toc-backref" href="#id12">4.4.1.4.6. Force a Password Reset</a><a class="headerlink" href="#force-a-password-reset" title="Permalink to this headline">¶</a></h3>
+<p>To force a password reset for a user:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/force_password_reset.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=&lt;username&gt;,ou=People,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
+<span class="l l-Scalar l-Scalar-Plain">replace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">pwdReset</span>
+<span class="l l-Scalar l-Scalar-Plain">pwdReset</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">TRUE</span>
+<span class="p p-Indicator">-</span>
+<span class="l l-Scalar l-Scalar-Plain">replace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">shadowLastChange</span>
+<span class="l l-Scalar l-Scalar-Plain">shadowLastChange</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10101</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapmodify -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldifs/force_password_reset.ldif
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">ldapmodify</span></code> command is only effective when using the <em>ppolicy</em>
+overlay. In addition, the user&#8217;s <strong>shadowLastChange</strong> must be changed to a
+value prior to the expiration date to force a <a class="reference internal" href="../../glossary.html#term-pam"><span class="xref std std-term">PAM</span></a> reset.</p>
+</div>
+</div>
+<div class="section" id="lock-an-ldap-account">
+<h3><a class="toc-backref" href="#id13">4.4.1.4.7. Lock an LDAP Account</a><a class="headerlink" href="#lock-an-ldap-account" title="Permalink to this headline">¶</a></h3>
+<p>To lock an LDAP account:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/lock_user.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=&lt;username&gt;,ou=People,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
+<span class="l l-Scalar l-Scalar-Plain">replace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">pwdAccountLockedTime</span>
+<span class="l l-Scalar l-Scalar-Plain">pwdAccountLockedTime</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">000001010000Z</span>
+<span class="p p-Indicator">-</span>
+<span class="l l-Scalar l-Scalar-Plain">delete</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sshPublicKey</span>
+<span class="p p-Indicator">-</span>
+<span class="l l-Scalar l-Scalar-Plain">replace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">userPassword</span>
+<span class="l l-Scalar l-Scalar-Plain">userPassword</span><span class="p p-Indicator">:</span> <span class="kt">!!</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapmodify -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+-f /root/ldifs/lock_user.ldif
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">ldapmodify</span></code> command is only effective when using the
+<em>ppolicy</em> overlay.</p>
+</div>
+</div>
+<div class="section" id="unlock-an-ldap-account">
+<span id="unlock-ldap-label"></span><h3><a class="toc-backref" href="#id14">4.4.1.4.8. Unlock an LDAP Account</a><a class="headerlink" href="#unlock-an-ldap-account" title="Permalink to this headline">¶</a></h3>
+<p>To unlock an LDAP account:</p>
+<ol class="arabic simple">
+<li>Login to the LDAP server as <code class="docutils literal"><span class="pre">root</span></code>.</li>
+<li>Edit the <code class="docutils literal"><span class="pre">/root/ldifs/unlock_account.ldif</span></code> shown below.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">uid=&lt;User UID&gt;,ou=People,dc=your,dc=domain</span>
+<span class="l l-Scalar l-Scalar-Plain">changetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
+<span class="l l-Scalar l-Scalar-Plain">delete</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">pwdAccountLockedTime</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Type the following, substituting your DN information for
+<code class="docutils literal"><span class="pre">dc=your,dc=domain</span></code>:</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ldapmodify -Z -x -W -D <span class="s2">&quot;cn=LDAPAdmin,ou=People,dc=your,dc=domain&quot;</span> <span class="se">\</span>
+ -f /root/ldifs/unlock_account.ldif
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">ldapmodify</span></code> command is only effective when using the
+<em>ppolicy</em> overlay.</p>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting-issues">
+<h2><a class="toc-backref" href="#id15">4.4.1.5. Troubleshooting Issues</a><a class="headerlink" href="#troubleshooting-issues" title="Permalink to this headline">¶</a></h2>
+<p>If a user&#8217;s password is changed in LDAP or the user changes it shortly after
+its initial setup, the &#8220;Password too young to change&#8221; error may appear. In this
+situation, apply the <code class="docutils literal"><span class="pre">pwdReset:TRUE</span></code> option to the user&#8217;s account as
+described in <a class="reference internal" href="#add-a-user-with-a-password">Add a User with a Password</a>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Local_Users.html" class="btn btn-neutral float-right" title="4.4.2. Managing Local/Service Users" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../User_Management.html" class="btn btn-neutral" title="4.4. User Management" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

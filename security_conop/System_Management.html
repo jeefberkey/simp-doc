@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.4. Information System Management &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../index.html"/>
+        <link rel="up" title="6. SIMP Security Concepts" href="index.html"/>
+        <link rel="next" title="7. SIMP Security Control Mapping" href="../security_mapping/index.html"/>
+        <link rel="prev" title="6.3. Operational Security" href="Operational_Security.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html">
+        
+
+        
+          
+          <img src="../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Security Concept of Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Technical_Security.html">6.2. Technical Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Operational_Security.html">6.3. Operational Security</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">6.4. Information System Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#risk-assessment">6.4.1. Risk Assessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simp-self-risk-assessment">6.4.2. SIMP Self Risk Assessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vulnerability-scanning">6.4.3. Vulnerability Scanning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security-assessment-and-authorization">6.4.4. Security Assessment and Authorization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">6. SIMP Security Concepts</a> &raquo;</li>
+      
+    <li>6.4. Information System Management</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/security_conop/System_Management.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="information-system-management">
+<h1>6.4. Information System Management<a class="headerlink" href="#information-system-management" title="Permalink to this headline">¶</a></h1>
+<p>This chapter contains SIMP security concepts that are related to the management
+security controls in <a class="reference internal" href="../glossary.html#term-nist-800-53"><span class="xref std std-term">NIST 800-53</span></a>.</p>
+<div class="section" id="risk-assessment">
+<h2>6.4.1. Risk Assessment<a class="headerlink" href="#risk-assessment" title="Permalink to this headline">¶</a></h2>
+<p>This section describes the process of identifying risks within a system.</p>
+</div>
+<div class="section" id="simp-self-risk-assessment">
+<h2>6.4.2. SIMP Self Risk Assessment<a class="headerlink" href="#simp-self-risk-assessment" title="Permalink to this headline">¶</a></h2>
+<p>Risk can be found in any system. The SIMP team is constantly evaluating the
+system and the settings to minimize inherit risk. Most risks can be mitigated
+by processes and procedures at the implementation level. The following table
+describes the known areas in SIMP.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1234"><span>RA-1</span></a>]</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Risk</th>
+<th class="head">Possible Mitigations</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Disabling Puppet</strong>: This can cause the clients to be out of sync with
+the Puppet Master.</td>
+<td>SIMP attempts to force a break on any locks and restart Puppet on all
+clients after a time of 4*runinterval (30 minutes by default).
+Implementations should ensure that further steps have not been taken to
+disable Puppet and should monitor their logs. Administrators can use the
+puppetlast command on the Puppet Master to detect servers that have not
+checked in within a reasonable time period.</td>
+</tr>
+<tr class="row-odd"><td><strong>Out of Date Patches</strong>: SIMP can be built with the RPMs from CentOS or
+Red Hat. Those RPMs should be assumed out of date at the time a system is
+initially installed (if using the SIMP DVD).</td>
+<td>Implementations should obtain the latest RPMs and apply them in a
+reasonable manner. All SIMP systems will, by default, attempt to update
+all packages using YUM nightly. Therefore, having an updated repository
+will ensure that the systems are updated on a regular basis.</td>
+</tr>
+<tr class="row-even"><td><strong>Poor Account Management</strong>: SIMP security access control is based on
+users being created and managed over time. Giving shell access to
+unnecessary users allows them the opportunity to escalate privileges.</td>
+<td>Use the default <a class="reference internal" href="../glossary.html#term-ldif"><span class="xref std std-term">LDIF</span></a> files and local user modules to ensure that
+account settings remain restrictive. Ensure the system has policies and
+procedures in place to manage accounts. Finally, ensure that users are in
+appropriate groups with limited privileges.</td>
+</tr>
+</tbody>
+</table>
+<p>Table: SIMP Risk</p>
+</div>
+<div class="section" id="vulnerability-scanning">
+<h2>6.4.3. Vulnerability Scanning<a class="headerlink" href="#vulnerability-scanning" title="Permalink to this headline">¶</a></h2>
+<p>The SIMP development and security team performs regular vulnerability scanning
+of the product using commercial and open source tools. Results and mitigations
+for findings from those tools can be provided upon request.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id393"><span>CA-2</span></a>, <a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id1256"><span>RA-5</span></a>]</p>
+</div>
+<div class="section" id="security-assessment-and-authorization">
+<h2>6.4.4. Security Assessment and Authorization<a class="headerlink" href="#security-assessment-and-authorization" title="Permalink to this headline">¶</a></h2>
+<p>Assessment and authorization varies by implementation. Implementations are
+encouraged to use documentation artifacts provided by the SIMP team to assist
+with assessment and authorization.
+[<a class="reference internal" href="../security_mapping/controls/nist80053rev4/800-53-controls.html#id393"><span>CA-2</span></a>]</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Should users find issues with internal assessments, the SIMP team highly
+encourages them to submit a bug report using our <a class="reference external" href="https://simp-project.atlassian.net">Bug Tracker</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../security_mapping/index.html" class="btn btn-neutral float-right" title="7. SIMP Security Control Mapping" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Operational_Security.html" class="btn btn-neutral" title="6.3. Operational Security" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

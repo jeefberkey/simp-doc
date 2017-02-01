@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. SIMP User Guide &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../index.html"/>
+        <link rel="next" title="4.1. Introduction" href="Introduction.html"/>
+        <link rel="prev" title="3.6. Installation Miscellany" href="../getting_started_guide/Installation_Miscellaney.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html">
+        
+
+        
+          
+          <img src="../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynamic/Changelog.html">2. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">4. User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Client_Management.html">4.2. Client Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html">4.3. General Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User_Management.html">4.4. User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hiera_Overview.html">4.5. Hiera Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Troubleshooting.html">4.6. Troubleshooting Common Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO.html">4.7. SIMP HOWTO Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Package_Data.html">4.8. Package Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#indices-and-tables">4.9. Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>4. SIMP User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/user_guide/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simp-user-guide">
+<span id="id1"></span><h1>4. SIMP User Guide<a class="headerlink" href="#simp-user-guide" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">4.1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#level-of-knowledge">4.1.1. Level of Knowledge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#simp-defined">4.1.2. SIMP Defined</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Client_Management.html">4.2. Client Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Client_Management.html#system-requirements">4.2.1. System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Client_Management.html#configuring-the-puppet-master">4.2.2. Configuring the Puppet Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Client_Management.html#setting-up-the-client">4.2.3. Setting Up the Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Client_Management.html#troubleshooting-puppet-issues">4.2.4. Troubleshooting Puppet Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Client_Management.html#troubleshooting-certificate-issues">4.2.5. Troubleshooting Certificate Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SIMP_Administration.html">4.3. General Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html#nightly-updates">4.3.1. Nightly Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html#sudosh">4.3.2. Sudosh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html#user-accounts">4.3.3. User Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html#certificate-management">4.3.4. Certificate Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html#server-certificates">4.3.5. Server Certificates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html#puppet-certificates">4.3.6. Puppet Certificates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html#the-simp-utility">4.3.7. The SIMP Utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SIMP_Administration.html#integrating-applications">4.3.8. Integrating Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="User_Management.html">4.4. User Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="User_Management/LDAP.html">4.4.1. Managing Users with Lightweight Directory Access Protocol (LDAP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User_Management/Local_Users.html">4.4.2. Managing Local/Service Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User_Management/SSSD.html">4.4.3. Managing SSSD LOCAL Domain And Users</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Hiera_Overview.html">4.5. Hiera Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Hiera_Overview.html#setting-parameters">4.5.1. Setting Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hiera_Overview.html#assigning-classes-to-nodes">4.5.2. Assigning Classes to Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hiera_Overview.html#assigning-defined-types-to-nodes">4.5.3. Assigning Defined Types to Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hiera_Overview.html#simp-hiera-file-structure">4.5.4. SIMP Hiera File Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Troubleshooting.html">4.6. Troubleshooting Common Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Troubleshooting/My_Services_Are_Dying.html">4.6.1. My Services Are Dying!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Troubleshooting/Why_Cant_I_Login.html">4.6.2. Why Can&#8217;t I Login?!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Troubleshooting/PKI_Validation.html">4.6.3. Checking Your SIMP PKI Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Troubleshooting/Puppet_Certificate_Issues.html">4.6.4. Puppet Certificate Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="HOWTO.html">4.7. SIMP HOWTO Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Central_Log_Collection.html">4.7.1. Setup Central Log Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Changing_Puppet_Masters.html">4.7.2. Change Puppet Masters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Disable_dhcpd.html">4.7.3. Disable dhcpd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Disable_named.html">4.7.4. Disable named</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Discard_Mail_to_Root.html">4.7.5. Discard Mail to Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Exclude_Repositories.html">4.7.6. Exclude YUM Repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/NFS.html">4.7.7. Configure NFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/IPTables_NAT_Rules.html">4.7.8. Configure IPTables NAT Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Kerberos.html">4.7.9. Enable Kerberos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Managing_Workstation_Infrastructures.html">4.7.10. Manage Workstation Infrastructures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Network_Build.html">4.7.11. Kickstart the Initial Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Puppetmaster_Backup.html">4.7.12. Backup the Puppet Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Puppet_Server_NAT.html">4.7.13. Configure a Puppet Server Behind a NAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Redundant_LDAP.html">4.7.14. Enable Redundent LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/SFTP_Restricted_Accounts.html">4.7.15. Enable SFTP Restricted Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/SSH_Keys.html">4.7.16. Setup SSH Authorized Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Upgrade_SIMP.html">4.7.17. Upgrade SIMP (Coming Soon!)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HOWTO/Manage_TPM.html">4.7.18. Manage TPM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SIMP_Package_Data.html">4.8. Package Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="RPM_Lists/Core_SIMP_4.3.0_RPM_List.html">4.8.1. SIMP 4.3.0 RPMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RPM_Lists/Core_SIMP_5.2.0_RPM_List.html">4.8.2. SIMP 5.2.0 RPMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RPM_Lists/External_SIMP_4.3.0_CentOS_RPM_List.html">4.8.3. SIMP 4.3.0 CentOS External RPMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RPM_Lists/External_SIMP_4.3.0_RHEL_RPM_List.html">4.8.4. SIMP 4.3.0 RHEL External RPMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RPM_Lists/External_SIMP_5.2.0_CentOS_RPM_List.html">4.8.5. SIMP 5.2.0 CentOS External RPMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RPM_Lists/External_SIMP_5.2.0_RHEL_RPM_List.html">4.8.6. SIMP 5.2.0 RHEL External RPMs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>4.9. Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="../search.html"><span>Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Introduction.html" class="btn btn-neutral float-right" title="4.1. Introduction" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../getting_started_guide/Installation_Miscellaney.html" class="btn btn-neutral" title="3.6. Installation Miscellany" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

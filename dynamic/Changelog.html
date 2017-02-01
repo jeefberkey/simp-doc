@@ -1,0 +1,910 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. SIMP 5.2.1-0 &mdash; SIMP 5.2.1-0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SIMP 5.2.1-0 documentation" href="../index.html"/>
+        <link rel="next" title="3. SIMP Getting Started Guide" href="../getting_started_guide/index.html"/>
+        <link rel="prev" title="1. For The Impatient" href="../getting_started_guide/Just_Install.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html">
+        
+
+        
+          
+          <img src="../_static/SIMP_Logo.png" class="logo" />
+        
+        </a>
+
+        
+          
+          
+            <div class="version">
+              5.2.1
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to the SIMP documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/Just_Install.html">1. For the Impatient</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">2. Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simp-6-is-coming">2.1. SIMP 6 is Coming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-changes-required-for-pre-5-1-0-upgrades">2.2. Manual Changes Required for Pre-5.1.0 Upgrades</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sssd">2.2.1. SSSD</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deprecations">2.3. Deprecations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#breaking-changes">2.4. Breaking Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#significant-updates">2.5. Significant Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upgrade-guidance">2.6. Upgrade Guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security-announcements">2.7. Security Announcements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cves-addressed">2.7.1. CVEs Addressed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rpm-updates">2.8. RPM Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rpm-deprecations">2.9. RPM Deprecations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fixed-bugs">2.10. Fixed Bugs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-auditd">2.10.1. pupmod-simp-auditd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-autofs">2.10.2. pupmod-simp-autofs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-ganglia">2.10.3. pupmod-simp-ganglia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-named">2.10.4. pupmod-simp-named</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-network">2.10.5. pupmod-simp-network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-nfs">2.10.6. pupmod-simp-nfs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-openldap">2.10.7. pupmod-simp-openldap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-pupmod">2.10.8. pupmod-simp-pupmod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-rsyslog">2.10.9. pupmod-simp-rsyslog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-simp">2.10.10. pupmod-simp-simp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-simplib">2.10.11. pupmod-simp-simplib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simp-bootstrap">2.10.12. simp-bootstrap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simp-cli">2.10.13. simp-cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simp-core">2.10.14. simp-core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simp-utils">2.10.15. simp-utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dvd">2.10.16. DVD</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#new-features">2.11. New Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-cristifalcas-journald">2.11.1. pupmod-cristifalcas-journald</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.11.2. pupmod-simp-auditd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-dirtycow">2.11.3. pupmod-simp-dirtycow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.11.4. pupmod-simp-rsyslog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.11.5. pupmod-simp-simplib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pupmod-simp-tpm">2.11.6. pupmod-simp-tpm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.11.7. simp-bootstrap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simp-doc">2.11.8. simp-doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.11.9. DVD</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#known-bugs">2.12. Known Bugs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_guide/index.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">4. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors_guide/index.html">5. Contributing to SIMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_conop/index.html">6. Security Concept of Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_mapping/index.html">7. Security Control Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">8. Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">9. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html#contact">10. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">11. Glossary of Terms</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">SIMP</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>2. SIMP 5.2.1-0</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/dynamic/Changelog.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simp-5-2-1-0">
+<h1><a class="toc-backref" href="#id6">2. SIMP 5.2.1-0</a><a class="headerlink" href="#simp-5-2-1-0" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#simp-5-2-1-0" id="id6">SIMP 5.2.1-0</a><ul>
+<li><a class="reference internal" href="#simp-6-is-coming" id="id7">SIMP 6 is Coming</a></li>
+<li><a class="reference internal" href="#manual-changes-required-for-pre-5-1-0-upgrades" id="id8">Manual Changes Required for Pre-5.1.0 Upgrades</a></li>
+<li><a class="reference internal" href="#deprecations" id="id9">Deprecations</a></li>
+<li><a class="reference internal" href="#breaking-changes" id="id10">Breaking Changes</a></li>
+<li><a class="reference internal" href="#significant-updates" id="id11">Significant Updates</a></li>
+<li><a class="reference internal" href="#upgrade-guidance" id="id12">Upgrade Guidance</a></li>
+<li><a class="reference internal" href="#security-announcements" id="id13">Security Announcements</a></li>
+<li><a class="reference internal" href="#rpm-updates" id="id14">RPM Updates</a></li>
+<li><a class="reference internal" href="#rpm-deprecations" id="id15">RPM Deprecations</a></li>
+<li><a class="reference internal" href="#fixed-bugs" id="id16">Fixed Bugs</a></li>
+<li><a class="reference internal" href="#new-features" id="id17">New Features</a></li>
+<li><a class="reference internal" href="#known-bugs" id="id18">Known Bugs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This release is known to work with:</p>
+<blockquote>
+<div><ul class="simple">
+<li>RHEL 7.2 x86_64</li>
+<li>CentOS 7.0 1511 x86_64</li>
+</ul>
+</div></blockquote>
+<p>This update is backwards-compatible for the SIMP 5.2 releases.</p>
+<div class="section" id="simp-6-is-coming">
+<h2><a class="toc-backref" href="#id7">2.1. SIMP 6 is Coming</a><a class="headerlink" href="#simp-6-is-coming" title="Permalink to this headline">¶</a></h2>
+<p>Due to Puppet 3.X going <a class="reference external" href="https://puppetlabs.com/misc/puppet-enterprise-lifecycle">EOL</a> in December of 2016, the SIMP stack will be
+releasing SIMP 6 as the next major release.  Among major changes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>SIMP 6 will use Puppet 4, which is distributed as a single RPM by the
+Puppet all-in-one (AIO) installer.</li>
+<li>Starting with 6.0.0, the SIMP numbering scheme will follow Semantic
+Versioning 2.0.0.</li>
+<li>6.0.0 and will support all operating systems under that numbering scheme
+henceforth.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="manual-changes-required-for-pre-5-1-0-upgrades">
+<h2><a class="toc-backref" href="#id8">2.2. Manual Changes Required for Pre-5.1.0 Upgrades</a><a class="headerlink" href="#manual-changes-required-for-pre-5-1-0-upgrades" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This only affects you if you did not have a separate partition for <code class="docutils literal"><span class="pre">/tmp</span></code>!</p>
+</div>
+<ul class="simple">
+<li>There were issues in the <code class="docutils literal"><span class="pre">secure_mountpoints</span></code> class that caused <code class="docutils literal"><span class="pre">/tmp</span></code>
+and <code class="docutils literal"><span class="pre">/var/tmp</span></code> to be mounted against the root filesystem. While the new
+code addresses this, it cannot determine if your system has been modified
+incorrectly in the past.</li>
+<li>To fix the issue, you need to do the following:<ul>
+<li>Unmount <code class="docutils literal"><span class="pre">/var/tmp</span></code> (may take multiple unmounts)</li>
+<li>Unmount <code class="docutils literal"><span class="pre">/tmp</span></code> (may take multiple unmounts)</li>
+<li>Remove the <code class="docutils literal"><span class="pre">'bind'</span></code> entries for <code class="docutils literal"><span class="pre">/tmp</span></code> and <code class="docutils literal"><span class="pre">/var/tmp</span></code> from <code class="docutils literal"><span class="pre">/etc/fstab</span></code></li>
+<li>Run <code class="docutils literal"><span class="pre">puppet</span></code> with the new code in place</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="sssd">
+<h3>2.2.1. SSSD<a class="headerlink" href="#sssd" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">SSSD enforces password strength at <strong>login</strong> time! This means that, should
+you have <strong>old</strong> passwords that do not meet the present password policy on
+the host, you will not be able to authenticate with your old password!</p>
+</div>
+</div>
+</div>
+<div class="section" id="deprecations">
+<h2><a class="toc-backref" href="#id9">2.3. Deprecations</a><a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">simp-sysctl</span></code> module will be deprecated in the <code class="docutils literal"><span class="pre">6.0.0</span></code> release of
+SIMP.  Current users should migrate to using the <code class="docutils literal"><span class="pre">augeasproviders_sysctl</span></code>
+module provided with SIMP going forward.</li>
+</ul>
+</div>
+<div class="section" id="breaking-changes">
+<h2><a class="toc-backref" href="#id10">2.4. Breaking Changes</a><a class="headerlink" href="#breaking-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>There were no breaking changes in this release.</li>
+</ul>
+</div>
+<div class="section" id="significant-updates">
+<h2><a class="toc-backref" href="#id11">2.5. Significant Updates</a><a class="headerlink" href="#significant-updates" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="upgrade-guidance">
+<h2><a class="toc-backref" href="#id12">2.6. Upgrade Guidance</a><a class="headerlink" href="#upgrade-guidance" title="Permalink to this headline">¶</a></h2>
+<p>Detailed upgrade guidance can be found in the <span class="xref std std-ref">ug-howto-upgrade-simp</span> portion of the
+<a class="reference internal" href="../user_guide/index.html#simp-user-guide"><span>SIMP User Guide</span></a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You must have at least <strong>2.4GB</strong> of <strong>free</strong> RAM on your system to upgrade to
+this release.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Upgrading from releases older than 5.0 is not supported.</p>
+</div>
+</div>
+<div class="section" id="security-announcements">
+<h2><a class="toc-backref" href="#id13">2.7. Security Announcements</a><a class="headerlink" href="#security-announcements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cves-addressed">
+<h3>2.7.1. CVEs Addressed<a class="headerlink" href="#cves-addressed" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5195">CVE-2016-5195</a><ul>
+<li>Dirty COW - A privilege escalation vulnerability in the Linux Kernel</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rpm-updates">
+<h2><a class="toc-backref" href="#id14">2.8. RPM Updates</a><a class="headerlink" href="#rpm-updates" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="21%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Package</th>
+<th class="head">Old Version</th>
+<th class="head">New Version</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pupmod-cristifalcas-journald</td>
+<td>N/A</td>
+<td>0.2.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-elasticsearch-logstash</td>
+<td>0.6.4-2016</td>
+<td>0.6.5-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-acpid</td>
+<td>0.0.2-2016</td>
+<td>0.0.3-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-activemq</td>
+<td>3.0.0-2016</td>
+<td>3.0.1-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-aide</td>
+<td>4.1.1-2016</td>
+<td>4.1.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-apache</td>
+<td>4.1.5-2016</td>
+<td>4.1.7-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-auditd</td>
+<td>5.0.4-2016</td>
+<td>5.1.1-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-autofs</td>
+<td>4.1.2-2016</td>
+<td>4.1.4-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-clamav</td>
+<td>4.1.1-2016</td>
+<td>4.1.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-compliance_markup</td>
+<td>1.0.0-0</td>
+<td>1.0.2-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-dhcp</td>
+<td>4.1.1-2016</td>
+<td>4.1.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-dirtycow</td>
+<td>N/A</td>
+<td>1.0.1-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-foreman</td>
+<td>0.2.0-2016</td>
+<td>0.2.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-freeradius</td>
+<td>5.0.2-2016</td>
+<td>5.0.3-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-ganglia</td>
+<td>5.0.0-2016</td>
+<td>5.0.1-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-haveged</td>
+<td>0.3.1-2016</td>
+<td>0.3.2-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-iptables</td>
+<td>4.1.4-2016</td>
+<td>4.1.5-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-jenkins</td>
+<td>4.1.0-2016</td>
+<td>4.1.1-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-krb5</td>
+<td>5.0.6-2016</td>
+<td>5.0.8-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-libreswan</td>
+<td>0.1.0-2016</td>
+<td>0.1.2-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-libvirt</td>
+<td>4.1.1-2016</td>
+<td>4.1.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-logrotate</td>
+<td>4.1.0-2016</td>
+<td>4.1.1-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-mcafee</td>
+<td>4.1.1-2016</td>
+<td>4.1.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-mcollective</td>
+<td>2.3.2-2016</td>
+<td>2.4.0-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-mozilla</td>
+<td>4.1.1-2016</td>
+<td>4.1.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-named</td>
+<td>4.3.1-2016</td>
+<td>4.3.3-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-network</td>
+<td>4.1.1-2016</td>
+<td>4.1.3-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-nfs</td>
+<td>4.5.2-2016</td>
+<td>4.5.3-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-nscd</td>
+<td>5.0.1-2016</td>
+<td>5.0.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-ntpd</td>
+<td>4.1.0-2016</td>
+<td>4.1.1-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-oddjob</td>
+<td>1.0.0-2016</td>
+<td>1.0.1-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-openldap</td>
+<td>4.1.8-2016</td>
+<td>4.1.9-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-openscap</td>
+<td>4.2.1-2016</td>
+<td>4.2.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-pam</td>
+<td>4.2.5-2016</td>
+<td>4.2.6-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-pki</td>
+<td>4.2.3-2016</td>
+<td>4.2.5-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-polkit</td>
+<td>4.1.0-2016</td>
+<td>4.1.1-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-postfix</td>
+<td>4.1.3-2016</td>
+<td>4.1.5-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-postgresql</td>
+<td>4.1.0-2016</td>
+<td>4.1.2-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-pupmod</td>
+<td>6.0.5-2016</td>
+<td>6.0.9-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-rsync</td>
+<td>4.2.2-2016</td>
+<td>4.2.3-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-rsyslog</td>
+<td>5.1.0-2016</td>
+<td>5.1.2-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-selinux</td>
+<td>1.0.3-2016</td>
+<td>1.0.4-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-simp</td>
+<td>1.2.7-2016</td>
+<td>1.2.10-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-simp_elasticsearch</td>
+<td>3.0.1-2016</td>
+<td>3.0.3-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-simp_grafana</td>
+<td>0.1.0-2016</td>
+<td>0.1.1-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-simpcat</td>
+<td>5.0.1-2016</td>
+<td>5.0.2-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-simplib</td>
+<td>1.3.1-2016</td>
+<td>1.3.4-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-site</td>
+<td>2.0.1-2016</td>
+<td>2.0.2-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-snmpd</td>
+<td>4.1.0-2016</td>
+<td>4.1.1-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-ssh</td>
+<td>4.1.10-2016</td>
+<td>4.1.13-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-sssd</td>
+<td>4.1.3-2016</td>
+<td>4.1.4-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-stunnel</td>
+<td>4.2.7-2016</td>
+<td>4.2.9-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-sudo</td>
+<td>4.1.2-2016</td>
+<td>4.1.3-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-sudosh</td>
+<td>4.1.1-2016</td>
+<td>4.1.2-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-svckill</td>
+<td>1.1.3-2016</td>
+<td>1.1.4-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-sysctl</td>
+<td>4.2.0-2016</td>
+<td>4.2.1-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-tcpwrappers</td>
+<td>4.1.0-2016</td>
+<td>4.1.1-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-tftpboot</td>
+<td>4.1.2-2016</td>
+<td>4.1.3-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-tpm</td>
+<td>0.1.0-2016</td>
+<td>0.2.0-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-upstart</td>
+<td>4.1.2-2016</td>
+<td>4.1.3-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-vnc</td>
+<td>4.1.0-2016</td>
+<td>4.1.1-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-vsftpd</td>
+<td>5.0.4-2016</td>
+<td>5.0.7-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-windowmanager</td>
+<td>4.1.2-2016</td>
+<td>4.1.3-2016</td>
+</tr>
+<tr class="row-odd"><td>pupmod-simp-xinetd</td>
+<td>2.1.0-2016</td>
+<td>2.1.1-2016</td>
+</tr>
+<tr class="row-even"><td>pupmod-simp-xwindows</td>
+<td>4.1.1-2016</td>
+<td>4.1.2-2016</td>
+</tr>
+<tr class="row-odd"><td>rubygem-simp-cli</td>
+<td>1.0.20-0.el7</td>
+<td>1.0.20-0.el7.centos</td>
+</tr>
+<tr class="row-even"><td>rubygem-simp-cli-doc</td>
+<td>1.0.20-0.el7</td>
+<td>1.0.20-0.el7.centos</td>
+</tr>
+<tr class="row-odd"><td>simp</td>
+<td>5.2.0-0</td>
+<td>5.2.1-0</td>
+</tr>
+<tr class="row-even"><td>simp-bootstrap</td>
+<td>5.3.2-0</td>
+<td>5.3.4-0</td>
+</tr>
+<tr class="row-odd"><td>simp-doc</td>
+<td>5.2.0-0</td>
+<td>N/A</td>
+</tr>
+<tr class="row-even"><td>simp-gpgkeys</td>
+<td>2.0.0-3.el7</td>
+<td>2.0.0-3.el7.centos</td>
+</tr>
+<tr class="row-odd"><td>simp-rsync</td>
+<td>5.1.0-3.el7</td>
+<td>5.1.0-3.el7.centos</td>
+</tr>
+<tr class="row-even"><td>simp-rsync-clamav</td>
+<td>5.1.0-3.el7</td>
+<td>5.1.0-3.el7.centos</td>
+</tr>
+<tr class="row-odd"><td>simp-utils</td>
+<td>5.0.1-1</td>
+<td>5.0.1-2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="rpm-deprecations">
+<h2><a class="toc-backref" href="#id15">2.9. RPM Deprecations</a><a class="headerlink" href="#rpm-deprecations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>None</li>
+</ul>
+</div>
+<div class="section" id="fixed-bugs">
+<h2><a class="toc-backref" href="#id16">2.10. Fixed Bugs</a><a class="headerlink" href="#fixed-bugs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pupmod-simp-auditd">
+<h3>2.10.1. pupmod-simp-auditd<a class="headerlink" href="#pupmod-simp-auditd" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Updated to use a specific configuration parameter instead of the presence of
+configured syslog servers to determine whether or not to enable log
+forwarding</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-autofs">
+<h3>2.10.2. pupmod-simp-autofs<a class="headerlink" href="#pupmod-simp-autofs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Updated the <code class="docutils literal"><span class="pre">::autofs::map::entry</span></code> and <code class="docutils literal"><span class="pre">::autofs::map::master</span></code> code to
+work safely with the <code class="docutils literal"><span class="pre">simp</span> <span class="pre">cat</span></code> module as well as properly ensuring that
+the <code class="docutils literal"><span class="pre">autofs</span></code> service is restarted when the content of one of the map files
+is changed.</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-ganglia">
+<h3>2.10.3. pupmod-simp-ganglia<a class="headerlink" href="#pupmod-simp-ganglia" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fixed an invalid <code class="docutils literal"><span class="pre">concat</span></code> dependency for the <code class="docutils literal"><span class="pre">$auth_user_file</span></code></li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-named">
+<h3>2.10.4. pupmod-simp-named<a class="headerlink" href="#pupmod-simp-named" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fixed chroot compatibility with <a class="reference internal" href="../glossary.html#term-el"><span class="xref std std-term">EL</span></a> 7</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-network">
+<h3>2.10.5. pupmod-simp-network<a class="headerlink" href="#pupmod-simp-network" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Updated to fix issues with Puppet 4</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-nfs">
+<h3>2.10.6. pupmod-simp-nfs<a class="headerlink" href="#pupmod-simp-nfs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Changed the permissions on <code class="docutils literal"><span class="pre">/etc/exports</span></code> to <code class="docutils literal"><span class="pre">644</span></code> which was validated to
+meet existing security requirements<ul>
+<li>Vagrant was dying if it could not read this file as a regular user</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-openldap">
+<h3>2.10.7. pupmod-simp-openldap<a class="headerlink" href="#pupmod-simp-openldap" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Multiple URIs in Hiera entries were not written into <code class="docutils literal"><span class="pre">ldap.conf</span></code></li>
+<li>The <code class="docutils literal"><span class="pre">DEREF</span></code> configuration value in <code class="docutils literal"><span class="pre">ldap.conf</span></code> was not populated
+correctly</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-pupmod">
+<h3>2.10.8. pupmod-simp-pupmod<a class="headerlink" href="#pupmod-simp-pupmod" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Properly redirect <code class="docutils literal"><span class="pre">STDERR</span></code> in <code class="docutils literal"><span class="pre">puppetagent_cron.erb</span></code></li>
+<li>Fully expanded the <code class="docutils literal"><span class="pre">pupmod::ssldir</span></code> parameter so that <code class="docutils literal"><span class="pre">$vardir</span></code> no longer
+causes issues when showing up in an <code class="docutils literal"><span class="pre">auditd</span></code> configuration file</li>
+<li>Corrected an issue where the <code class="docutils literal"><span class="pre">gem-home</span></code> parameter in <code class="docutils literal"><span class="pre">puppetserver.conf</span></code>
+was malformed</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-rsyslog">
+<h3>2.10.9. pupmod-simp-rsyslog<a class="headerlink" href="#pupmod-simp-rsyslog" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Enabled forwarding of <code class="docutils literal"><span class="pre">journald</span></code> messages to syslog since <a class="reference internal" href="../glossary.html#term-el"><span class="xref std std-term">EL</span></a> 7.2
+disabled this by default</li>
+<li>Fixed an issue where rules that were no longer managed by the module were not
+correctly purged</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-simp">
+<h3>2.10.10. pupmod-simp-simp<a class="headerlink" href="#pupmod-simp-simp" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ensure that the <code class="docutils literal"><span class="pre">netlabel_tools</span></code> package is installed for the <code class="docutils literal"><span class="pre">netlabel</span></code>
+service</li>
+<li>Added the <a class="reference internal" href="../glossary.html#term-elasticsearch"><span class="xref std std-term">Elasticsearch</span></a> and <a class="reference internal" href="../glossary.html#term-grafana"><span class="xref std std-term">Grafana</span></a> <a class="reference internal" href="../glossary.html#term-gpg"><span class="xref std std-term">GPG</span></a> keys to the
+<a class="reference internal" href="../glossary.html#term-yum"><span class="xref std std-term">YUM</span></a> configuration</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-simplib">
+<h3>2.10.11. pupmod-simp-simplib<a class="headerlink" href="#pupmod-simp-simplib" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fixed the <code class="docutils literal"><span class="pre">validate_net_list()</span></code> function when using regex strings against
+IPv6 addresses</li>
+<li>Added support for <code class="docutils literal"><span class="pre">nss-myhostname</span></code> which fixes <a class="reference external" href="https://bugs.centos.org/view.php?id=10635">issues</a> with hostname lookups
+on <a class="reference internal" href="../glossary.html#term-el"><span class="xref std std-term">EL</span></a> 7+ systems</li>
+<li>Added a <code class="docutils literal"><span class="pre">puppet_settings</span></code> Fact that returns a Hash of all settings on the
+Puppet client system</li>
+<li>Fix issues with calls to the <code class="docutils literal"><span class="pre">Service['named']</span></code> resource</li>
+</ul>
+</div>
+<div class="section" id="simp-bootstrap">
+<h3>2.10.12. simp-bootstrap<a class="headerlink" href="#simp-bootstrap" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Changed <code class="docutils literal"><span class="pre">trusted['clientcert']</span></code> to <code class="docutils literal"><span class="pre">trusted['certname']</span></code> in <code class="docutils literal"><span class="pre">hiera.yaml</span></code></li>
+</ul>
+</div>
+<div class="section" id="simp-cli">
+<h3>2.10.13. simp-cli<a class="headerlink" href="#simp-cli" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ensure that <code class="docutils literal"><span class="pre">STDERR</span></code> is properly discarded during shell redirects</li>
+</ul>
+</div>
+<div class="section" id="simp-core">
+<h3>2.10.14. simp-core<a class="headerlink" href="#simp-core" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ensured that <code class="docutils literal"><span class="pre">unpack_dvd</span></code> and <code class="docutils literal"><span class="pre">migrate_to_environments</span></code> properly squashed STDERR</li>
+<li>Corrected the <code class="docutils literal"><span class="pre">pupmod-simp-mcollective</span></code> version that was being built</li>
+</ul>
+</div>
+<div class="section" id="simp-utils">
+<h3>2.10.15. simp-utils<a class="headerlink" href="#simp-utils" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Removed the dependency on <a class="reference external" href="https://github.com/robinbowes/pssh">pssh</a></li>
+</ul>
+</div>
+<div class="section" id="dvd">
+<h3>2.10.16. DVD<a class="headerlink" href="#dvd" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Removed the first call to <code class="docutils literal"><span class="pre">fips=1</span></code> from the kickstart file since it was
+causing issues with some systems</li>
+</ul>
+</div>
+</div>
+<div class="section" id="new-features">
+<h2><a class="toc-backref" href="#id17">2.11. New Features</a><a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pupmod-cristifalcas-journald">
+<h3>2.11.1. pupmod-cristifalcas-journald<a class="headerlink" href="#pupmod-cristifalcas-journald" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Added an upstream <code class="docutils literal"><span class="pre">journald</span></code> management module since EL7 needs tweaking to
+the journal on many systems.</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>2.11.2. pupmod-simp-auditd<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Added the syslog <code class="docutils literal"><span class="pre">priority</span></code> and <code class="docutils literal"><span class="pre">facility</span></code> options to <code class="docutils literal"><span class="pre">auditd::config::audisp::syslog</span></code></li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-dirtycow">
+<h3>2.11.3. pupmod-simp-dirtycow<a class="headerlink" href="#pupmod-simp-dirtycow" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Adds a notification message if your system is affected by the Dirty COW CVE</li>
+<li>Will <strong>not</strong> attempt to automatically upgrade your kernel!</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>2.11.4. pupmod-simp-rsyslog<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Enabled forwarding of <code class="docutils literal"><span class="pre">journald</span></code> logs to syslog</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>2.11.5. pupmod-simp-simplib<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Added a <code class="docutils literal"><span class="pre">puppet_settings</span></code> Fact that returns a Hash of all settings on the
+Puppet client system</li>
+</ul>
+</div>
+<div class="section" id="pupmod-simp-tpm">
+<h3>2.11.6. pupmod-simp-tpm<a class="headerlink" href="#pupmod-simp-tpm" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Changed the default Storage Root Key password default to <code class="docutils literal"><span class="pre">null</span></code> for
+<a class="reference external" href="http://trousers.sourceforge.net/pkcs11.html">PKCS#11</a> and Trusted Boot</li>
+<li>Added a fact <code class="docutils literal"><span class="pre">ima_log_size</span></code> that returns the byte size of the <a class="reference external" href="https://sourceforge.net/p/linux-ima/wiki/Home/">IMA</a> hash log
+in <code class="docutils literal"><span class="pre">securityfs</span></code></li>
+<li>Added the ability to edit the default <a class="reference external" href="https://sourceforge.net/p/linux-ima/wiki/Home/">IMA</a> policy<ul>
+<li>Be <strong>very</strong> careful if using this in production</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>2.11.7. simp-bootstrap<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Mapped <a class="reference external" href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf">NIST 800-171</a> and <a class="reference external" href="http://www.iso.org/iso/home/standards/management-standards/iso27001.htm">ISO/IEC 27001</a> into the SIMP compliance_map
+baseline</li>
+</ul>
+</div>
+<div class="section" id="simp-doc">
+<h3>2.11.8. simp-doc<a class="headerlink" href="#simp-doc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Added TPM management documentation</li>
+<li>Updated the ELG stack documentation</li>
+<li>Another set of usability updates to the documentation, mostly around building
+the system from scratch</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>2.11.9. DVD<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Added <a class="reference external" href="https://sourceforge.net/p/linux-ima/wiki/Home/#mounting-filesystems-with-iversion">iversion</a> to the default ISO mountpoints that make sense for <a class="reference external" href="https://sourceforge.net/p/linux-ima/wiki/Home/">IMA</a>
+measurement</li>
+</ul>
+</div>
+</div>
+<div class="section" id="known-bugs">
+<h2><a class="toc-backref" href="#id18">2.12. Known Bugs</a><a class="headerlink" href="#known-bugs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>If you are running libvirtd, when <code class="docutils literal"><span class="pre">svckill</span></code> runs it will always attempt to kill
+dnsmasq unless you are deliberately trying to run the dnsmasq service.  This
+does <em>not</em> actually kill the service but is, instead, an error of the startup
+script and causes no damage to your system.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../getting_started_guide/index.html" class="btn btn-neutral float-right" title="3. SIMP Getting Started Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../getting_started_guide/Just_Install.html" class="btn btn-neutral" title="1. For The Impatient" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, THE SIMP TEAM.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.2.X',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
