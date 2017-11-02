@@ -1,3 +1,8 @@
+* Thu Nov 02 2017 Jeanne Greulich <jeanne.greulich@onyxpoint.com>
+- updated NFS section to indicate known errors with autofs and
+  stunnel
+- fixed a minor typo
+
 * Thu Oct 19 2017 Liz Nemsick <lnemsick.simp@gmail.com>
 - Added developers release procedures pages
 
