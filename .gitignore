@@ -20,3 +20,4 @@ sphinx_cache
 build/rpm_metadata
 vendor/*
 .bundle/*
+.vagrant
